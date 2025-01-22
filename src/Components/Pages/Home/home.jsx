@@ -1,5 +1,7 @@
 import React from 'react'
 import Sidebar from '../../Common/SideBar/sidebar'
+import BarChart from '../../Common/Charts/bargraph'
+import DonutChart from '../../Common/Charts/DonutChart'
 
 import Navbar from '../../Common/Navbar/navbar';
 import RecentOrder from '../../Common/RecentOrderTable/RecentOrder';
