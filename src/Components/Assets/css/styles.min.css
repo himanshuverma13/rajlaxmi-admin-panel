@@ -17371,7 +17371,8 @@ fieldset:disabled .btn {
   padding: 5px 2px;
   margin-top: 20px;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 10px;
+  text-align: left;
   text-transform: uppercase;
 }
 .nav-small-cap .nav-small-cap-icon {
@@ -17388,9 +17389,10 @@ fieldset:disabled .btn {
   align-items: center;
   line-height: 25px;
   position: relative;
+  font-weight: 600;
   margin: 5px 0;
   padding: 5px 0;
-  font-size: 15px;
+  font-size: 13px;
   text-decoration: none;
 }
 .sidebar-nav ul .sidebar-item .sidebar-link .aside-icon {
@@ -17454,6 +17456,7 @@ fieldset:disabled .btn {
   z-index: 12;
   width: 100%;
   background: #fff;
+  padding: 0;
   margin-bottom: 24px;
   -webkit-box-shadow: 0px 2px 6px rgba(37, 83, 185, 0.1);
   box-shadow: 0px 2px 6px rgba(37, 83, 185, 0.1);
