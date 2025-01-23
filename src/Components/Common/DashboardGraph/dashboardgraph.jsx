@@ -1,4 +1,6 @@
 import React from 'react'
+import BarChart from '../Charts/bargraph'
+import DonutChart from '../Charts/DonutChart'
 
 const DashboardGraph = () => {
     return (
@@ -45,6 +47,7 @@ const DashboardGraph = () => {
                                 </div>
                             </div>
                             <div id="profit" />
+                            <BarChart/>
                         </div>
                     </div>
                 </div>
@@ -81,6 +84,7 @@ const DashboardGraph = () => {
                                         <div className="col-5">
                                             <div className="d-flex justify-content-center">
                                                 <div id="grade" />
+                                                <DonutChart/>
                                             </div>
                                         </div>
                                     </div>
