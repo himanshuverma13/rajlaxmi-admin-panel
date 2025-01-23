@@ -17,7 +17,6 @@ const Order = () => {
       {/* Sidebar Start */}
       <Sidebar />
       {/*  Sidebar End */}
-      {/*  Main wrapper */}
       <div className="body-wrapper">
         <div className="container-fluid">
           <Navbar />
