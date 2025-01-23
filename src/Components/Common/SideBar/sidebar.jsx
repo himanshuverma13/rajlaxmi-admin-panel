@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from "react";
 import { NavLink } from 'react-router-dom'
+import { Collapse } from "react-bootstrap";
+
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to control collapse
+
+  const toggleCollapse = () => {
+    setIsOpen(!isOpen); // Toggle the collapse state
+  };
   return (
     <aside className="left-sidebar">
       <div className="brand-logo d-flex align-items-center justify-content-between">
@@ -70,14 +77,65 @@ const Sidebar = () => {
             <li className="sidebar-item">
               <a
                 className="sidebar-link sidebar-link primary-hover-bg"
-                href="ui-alerts.html"
-                aria-expanded="false"
+                href="#"
+                // aria-expanded="false"
+                onClick={toggleCollapse} // Handle toggle click
+                aria-expanded={isOpen ? "true" : "false"}
               >
                 <span className="aside-icon p-2 bg-light-primary rounded-1">
                   <i className="ti ti-alert-circle fs-7" />
                 </span>
                 <span className="hide-menu ps-1">Orders</span>
               </a>
+              <Collapse in={isOpen}>
+                <ul className="collapse first-level">
+                  <li className="sidebar-item">
+                    <a href="../main/eco-shop.html" className="sidebar-link">
+                      <span className="sidebar-icon mx-3">1</span>
+                      
+                      <span className="hide-menu">Shop One</span>
+                    </a>
+                  </li>
+                  <li className="sidebar-item">
+                    <a href="../main/eco-shop2.html" className="sidebar-link">
+                      <span className="sidebar-icon mx-3">2</span>
+                      <span className="hide-menu">Shop Two</span>
+                    </a>
+                  </li>
+                </ul>
+              </Collapse>
+            </li>
+            <li className="sidebar-item">
+              <a
+                className="sidebar-link has-arrow success-hover-bg"
+                href="#"
+                onClick={toggleCollapse} // Handle toggle click
+                aria-expanded={isOpen ? "true" : "false"}
+              >
+                <span className="aside-icon p-2 bg-success-subtle rounded-1">
+                  <iconify-icon
+                    icon="solar:smart-speaker-minimalistic-line-duotone"
+                    className="fs-6"
+                  />
+                </span>
+                <span className="hide-menu ps-1">Ecommerce</span>
+              </a>
+              <Collapse in={isOpen}>
+                <ul className="collapse first-level">
+                  <li className="sidebar-item">
+                    <a href="../main/eco-shop.html" className="sidebar-link">
+                      <span className="sidebar-icon"></span>
+                      <span className="hide-menu">Shop One</span>
+                    </a>
+                  </li>
+                  <li className="sidebar-item">
+                    <a href="../main/eco-shop2.html" className="sidebar-link">
+                      <span className="sidebar-icon"></span>
+                      <span className="hide-menu">Shop Two</span>
+                    </a>
+                  </li>
+                </ul>
+              </Collapse>
             </li>
             <li className="sidebar-item">
               <a
@@ -90,6 +148,64 @@ const Sidebar = () => {
                 </span>
                 <span className="hide-menu ps-1">Card</span>
               </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link has-arrow success-hover-bg" href="" aria-expanded="false">
+                <span class="aside-icon p-2 bg-success-subtle rounded-1">
+                  <iconify-icon icon="solar:smart-speaker-minimalistic-line-duotone" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu ps-1">Ecommerce</span>
+              </a>
+              <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                  <a href="../main/eco-shop.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Shop One</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-shop2.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Shop Two</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-shop-detail.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Details One</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-shop-detail2.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Details Two</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-product-list.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">List</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-checkout.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Checkout</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-add-product.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Add Product</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="../main/eco-edit-product.html" class="sidebar-link">
+                    <span class="sidebar-icon"></span>
+                    <span class="hide-menu">Edit Product</span>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li className="sidebar-item">
               <a

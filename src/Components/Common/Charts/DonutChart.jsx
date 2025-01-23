@@ -17,7 +17,7 @@ const DonutChart = () => {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200
+            width: 150
           },
           legend: {
             show: false
@@ -55,7 +55,7 @@ const DonutChart = () => {
   return (
     <div>
       <div id="chart">
-        <ApexCharts options={options} series={series} type="donut" width={300} />
+        <ApexCharts options={options} series={series} type="donut" width={200} />
       </div>
       {/* <div className="buttons">
         <button id="randomize" onClick={randomize}>Randomize</button>

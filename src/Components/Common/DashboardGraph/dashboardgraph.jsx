@@ -134,6 +134,7 @@ const DashboardGraph = () => {
                 </div>
               </div>
               <div id="profit" />
+              <BarChart/>
             </div>
           </div>
         </div>
@@ -170,6 +171,7 @@ const DashboardGraph = () => {
                     <div className="col-5">
                       <div className="d-flex justify-content-center">
                         <div id="grade" />
+                        <DonutChart />
                       </div>
                     </div>
                   </div>
