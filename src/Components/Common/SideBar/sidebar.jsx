@@ -70,7 +70,7 @@ const Sidebar = () => {
               <span className="aside-icon p-2 bg-light-primary rounded-1">
                 <i className="ti ti-alert-circle fs-7" />
               </span>
-              <span className="hide-menu ps-1">Alerts</span>
+              <span className="hide-menu ps-1">Orders</span>
             </a>
           </li>
           <li className="sidebar-item">
