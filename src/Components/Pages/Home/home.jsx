@@ -7,6 +7,7 @@ import Navbar from '../../Common/Navbar/navbar';
 import RecentOrder from '../../Common/RecentOrderTable/RecentOrder';
 import UpcoingOrder from '../../Common/UpcomingOrder/upcoimg';
 import DashboardGraph from '../../Common/DashboardGraph/dashboardgraph';
+import SalesCard from '../../Common/SalesCard/salescard';
 const Home = () => {
   return (
     <div
@@ -26,6 +27,7 @@ const Home = () => {
         <div className="container-fluid">
           <Navbar />
           {/*  Row 1 */}
+          <SalesCard/>
           <DashboardGraph/>
           
           <UpcoingOrder/>

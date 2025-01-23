@@ -2,7 +2,9 @@ import "./App.css";
 import "../src/Components/Assets/css/styles.min.css";
 import Home from "./Components/Pages/Home/home";
 import AccordionTable from "./Components/Common/test/test";
-
+import { BrowserRouter } from "react-router-dom";
+import RouterRoutes from "./Components/Common/RouterRoutes/routes";
+import "../src/Components/Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js";
 // import "../src/Components/Assets/libs/jquery/dist/jquery.min.js";
 import "../src/Components/Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js";
 import OrderList from "./Components/Common/OrderList/orderList.jsx";
@@ -17,7 +19,10 @@ import FeedbackPage from "./Components/Pages/Feedback/feedback.jsx";
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
+      {/* {/* <Home /> */}
+      <BrowserRouter>
+        <RouterRoutes />
+      </BrowserRouter> */}
       {/* <AccordionTable/> */}
       {/* <OrderList/> */}
       {/* <Order/> */}

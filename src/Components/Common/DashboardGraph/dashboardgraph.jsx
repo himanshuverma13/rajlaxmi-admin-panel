@@ -3,6 +3,8 @@ import dashimg1 from '../../Assets/images/svgs/chart.svg'
 import dashimg2 from '../../Assets/images/svgs/paypal.svg'
 import dashimg3 from '../../Assets/images/svgs/screen.svg'
 import dashimg4 from '../../Assets/images/svgs/total.svg'
+import BarChart from '../Charts/bargraph'
+import DonutChart from '../Charts/DonutChart'
 
 const DashboardGraph = () => {
   return (
