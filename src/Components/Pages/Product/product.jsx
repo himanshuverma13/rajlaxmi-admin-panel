@@ -11,6 +11,7 @@ import Product4 from "../../Assets/images/products/s7.jpg";
 // React-Icons
 import { FaEye, FaPen } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { NavLink } from 'react-router-dom';
 
 // Sample Product Data
 const productsData = [
@@ -173,21 +174,23 @@ const Product = () => {
                                                                 }}
                                                                 data-popper-placement="bottom-end"
                                                             >
+                                                                <NavLink to={"/productdetails"}>
+                                                                    <li>
+                                                                        <a className="dropdown-item fw-bold text-dark" href="#">
+                                                                            <FaEye className='fs-2 me-3' />
+                                                                            View
+                                                                        </a>
+                                                                    </li>
+                                                                </NavLink>
                                                                 <li>
                                                                     <a className="dropdown-item fw-bold text-dark" href="#">
-                                                                    <FaEye className='fs-2 me-3'/>
-                                                                        View
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a className="dropdown-item fw-bold text-dark" href="#">
-                                                                    <FaPen className='fs-2 me-3' />
+                                                                        <FaPen className='fs-2 me-3' />
                                                                         Edit
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <a className="dropdown-item text-danger fw-bold" href="#">
-                                                                    <RiDeleteBin5Fill  className='fs-3 me-3'/>
+                                                                        <RiDeleteBin5Fill className='fs-3 me-3' />
                                                                         Delete
                                                                     </a>
                                                                 </li>
