@@ -55,9 +55,8 @@ const DonutChart = () => {
   return (
     <div>
       <div id="chart">
-        <ApexCharts options={options} series={series} type="donut" width={200} />
+        <ApexCharts options={options} series={series} type="donut" width={300} />
       </div>
-
       {/* <div className="buttons">
         <button id="randomize" onClick={randomize}>Randomize</button>
         <button id="add" onClick={appendData}>Add Data</button>
