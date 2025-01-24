@@ -1,8 +1,16 @@
 import React from 'react'
 import Sidebar from '../../Common/SideBar/sidebar';
 import Navbar from '../../Common/Navbar/navbar';
-
+import { useForm } from "react-hook-form";
 const ProductCreate = () => {
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        reset,
+        formState: { errors },
+    } = useForm();
     return (
         <>
             <div
@@ -22,118 +30,162 @@ const ProductCreate = () => {
                     <div className="container-fluid">
                         <Navbar />
 
-                        <div class="card p-4">
-                            <h5>Details</h5>
-                            <small class="text-muted">Title, short description, image...</small>
+                        <form action="">
+                            <div className="card p-4">
+                                <h5>Product Details</h5>
+                                {/* <small className="text-muted">Title, short description, image...</small> */}
 
-                            <div class="mb-3 mt-3">
-                                <label for="productName" class="form-label">Product name</label>
-                                <input type="text" class="form-control" id="productName" placeholder="Product name" />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="subDescription" class="form-label">Sub description</label>
-                                <textarea class="form-control" id="subDescription" rows="3" placeholder="Sub description"></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Content</label>
-                                <div class="border p-3">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <select class="form-select w-auto me-2">
-                                            <option selected>Paragraph</option>
-                                            <option>Heading</option>
-                                            <option>List</option>
-                                        </select>
-                                        <button class="btn btn-light btn-sm"><b>B</b></button>
-                                        <button class="btn btn-light btn-sm"><i>I</i></button>
-                                        <button class="btn btn-light btn-sm"><u>U</u></button>
-                                        <button class="btn btn-light btn-sm">🔗</button>
-                                        <button class="btn btn-light btn-sm">🖼️</button>
-                                    </div>
-                                    <textarea class="form-control" placeholder="Write something awesome..." rows="4"></textarea>
+                                <div className="mb-3 mt-3">
+                                    <label for="productName" className="form-label">Product Name</label>
+                                    <input type="text" className="form-control" id="product_name" placeholder="Product name"
+                                        {...register("product_name", {
+                                            required: "Name is required",
+                                        })} />
+                                    {errors.product_name && (
+                                        <span className="text-danger">
+                                            {errors.product_name.message}
+                                        </span>
+                                    )}
                                 </div>
-                            </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Images</label>
-                                <div class="border p-4 text-center">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/747/747374.png" width="50" alt="upload-icon" />
-                                    <p class="mt-2">Drop or select file</p>
-                                    <small class="text-muted">Drop files here or click to <a href="#">browse</a> through your machine.</small>
+                                <div className="mb-3">
+                                    <label for="product_description" className="form-label">Product Description</label>
+                                    <textarea className="form-control" id="product_description" rows="3" placeholder="Description"
+                                        {...register("product_description", {
+                                            required: "Description is required",
+                                        })}
+                                    ></textarea>
+                                    {errors.product_description && (
+                                        <span className="text-danger">
+                                            {errors.product_description.message}
+                                        </span>
+                                    )}
                                 </div>
-                            </div>
-                        </div>
-                        <div className='card p-4'>
-                            <h1 class="mb-4">Product Form</h1>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card mb-3">
-                                        <div class="card-header">
-                                            <h5 class="card-title">Properties</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="productCode">Product Code</label>
-                                                <input type="text" class="form-control" id="productCode" placeholder="Enter product code" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="quantity">Quantity</label>
-                                                <input type="number" class="form-control" id="quantity" value="0" min="0" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="colors">Colors</label>
-                                                <select class="form-control" id="colors">
-                                                    <option value="">Select colors</option>
-                                                    <option value="red">Red</option>
-                                                    <option value="blue">Blue</option>
-                                                    <option value="green">Green</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tags">Tags</label>
-                                                <input type="text" class="form-control" id="tags" placeholder="Enter tags separated by commas" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="gender">Gender</label>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="men" id="men" />
-                                                    <label class="form -check-label" for="men">Men</label>
+
+                            </div>
+                            <div className='card p-4'>
+                                {/* <h1 class="mb-4">Product Form</h1> */}
+
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="card mb-3">
+                                            <div className="card-body">
+                                                <div className="form-group mb-2">
+                                                    <label for="product_price">Price</label>
+                                                    <input type="number" className="form-control" id="product_price" placeholder="Enter price"
+                                                        {...register("product_price", {
+                                                            required: "Price is required",
+                                                            min: { value: 1, message: "Price must be positive" },
+                                                        })} />
+                                                    {errors.product_price && (
+                                                        <span className="text-danger">
+                                                            {errors.product_price.message}
+                                                        </span>
+                                                    )}
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="women" id="women" />
-                                                    <label class="form-check-label" for="women">Women</label>
+
+                                                <div className="form-group mb-2">
+                                                    <label for="product_stock">Stock</label>
+                                                    <input type="number" className="form-control" id="product_stock" placeholder="Enter price"
+                                                        {...register("product_stock", {
+                                                            required: "Stock is required",
+                                                            min: {
+                                                                value: 0,
+                                                                message: "Stock cannot be negative",
+                                                            },
+                                                        })} />
+                                                    {errors.product_stock && (
+                                                        <span className="text-danger">
+                                                            {errors.product_stock.message}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="form-group mb-2">
+                                                    <label for="product_category">Category</label>
+                                                    <input type="text" className="form-control" id="product_category" placeholder="Enter product code"
+                                                        {...register("product_category", {
+                                                            required: "Category is required",
+                                                        })}
+                                                    />
+                                                    {errors.product_category && (
+                                                        <span className="text-danger">
+                                                            {errors.product_category.message}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="form-group mb-2">
+                                                    <label for="product_quantity">Quantity</label>
+                                                    <input type="number" className="form-control" id="product_quantity"
+                                                        {...register("product_quantity", {
+                                                            required: "Quantity is required",
+                                                            min: {
+                                                                value: 1,
+                                                                message: "Quantity must be positive",
+                                                            },
+                                                        })} />
+                                                    {errors.product_quantity && (
+                                                        <span className="text-danger">
+                                                            {errors.product_quantity.message}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="form-group">
+                                                    <label>
+                                                        Select
+                                                    </label>
+                                                    <select
+                                                        className="form-select py-2"
+                                                        {...register("product_website_name", {
+                                                            required: "Please select an option",
+                                                        })}
+                                                    >
+                                                        <option value="">Select</option>
+                                                        <option value="RajLaxmi">Raj Laxmi</option>
+                                                        <option value="GauSwarn">GauSwarn</option>
+                                                        <option value="Both">Both</option>
+                                                    </select>
+                                                    {errors.product_website_name && (
+                                                        <span className="text-danger">
+                                                            {errors.product_website_name.message}
+                                                        </span>
+                                                    )}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="card mb-3">
+                                            <div className="card-header">
+                                                <h5 className="card-title">Upload Images</h5>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-md-8'>
+                                                    <div className="card-body">
+                                                        <div className="mb-3">
+                                                            <label className="form-label">Images</label>
+                                                            <div className="border p-4 text-center">
+                                                                <img src="https://cdn-icons-png.flaticon.com/512/747/747374.png" width="50" alt="upload-icon" />
+                                                                <p className="mt-2">Drop or select file</p>
+                                                                <small className="text-muted">Drop files here or click to <a href="#">browse</a> through your machine.</small>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div className='col-md-4'>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="card mb-3">
-                                        <div class="card-header">
-                                            <h5 class="card-title">Additional Information</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control" id="description" rows="4" placeholder="Enter product description"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="price">Price</label>
-                                                <input type="number" class="form-control" id="price" placeholder="Enter price" min="0" step="0.01" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="image">Upload Image</label>
-                                                <input type="file" class="form-control-file" id="image" />
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
+                            </div>
+                                <button type="submit" className="btn btn-primary w-auto px-5">Submit</button>
+                        </form>
                     </div>
                 </div>
 
