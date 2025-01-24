@@ -5,10 +5,12 @@ import dashimg3 from '../../Assets/images/svgs/screen.svg'
 import dashimg4 from '../../Assets/images/svgs/total.svg'
 import BarChart from '../Charts/bargraph'
 import DonutChart from '../Charts/DonutChart'
+import SalesCard from "../SalesCard/salescard";
 
 const DashboardGraph = () => {
   return (
     <>
+      {/* <div className="row">
       {/* <div className="row">
         <div class="col-lg-3">
           <div class="card">
@@ -145,10 +147,10 @@ const DashboardGraph = () => {
               <div className="card overflow-hidden">
                 <div className="card-body p-4">
                   <h5 className="card-title mb-10 fw-semibold">
-                    Traffic Distribution
+                  Analytics
                   </h5>
                   <div className="row align-items-center">
-                    <div className="col-7">
+                    {/* <div className="col-7">
                       <h4 className="fw-semibold mb-3">$36,358</h4>
                       <div className="d-flex align-items-center mb-2">
                         <span className="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -167,11 +169,18 @@ const DashboardGraph = () => {
                           <span className="fs-2">Refferal</span>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-5">
+                    </div> */}
+                    <div className="col-12">
                       <div className="d-flex justify-content-center">
                         <div id="grade" />
                         <DonutChart />
+                      </div>
+                      <div>
+                        <ul className="d-flex justify-content-center">
+                          <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-primary rounded-circle d-inline-block"></span> sale</li>
+                          <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-danger rounded-circle d-inline-block"></span> profit</li>
+                          <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-success rounded-circle d-inline-block"></span> products</li>
+                        </ul>
                       </div>
                     </div>
                   </div>

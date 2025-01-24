@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import orderimg from "../../Assets/images/profile/user1.jpg";
 const data = [
@@ -6,51 +6,143 @@ const data = [
     id: 1,
     name: "John Doe",
     age: 28,
+    date: '1/07/25',
     city: "New York",
     country: "USA",
     details: "John is a software engineer from New York, USA.",
+    status: "Completed",
   },
   {
     id: 2,
     name: "Jane Smith",
     age: 34,
+    date: '2/07/25',
     city: "London",
     country: "UK",
     details: "Jane is a data scientist based in London, UK.",
+    status: "Pending",
   },
   {
     id: 3,
     name: "Mark Wilson",
     age: 45,
+    date: '7/07/25',
     city: "Sydney",
     country: "Australia",
     details: "Mark is a project manager in Sydney, Australia.",
+    status: "Cancelled",
   },
 ];
 const OrderList = () => {
+  const [activeTab, setActiveTab] = useState("All");
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [searchId, setSearchId] = useState('');
+
+  const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  const filteredData = data.filter((row) => {
+    const isWithinDateRange = (!startDate || new Date(row.date) >= new Date(startDate)) &&
+                              (!endDate || new Date(row.date) <= new Date(endDate));
+    const isMatchingId = searchId ? row.id.toString().includes(searchId) : true;
+    const isMatchingStatus = activeTab === "All" || row.status === activeTab;
+
+    return isWithinDateRange && isMatchingId && isMatchingStatus;
+  });
+
+
+  // // Array of tab names
+  // const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+
+  // // Function to handle tab click
+  // const handleTabClick = (tabName) => {
+  //   setActiveTab(tabName); // Set the clicked tab as active
+  // };
+
   return (
     <div className="product-list">
       <div className="card">
         <div className="card-body p-3">
-          <div className="d-flex justify-content-between align-items-center gap-6 mb-3">
-            <form className="position-relative">
-              <input
-                type="text"
-                className="form-control search-chat py-2 ps-5"
-                id="text-srh"
-                placeholder="Search Product"
-              />
-              <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3" />
-            </form>
-            <a
-              className="fs-6 text-muted"
-              href="javascript:void(0)"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              data-bs-title="Filter list"
-            >
-              <i className="ti ti-filter" />
-            </a>
+          <div>
+            <ul className="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
+              {tabs.map((tab) => (
+                <li
+                  key={tab}
+                  className={`nav-item mx-2 order-filter d-flex align-items-center ${
+                    activeTab === tab ? "active border-bottom border-bottom-primary pb-1 border-2" : ""
+                  }`}
+                  onClick={() => handleTabClick(tab)}
+                >
+                  <span
+                    className={`d-none d-md-block fw-medium ${
+                      activeTab === tab ? "fs-4 text-primary " : ""
+                    }`}
+                  >
+                    {tab}
+                  </span>
+                  <span
+                    className={`mx-1 px-1 rounded ${
+                      activeTab === tab
+                        ? "fs-4 text-primary bg-primary text-white"
+                        : "bg-light"
+                    }`}
+                  >
+                    07
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="d-flex row justify-content-between align-items-center gap-6 mb-3">
+          <div className="d-flex col-lg-6">
+              <div className="mx-2">
+                <label className="form-label" htmlFor="">
+                  Start Date
+                </label>
+                <input
+                  type="date"
+                  className="form-control search-chat py-2"
+                  name=""
+                  id=""
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+              </div>
+              <div className="mx-2">
+                <label className="form-label" htmlFor="">
+                  End Date
+                </label>
+                <input
+                  type="date"
+                  className="form-control search-chat py-2"
+                  name=""
+                  id=""
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
+              </div>
+              </div>
+              <div className="col-lg-4">
+                <label className="form-label" htmlFor="">
+                  Search
+                </label>
+                <div className="position-relative">
+                  <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3" />
+                  <input
+                    type="text"
+                    className="form-control search-chat py-2 ps-5"
+                    id="text-srh"
+                    placeholder="Search Product Order Id"
+                    value={searchId}
+                  onChange={(e) => setSearchId(e.target.value)}
+                  />
+                </div>
+              </div>
+              
           </div>
           <div className="table-responsive border rounded">
             <table className="table align-middle text-nowrap mb-0">
@@ -76,7 +168,7 @@ const OrderList = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((row) => (
+                {filteredData?.map((row) => (
                   <>
                     <tr key={row?.id}>
                       <td>
@@ -85,12 +177,12 @@ const OrderList = () => {
                             className="form-check-input"
                             type="checkbox"
                             defaultValue=""
-                            id="flexCheckDefault1"
+                            id={`flexCheckDefault${row.id}`}
                           />
                         </div>
                       </td>
                       <td>
-                        <h6 className="mb-0 fs-4">#12345</h6>
+                        <h6 className="mb-0 fs-4">{row?.id}</h6>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -103,12 +195,14 @@ const OrderList = () => {
                           />
                           <div className="ms-3 text-start">
                             <h6 className="mb-0 fs-4">Curology</h6>
-                            <p className="mb-0 text-muted">Admin.panel@123gmail.com</p>
+                            <p className="mb-0 text-muted">
+                              Admin.panel@123gmail.com
+                            </p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p className="mb-0">Thu, Jan 12 2024</p>
+                        <p className="mb-0">{row?.date}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -119,9 +213,9 @@ const OrderList = () => {
                         <h6 className="mb-0 fs-4">$275</h6>
                       </td>
                       <td>
-                        <span class="badge rounded-pill bg-danger-subtle text-danger border-danger border">
-                          Cancelled
-                        </span>
+                      <span className={`badge rounded-pill bg-${row.status === "Cancelled" ? "danger" : "success"} text-white`}>
+                        {row.status}
+                      </span>
                       </td>
                       <td>
                         <i
@@ -250,3 +344,4 @@ const OrderList = () => {
 };
 
 export default OrderList;
+

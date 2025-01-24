@@ -8,27 +8,52 @@ foreignObject{
 .apexcharts-menu-icon{
   display: none;
 }
-.slick-dots{
-  bottom: -37px !important;
+
+.order-filter{
+    cursor: pointer;
 }
-.slick-dots li{
-  margin: 0 22px !important;
+
+
+
+
+/* ---------- product slider correction css --------------- */
+
+.slick-dots {
+  position: unset !important;
+  margin: 4% 0% 0% !important
 }
-.slick-arrow{
-  z-index: 10 !important;
-  /* background-color: rgba( 0,0,0,0.4) !important; */
-  /* padding: 3px !important; */
-  /* border-radius: 10px !important; */
+.slick-dots li {
+  position: unset !important;
+  display: inline !important; 
+  width: 7% !important;
+  height: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
 }
-.slick-next,.slick-prev{
-  top: 90% !important;
+.slick-dots img {
+  width: 12% !important; 
+  height: auto !important;
 }
-.slick-prev {
-  left: 350px !important;
+
+
+/*  ----------- side bar actvie css ------------ */
+
+.primary-hover-bgs.btn-toggle[aria-expanded="true"]:active, .primary-hover-bgs:active {
+  width: calc(100% + 16px);
 }
-.slick-next {
-  right: 45px !important;
+
+.primary-hover-bg-sidebar.active {
+  background-color: #e5f3fb;
 }
-.slick-prev:before, .slick-next:before{
-  color: black !important;
+.primary-hover-bgs:active {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -16px;
+  content: "";
+  width: 0;
+  height: 100%;
+  z-index: -1;
+  border-radius: 0px 24px 24px 0px;
+  transition: all 0.4s ease-in-out;
 }
