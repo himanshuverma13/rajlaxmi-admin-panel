@@ -8,3 +8,7 @@ foreignObject{
 .apexcharts-menu-icon{
   display: none;
 }
+
+.order-filter{
+    cursor: pointer;
+}

@@ -90,11 +90,11 @@ const Sidebar = () => {
               <Collapse in={isOpen}>
                 <ul className="collapse first-level">
                   <li className="sidebar-item">
-                    <a href="../main/eco-shop.html" className="sidebar-link">
+                    <NavLink to="/order" className="sidebar-link">
                       <span className="sidebar-icon mx-3">1</span>
                       
                       <span className="hide-menu">Shop One</span>
-                    </a>
+                    </NavLink>
                   </li>
                   <li className="sidebar-item">
                     <a href="../main/eco-shop2.html" className="sidebar-link">
