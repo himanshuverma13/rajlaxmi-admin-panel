@@ -27,6 +27,7 @@ const Home = () => {
         <div className="container-fluid">
           <Navbar />
           {/*  Row 1 */}
+          <SalesCard />
           <DashboardGraph/>
           
           <UpcoingOrder/>
