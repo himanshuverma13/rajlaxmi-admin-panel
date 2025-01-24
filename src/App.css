@@ -12,3 +12,48 @@ foreignObject{
 .order-filter{
     cursor: pointer;
 }
+
+
+
+
+/* ---------- product slider correction css --------------- */
+
+.slick-dots {
+  position: unset !important;
+  margin: 4% 0% 0% !important
+}
+.slick-dots li {
+  position: unset !important;
+  display: inline !important; 
+  width: 7% !important;
+  height: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+.slick-dots img {
+  width: 12% !important; 
+  height: auto !important;
+}
+
+
+/*  ----------- side bar actvie css ------------ */
+
+.primary-hover-bgs.btn-toggle[aria-expanded="true"]:active, .primary-hover-bgs:active {
+  width: calc(100% + 16px);
+}
+
+.primary-hover-bg-sidebar.active {
+  background-color: #e5f3fb;
+}
+.primary-hover-bgs:active {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -16px;
+  content: "";
+  width: 0;
+  height: 100%;
+  z-index: -1;
+  border-radius: 0px 24px 24px 0px;
+  transition: all 0.4s ease-in-out;
+}

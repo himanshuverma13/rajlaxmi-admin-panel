@@ -42,16 +42,16 @@ const ProductSlider = () => {
         <div className="slider-container">
             <Slider {...settings}>
                 <div className='product-img'>
-                    <img width={600} height={450} className='rounded-3' src={Product1} alt="Product 1" />
+                    <img  className='rounded-3 w-100' src={Product1} alt="Product 1" />
                 </div>
                 <div className='product-img'>
-                    <img width={600} height={450} className='rounded-3' src={Product2} alt="Product 2" />
+                    <img  className='rounded-3 w-100' src={Product2} alt="Product 2" />
                 </div>
                 <div className='product-img'>
-                    <img width={600} height={450} className='rounded-3' src={Product3} alt="Product 3" />
+                    <img  className='rounded-3 w-100' src={Product3} alt="Product 3" />
                 </div>
                 <div className='product-img'>
-                    <img width={600} height={450} className='rounded-3' src={Product4} alt="Product 4" />
+                    <img  className='rounded-3 w-100' src={Product4} alt="Product 4" />
                 </div>
             </Slider>
         </div>

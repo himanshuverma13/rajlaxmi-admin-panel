@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { Collapse } from "react-bootstrap";
 
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to control collapse
+
+  const params = useLocation()
+  console.log('params: ', params?.pathname);
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen); // Toggle the collapse state
@@ -38,10 +41,10 @@ const Sidebar = () => {
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
               <span className="hide-menu">Home</span>
             </li>
-            <NavLink to={"/"}>
+            <NavLink to={"/"} >
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg"
+                  className="sidebar-link sidebar-link primary-hover-bg-sidebar active"
                   href="index.html"
                   aria-expanded="false"
                 >
