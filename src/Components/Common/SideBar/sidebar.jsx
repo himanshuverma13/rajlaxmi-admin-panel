@@ -3,6 +3,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Collapse } from "react-bootstrap";
 import { UserContext } from "../UseContext/usecontext";
 
+import Logo from "../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
+
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to control collapse
 
@@ -17,15 +19,17 @@ const Sidebar = () => {
   return (
     <aside className={`left-sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="brand-logo d-flex align-items-center justify-content-between">
-        <a href="index.html" className="text-nowrap logo-img ms-0 ms-md-1">
-          <img
-            src="https://demos.wrappixel.com/free-admin-templates/bootstrap/spike-bootstrap-free/src/assets/images/logos/dark-logo.svg"
-            width={180}
-            alt=""
-          />
-        </a>
+        <div className="d-flex align-items-end justify-content-center logo-img ms-0 ms-md-1">
+          <NavLink to={"/"}>
+            <img
+              src={Logo}
+              // width={180}
+              alt="Logo"
+            />
+          </NavLink>
+          <h4 className="ms-3 fw-bold">RajLaxmi</h4>
+        </div>
 
-        <div></div>
         <div
           className="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
           id="sidebarCollapse"
@@ -48,11 +52,10 @@ const Sidebar = () => {
             <NavLink to={"/"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${
-                    params?.pathname == "/"
-                      ? "primary-hover-bg-sidebar-active"
-                      : ""
-                  }`}
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/"
+                    ? "primary-hover-bg-sidebar-active"
+                    : ""
+                    }`}
                   href="index.html"
                   aria-expanded="false"
                 >
@@ -73,16 +76,15 @@ const Sidebar = () => {
             <NavLink>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${
-                    params?.pathname == "/productdetails" ||
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/productdetails" ||
                     params?.pathname == "/productedit" ||
                     params?.pathname == "/productcreate"
-                      ? "primary-hover-bg-sidebar-active"
-                      : ""
-                  }`}
+                    ? "primary-hover-bg-sidebar-active"
+                    : ""
+                    }`}
                   href="#"
                   onClick={toggleCollapse} // Handle toggle click
-                  // aria-expanded={isOpen ? "true" : "false"}
+                // aria-expanded={isOpen ? "true" : "false"}
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-chart-line fs-7" />
@@ -90,16 +92,15 @@ const Sidebar = () => {
                   <span className="hide-menu ps-1">Product</span>
                 </a>
                 <Collapse
-                  in={`${
-                    params?.pathname == "/productdetails" ||
+                  in={`${params?.pathname == "/productdetails" ||
                     params?.pathname == "/productedit" ||
                     params?.pathname == "/productcreate"
-                      ? "true"
-                      : "false"
-                  }`}
+                    ? "true"
+                    : "false"
+                    }`}
                 >
                   <ul className="collapse first-level ms-2">
-                  <NavLink to={"/product"} className="sidebar-link">
+                    <NavLink to={"/product"} className="sidebar-link">
                       <li className="sidebar-item">
                         <span className="sidebar-icon mx-3">1</span>
                         <span className="hide-menu">List</span>
@@ -130,15 +131,14 @@ const Sidebar = () => {
             <NavLink to={"/order"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${
-                    params?.pathname == "/order"
-                      ? "primary-hover-bg-sidebar-active"
-                      : ""
-                  }`}
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/order"
+                    ? "primary-hover-bg-sidebar-active"
+                    : ""
+                    }`}
                   href="#"
-                  // aria-expanded="false"
-                  // onClick={toggleCollapse} // Handle toggle click
-                  // aria-expanded={isOpen ? "true" : "false"}
+                // aria-expanded="false"
+                // onClick={toggleCollapse} // Handle toggle click
+                // aria-expanded={isOpen ? "true" : "false"}
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-alert-circle fs-7" />
@@ -168,11 +168,10 @@ const Sidebar = () => {
             <NavLink to={"/userinfo"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${
-                    params?.pathname == "/userinfo"
-                      ? "primary-hover-bg-sidebar-active"
-                      : ""
-                  }`}
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/userinfo"
+                    ? "primary-hover-bg-sidebar-active"
+                    : ""
+                    }`}
                   aria-expanded="false"
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
@@ -182,12 +181,12 @@ const Sidebar = () => {
                 </a>
               </li>
             </NavLink>
-            
+
             <NavLink to={"/feedback"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/userinfo" ? "primary-hover-bg-sidebar-active":""}`}
-              
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/userinfo" ? "primary-hover-bg-sidebar-active" : ""}`}
+
                   aria-expanded="false"
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
@@ -201,11 +200,10 @@ const Sidebar = () => {
             <NavLink to={"/contactinfo"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${
-                    params?.pathname == "/contactinfo"
-                      ? "primary-hover-bg-sidebar-active"
-                      : ""
-                  }`}
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/contactinfo"
+                    ? "primary-hover-bg-sidebar-active"
+                    : ""
+                    }`}
                   href="ui-forms.html"
                   aria-expanded="false"
                 >
@@ -248,7 +246,7 @@ const Sidebar = () => {
                 <span className="hide-menu ps-1">Register</span>
               </a>
             </li>
-           
+
             {/* ============================= */}
             {/* Upgrade to Pro */}
             {/* ============================= */}

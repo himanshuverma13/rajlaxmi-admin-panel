@@ -28,6 +28,7 @@ const RouterRoutes = () => {
         <>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/forgot" element={<Forgot />} />
         </>
       ) : (
         <>
