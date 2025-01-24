@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from "../../Common/Navbar/navbar";
 import Sidebar from '../../Common/SideBar/sidebar';
 import ProductSlider from '../../Common/ProductSlider/productslier';
+import { UserContext } from '../../Common/UseContext/usecontext';
 const ProductDetails = () => {
+    const { CurrentProductDetails} = useContext(UserContext);
+    console.log('CurrentProductDetails: ', CurrentProductDetails);
+
   return (
     <>
       <div

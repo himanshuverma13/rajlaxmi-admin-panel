@@ -1,87 +1,52 @@
-// src/AccordionTable.js
+// src/components/ImageUpload.js
+import React, { useState } from 'react';
 
-import React from 'react';
+const ImageUpload = () => {
+  const [image, setImage] = useState(null);
 
-const AccordionTable = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'John Doe',
-      age: 28,
-      city: 'New York',
-      country: 'USA',
-      details: 'John is a software engineer from New York, USA.'
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      age: 34,
-      city: 'London',
-      country: 'UK',
-      details: 'Jane is a data scientist based in London, UK.'
-    },
-    {
-      id: 3,
-      name: 'Mark Wilson',
-      age: 45,
-      city: 'Sydney',
-      country: 'Australia',
-      details: 'Mark is a project manager in Sydney, Australia.'
-    },
-  ];
+  // Handle file upload
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result); // Store image as base64 string
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Please upload an image file.");
+    }
+  };
 
   return (
     <div className="container mt-5">
-      <h3>Accordion Table Example</h3>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => (
-            <>
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.name}</td>
-              <td>{row.age}</td>
-              <td>{row.city}</td>
-              <td>{row.country}</td>
-              <td>
-                <button
-                  className="btn btn-info"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target={`#collapse-${row.id}`}
-                  aria-expanded="false"
-                  aria-controls={`collapse-${row.id}`}
-                >
-                  Show Details
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="6">
-                <div className="collapse" id={`collapse-${row.id}`}>
-                  <div className="card card-body">
-                    {row.details}
-                  </div>
-                </div>
-              </td>
-            </tr>
-            </>
-
-          ))}
-        </tbody>
-      </table>
+      <div className="row justify-content-center">
+        <div className="col-6">
+          <div
+            className="d-flex justify-content-center align-items-center border p-5 cursor-pointer"
+            style={{ height: '200px', borderRadius: '10px', backgroundColor: '#f0f0f0' }}
+            onClick={() => document.getElementById('fileInput').click()}
+          >
+            {image ? (
+              <img src={image} alt="Uploaded" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+            ) : (
+              <div className="text-center">
+                <i className="bi bi-cloud-upload" style={{ fontSize: '40px' }}></i>
+                <p>Click to upload an image</p>
+              </div>
+            )}
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={handleFileUpload}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default AccordionTable;
+export default ImageUpload;

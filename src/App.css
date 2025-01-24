@@ -80,6 +80,9 @@ foreignObject{
 }
 
 @media (max-width: 768px) {
+  .left-sidebar.closed {
+    left: -270px; /* Hidden sidebar */
+  }
   .left-sidebar {
     width: 240px; /* Adjust width for smaller screens */
   }
