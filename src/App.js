@@ -5,21 +5,18 @@ import { BrowserRouter } from "react-router-dom";
 import RouterRoutes from "./Components/Common/RouterRoutes/routes";
 
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
+import { UserProvider } from "./Components/Common/UseContext/usecontext";
+
 
 function App() {
   return (
     <div className="App">
-      {/* {/* <Home /> */}
-      
-      <BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <RouterRoutes />
+        </BrowserRouter>
+      </UserProvider>
 
-        <RouterRoutes />
-        
-      </BrowserRouter> 
-      {/* <AccordionTable/> */}
-      {/* <OrderList/> */}
-      {/* <Order/> */}
-      {/* <FeedbackPage/> */}
     </div>
   );
 }

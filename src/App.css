@@ -38,22 +38,51 @@ foreignObject{
 
 /*  ----------- side bar actvie css ------------ */
 
-.primary-hover-bgs.btn-toggle[aria-expanded="true"]:active, .primary-hover-bgs:active {
-  width: calc(100% + 16px);
+.primary-hover-bg-sidebar-active {
+  background-color: #e5f3fb;
+  border-radius: 0px 30px 30px 0px;
+  color: blue !important;
 }
 
-.primary-hover-bg-sidebar.active {
-  background-color: #e5f3fb;
+.left-sidebar .scroll-sidebar {
+  padding: 0 16px;
+  overflow-y: hidden !important;
+  height: calc(100% - 70px);
 }
-.primary-hover-bgs:active {
-  position: absolute;
+
+
+
+  .left-sidebar- {
+  left: -270px;
   top: 0;
-  bottom: 0;
-  left: -16px;
-  content: "";
-  width: 0;
+  border-radius: 0;
   height: 100%;
-  z-index: -1;
-  border-radius: 0px 24px 24px 0px;
-  transition: all 0.4s ease-in-out;
+}
+
+/* -------------------------------------- */
+
+/* Add this CSS to manage the opening/closing of sidebar */
+.left-sidebar {
+  width: 270px;
+  background-color: #fff;
+  position: absolute;
+  transition: 0.2s ease-in;
+  height: calc(100% - 40px);
+  z-index: 13;
+  box-shadow: 0px 2px 6px rgba(37, 83, 185, 0.1);
+  border-radius: 1.125rem;
+}
+
+.left-sidebar.closed {
+  left: -270px; /* Hidden sidebar */
+}
+
+.left-sidebar.open {
+  left: 0; /* Show sidebar */
+}
+
+@media (max-width: 768px) {
+  .left-sidebar {
+    width: 240px; /* Adjust width for smaller screens */
+  }
 }

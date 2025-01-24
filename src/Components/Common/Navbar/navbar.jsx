@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import profile from "../../Assets/images/profile/user1.jpg";
+import { UserContext } from '../UseContext/usecontext';
 const Navbar = () => {
+      const {toggleSidebar } = useContext(UserContext);
     return (
         <>
             {/*  Header Start */}
@@ -11,7 +13,8 @@ const Navbar = () => {
                             <a
                                 className="nav-link sidebartoggler nav-icon-hover"
                                 id="headerCollapse"
-                                href="javascript:void(0)"
+                                onClick={toggleSidebar}
+                                
                             >
                                 <i className="ti ti-menu-2" />
                             </a>
@@ -19,7 +22,7 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a
                                 className="nav-link nav-icon-hover"
-                                href="javascript:void(0)"
+                                
                             >
                                 <i className="ti ti-bell-ringing" />
                                 <div className="notification bg-primary rounded-circle" />
@@ -31,13 +34,7 @@ const Navbar = () => {
                         id="navbarNav"
                     >
                         <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <a
-                                href="https://www.wrappixel.com/templates/spike-bootstrap-admin-dashboard/?ref=33"
-                                target="_blank"
-                                className="btn btn-primary"
-                            >
-                                Upgrade to Pro
-                            </a>
+                        
                             <li className="nav-item dropdown">
                                 <a
                                     className="nav-link nav-icon-hover"

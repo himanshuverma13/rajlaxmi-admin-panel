@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useLocation } from 'react-router-dom'
 import { Collapse } from "react-bootstrap";
+import { UserContext } from "../UseContext/usecontext";
 
 
 const Sidebar = () => {
@@ -9,11 +10,13 @@ const Sidebar = () => {
   const params = useLocation()
   console.log('params: ', params?.pathname);
 
+  const {toggleSidebar,isSidebarOpen } = useContext(UserContext);
+
   const toggleCollapse = () => {
     setIsOpen(!isOpen); // Toggle the collapse state
   };
   return (
-    <aside className="left-sidebar">
+    <aside className={`left-sidebar ${isSidebarOpen ? "open" : "closed"}`} >
       <div className="brand-logo d-flex align-items-center justify-content-between">
         <a href="index.html" className="text-nowrap logo-img ms-0 ms-md-1">
           <img
@@ -26,7 +29,7 @@ const Sidebar = () => {
           className="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
           id="sidebarCollapse"
         >
-          <i className="ti ti-x fs-8" />
+          <i className="ti ti-x fs-8" onClick={toggleSidebar} />
         </div>
       </div>
       {/* Sidebar scroll*/}
@@ -44,7 +47,7 @@ const Sidebar = () => {
             <NavLink to={"/"} >
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg-sidebar active"
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/" ? "primary-hover-bg-sidebar-active":""}`}
                   href="index.html"
                   aria-expanded="false"
                 >
@@ -62,27 +65,27 @@ const Sidebar = () => {
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
               <span className="hide-menu">UI Componenst</span>
             </li>
-            <NavLink to={"/product"}>
+            <NavLink>
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg "
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/productdetails" || params?.pathname ==  "/productedit" || params?.pathname ==  "/productcreate" ? "primary-hover-bg-sidebar-active":""}`}
                   href="#"
                   onClick={toggleCollapse} // Handle toggle click
-                  aria-expanded={isOpen ? "true" : "false"}
+                  // aria-expanded={isOpen ? "true" : "false"}
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-chart-line fs-7" />
                   </span>
                   <span className="hide-menu ps-1">Product</span>
                 </a>
-                <Collapse in={isOpen}>
-                  <ul className="collapse first-level">
-                    <li className="sidebar-item">
+                <Collapse in={`${ params?.pathname == "/productdetails" || params?.pathname ==  "/productedit" || params?.pathname ==  "/productcreate"  ? "true" : "false"}`}>
+                  <ul className="collapse first-level ms-2">
                       <NavLink to={"/productdetails"} className="sidebar-link">
+                    <li className="sidebar-item">
                         <span className="sidebar-icon mx-3">1</span>
                         <span className="hide-menu">Details</span>
-                      </NavLink>
                     </li>
+                      </NavLink>
                     <NavLink to={"/productedit"} className="sidebar-link">
                       <li className="sidebar-item">
                         <span className="sidebar-icon mx-3">2</span>
@@ -102,18 +105,18 @@ const Sidebar = () => {
             <NavLink to={"/order"}  >
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg"
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/order" ? "primary-hover-bg-sidebar-active":""}`}
                   href="#"
                   // aria-expanded="false"
-                  onClick={toggleCollapse} // Handle toggle click
-                  aria-expanded={isOpen ? "true" : "false"}
+                  // onClick={toggleCollapse} // Handle toggle click
+                  // aria-expanded={isOpen ? "true" : "false"}
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-alert-circle fs-7" />
                   </span>
                   <span className="hide-menu ps-1">Orders</span>
                 </a>
-                <Collapse in={isOpen}>
+                {/* <Collapse in={isOpen}>
                   <ul className="collapse first-level">
                     <li className="sidebar-item">
                       <a href="../main/eco-shop.html" className="sidebar-link">
@@ -129,15 +132,15 @@ const Sidebar = () => {
                       </a>
                     </li>
                   </ul>
-                </Collapse>
+                </Collapse> */}
               </li>
             </NavLink>
 
             <NavLink to={"/userinfo"}>
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg"
-                  href="ui-card.html"
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/userinfo" ? "primary-hover-bg-sidebar-active":""}`}
+              
                   aria-expanded="false"
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
@@ -151,7 +154,7 @@ const Sidebar = () => {
             <NavLink to={"/contactinfo"}>
               <li className="sidebar-item">
                 <a
-                  className="sidebar-link sidebar-link primary-hover-bg"
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/contactinfo" ? "primary-hover-bg-sidebar-active":""}`}
                   href="ui-forms.html"
                   aria-expanded="false"
                 >
