@@ -4,6 +4,8 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [UserLogins ,setUserLogin] = useState();
+  
   const [CurrentProductDetails, setCurrentProductDetails] = useState();
 
   const toggleSidebar = () => {
@@ -12,7 +14,7 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        isSidebarOpen, toggleSidebar,CurrentProductDetails, setCurrentProductDetails
+        isSidebarOpen, toggleSidebar,CurrentProductDetails, setCurrentProductDetails,UserLogins ,setUserLogin
       }}
      
     >
