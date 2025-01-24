@@ -73,9 +73,7 @@ foreignObject{
   border-radius: 1.125rem;
 }
 
-.left-sidebar.closed {
-  left: -270px; /* Hidden sidebar */
-}
+
 
 .left-sidebar.open {
   left: 0; /* Show sidebar */
@@ -85,4 +83,13 @@ foreignObject{
   .left-sidebar {
     width: 240px; /* Adjust width for smaller screens */
   }
+  .left-sidebar.closed {
+    left: -270px; /* Hidden sidebar */
+  }
+}
+
+/* Login & Registration */
+.logo-img img{
+  height: 60px;
+  width: 60px;
 }
