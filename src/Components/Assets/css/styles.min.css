@@ -17565,14 +17565,14 @@ fieldset:disabled .btn {
     background: rgba(0, 0, 0, 0.5);
     z-index: 12;
   }
-  #main-wrapper[data-layout="vertical"][data-sidebartype="full"] .left-sidebar,
+  /* #main-wrapper[data-layout="vertical"][data-sidebartype="full"] .left-sidebar,
   #main-wrapper[data-layout="vertical"][data-sidebartype="mini-sidebar"]
     .left-sidebar {
     left: -270px;
     top: 0;
     border-radius: 0;
     height: 100%;
-  }
+  } */
   #main-wrapper[data-layout="vertical"][data-sidebartype="full"].show-sidebar
     .left-sidebar,
   #main-wrapper[data-layout="vertical"][data-sidebartype="mini-sidebar"].show-sidebar
