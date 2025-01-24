@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 // import { FaRegUser, FaLock } from "react-icons/fa";
 
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+import { LoginAPI } from '../../APIs/api';
 const Login = () => {
     const {
         register,
@@ -12,21 +13,26 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+
+    const navigate  = useNavigate();
+
     const onSubmit = async (data) => {
+        console.log('data: ', data);
         try {
             const payload = {
                 email: data?.username,
                 password: data?.password,
             };
-            const response = (payload)
-            //   const response = await LoginAPI(payload);
+            // const response = (payload)
+              const response = await LoginAPI(payload);
 
-            reset();
+            // reset();
             if (response?.data?.success) {
                 localStorage.setItem("userDetails", JSON.stringify(response));
                 toast.success(response?.data?.message);
-                // navigate("/home"); // ✅ Use navigate instead of window.location
-                window.location = "/home"
+                navigate("/"); // ✅ Use navigate instead of window.location
+                // window.location = "/home"
             }
             toast.error(response?.data?.message);
         } catch (error) {

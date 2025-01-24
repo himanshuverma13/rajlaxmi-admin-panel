@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 import { toast } from "react-toastify";
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
+import { RegisterAPI } from '../../APIs/api';
 const Registration = () => {
     const {
         register,
@@ -29,8 +30,7 @@ const Registration = () => {
         mobile_number: data?.mobile,
         role: "admin"
       };
-      const response = (payload)
-    //   const response = await RegisterAPI(payload);
+      const response = await RegisterAPI(payload);
       console.log('response: ', response);
       if (response?.message) {
         toast.success(response?.data?.message)

@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import feedimg from '../../Assets/images/profile/user2.jpg'
+import { DeleteFeedbackAPI, FeedbackAPI } from "../APIs/api";
 
 const FeedbackCards = () => {
+
+  const [Feedback, setFeedback] = useState();
+  console.log('Feedback: ', Feedback);
+
+  const FetchFeedback = async () => {
+    try {
+      const response = await FeedbackAPI();
+      setFeedback(response);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchFeedback();
+  }, []);
+
+  const DeleteFeedback = async (id) => {
+    try {
+       const response = await DeleteFeedbackAPI(id)
+       console.log('response: ', response);
+      //  toast?.success(response?.message)
+      } catch (error) {
+        // toast?.success(error?.message)
+    }
+
+  }
+
   return (
     <div className="row">
+      {Feedback?.map((item) => (
       <div class="col-md-4 single-note-item all-category">
         <div class="card card-body">
           <span class="side-stick"></span>
@@ -15,9 +45,9 @@ const FeedbackCards = () => {
             data-noteheading="Book a Ticket for Movie"
           >
             {" "}
-            Book a Ticket for Movie{" "}
+            {item?.name}{" "}
           </h6>
-          <p class="note-date fs-2">11 March 2009</p>
+          <p class="note-date fs-2">{item?.email}</p>
           </div>
             
           </div>
@@ -34,15 +64,14 @@ const FeedbackCards = () => {
               data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis."
             >
               {" "}
-              Blandit tempus porttitor aasfs. Integer posuere erat a ante
-              venenatis.{" "}
+              {item?.feedback}{" "}
             </p>
           </div>
           <div class="d-flex align-items-center">
             <a href="javascript:void(0)" class="link me-1">
               <i class="ti ti-star fs-4 favourite-note"></i>
             </a>
-            <a href="javascript:void(0)" class="link text-danger ms-2">
+            <a class="link text-danger ms-2" onClick={()=>DeleteFeedback(item?.user_id)}>
               <i class="ti ti-trash fs-4 remove-note"></i>
             </a>
             <div class="ms-auto">
@@ -115,6 +144,7 @@ const FeedbackCards = () => {
           </div>
         </div>
       </div>
+      ))}
     </div>
   );
 };

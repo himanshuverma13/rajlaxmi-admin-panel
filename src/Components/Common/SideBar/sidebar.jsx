@@ -17,13 +17,13 @@ const Sidebar = () => {
   return (
     <aside className={`left-sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="brand-logo d-flex align-items-center justify-content-between">
-        {/* <a href="index.html" className="text-nowrap logo-img ms-0 ms-md-1">
+        <a href="index.html" className="text-nowrap logo-img ms-0 ms-md-1">
           <img
             src="https://demos.wrappixel.com/free-admin-templates/bootstrap/spike-bootstrap-free/src/assets/images/logos/dark-logo.svg"
             width={180}
             alt=""
           />
-        </a> */}
+        </a>
 
         <div></div>
         <div
