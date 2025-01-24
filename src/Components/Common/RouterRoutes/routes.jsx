@@ -11,6 +11,7 @@ import ProductCreate from '../../Pages/Product/productcreate';
 import Login from '../auth/Login/login';
 import Registration from '../auth/Registration/registration';
 import Feedback from '../../Pages/Feedback/feedback';
+import Forgot from '../auth/Forgot/forgot';
 
 const RouterRoutes = () => {
     return (
@@ -18,6 +19,7 @@ const RouterRoutes = () => {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Registration />} />
+                <Route path="/forgot" element={<Forgot />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/productdetails" element={<ProductDetails />} />
