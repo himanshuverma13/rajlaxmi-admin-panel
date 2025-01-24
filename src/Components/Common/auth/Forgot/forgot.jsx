@@ -177,7 +177,11 @@ const Forgot = () => {
                                         type='submit'
                                         className="btn btn-primary w-100 mb-4 rounded-pill"
                                     >
-                                        Send OTP
+                                        {step === 1
+                                            ? "Send OTP"
+                                            : step === 2
+                                                ? "Reset Password"
+                                                : ""}
                                     </button>
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-medium">Don't have an account?</p>
