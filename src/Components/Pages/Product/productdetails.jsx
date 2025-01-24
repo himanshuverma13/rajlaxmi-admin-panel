@@ -24,117 +24,12 @@ const ProductDetails = () => {
             {/* Main Content */}
             <div class="shop-detail">
               <div class="card shadow-none border">
-                <div class="card-body p-4">
+                <div class="card-body p-5">
                   <div class="row">
-                    <div class="col-lg-6">
-                      {/* <div id="sync1" class="owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
-                        <div class="owl-stage-outer">
-                          <div class="owl-stage" style={{ transform: "translate3d(3455px, 0px, 0px)", transition: "all", width: "13820px;" }}>
-                            <div class="owl-item cloned" style={{ width: "575.8px" }}>
-                              <div class="item rounded-4 overflow-hidden">
-                                <img src="../assets/images/products/s7.jpg" alt="spike-img" class="img-fluid" />
-                              </div>
-                            </div>
-                            <div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s8.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s9.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s10.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s11.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s12.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item active" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s1.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item active" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s2.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s3.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s4.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s5.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s6.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s7.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s8.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s9.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s10.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s11.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s12.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s1.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s2.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s3.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s4.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s5.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div><div class="owl-item cloned" style={{ width: "575.8px" }}><div class="item rounded-4 overflow-hidden">
-                              <img src="../assets/images/products/s6.jpg" alt="spike-img" class="img-fluid" />
-                            </div></div></div></div><div class="owl-nav disabled">
-                          <button type="button" role="presentation" class="owl-prev">
-                            <svg width="12" height="12" viewBox="0 0 11 20">
-                              <path style={{ fill: "none", strokeWidth: "3px", stroke: "#fff" }} d="M9.554,1.001l-8.607,8.607l8.607,8.606"></path></svg>
-                          </button>
-                          <button type="button" role="presentation" class="owl-next"><svg width="12" height="12" viewBox="0 0 11 20" version="1.1">
-                            <path style={{ fill: "none", strokeWidth: "3px", stroke: "#fff" }} d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"></path></svg>
-                          </button></div><div class="owl-dots">
-                          <button role="button" class="owl-dot active"><span></span>
-                          </button>
-                          <button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button></div>
-                      </div> */}
-
-                      <ProductSlider/>
-
-                      {/* <div id="sync2" class="owl-carousel owl-theme owl-rtl owl-loaded owl-drag">
-                        <div class="owl-stage-outer"><div class="owl-stage" style={{ transform: "translate3d(0px, 0px, 0px)", transition: "all", width: "1184px" }}><div class="owl-item active current" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s1.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s2.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s3.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s4.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s5.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s6.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item active" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s7.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s8.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s9.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s10.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s11.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div><div class="owl-item" style={{ width: "82.633px", marginLeft: " 16px" }}><div class="item rounded-4 overflow-hidden">
-                          <img src="../assets/images/products/s12.jpg" alt="spike-img" class="img-fluid" />
-                        </div></div></div></div><div class="owl-nav disabled">
-                          <button type="button" role="presentation" class="owl-prev">
-                            <span aria-label="Previous">‹</span></button>
-                          <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
-                        </div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button>
-                          <button role="button" class="owl-dot"><span></span></button></div></div> */}
+                    <div class="col-lg-7">
+                      <ProductSlider />
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                       <div class="shop-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
                           <span class="badge text-bg-success fs-2 fw-semibold">In Stock</span>
@@ -149,38 +44,38 @@ const ProductDetails = () => {
                         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                           <ul class="list-unstyled d-flex align-items-center mb-0">
                             <li>
-                              <a class="me-1" href="javascript:void(0)">
+                              <a class="me-1" href="#">
                                 <i class="ti ti-star text-warning fs-4"></i>
                               </a>
                             </li>
                             <li>
-                              <a class="me-1" href="javascript:void(0)">
+                              <a class="me-1" href="#">
                                 <i class="ti ti-star text-warning fs-4"></i>
                               </a>
                             </li>
                             <li>
-                              <a class="me-1" href="javascript:void(0)">
+                              <a class="me-1" href="#">
                                 <i class="ti ti-star text-warning fs-4"></i>
                               </a>
                             </li>
                             <li>
-                              <a class="me-1" href="javascript:void(0)">
+                              <a class="me-1" href="#">
                                 <i class="ti ti-star text-warning fs-4"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="javascript:void(0)">
+                              <a href="#">
                                 <i class="ti ti-star text-warning fs-4"></i>
                               </a>
                             </li>
                           </ul>
-                          <a href="javascript:void(0)">(236 reviews)</a>
+                          <a href="#">(236 reviews)</a>
                         </div>
-                        <div class="d-flex align-items-center gap-8 py-7">
+                        <div class="d-flex align-items-center justify-content-between gap-8 py-7">
                           <h6 class="mb-0 fs-4">Colors:</h6>
-                          <a class="rounded-circle d-block text-bg-primary p-6" href="javascript:void(0)"></a>
+                          <a class="rounded-circle d-block text-bg-primary p-3" href="#"></a>
                         </div>
-                        <div class="d-flex align-items-center gap-7 pb-7 mb-7 border-bottom">
+                        <div class="d-flex align-items-center justify-content-between gap-7 pb-7 mb-7 border-bottom">
                           <h6 class="mb-0 fs-4">QTY:</h6>
                           <div class="input-group input-group-sm rounded">
                             <button class="btn minus min-width-40 py-0 border-end border-muted fs-5 border-end-0 text-muted" type="button" id="add1">
@@ -192,9 +87,9 @@ const ProductDetails = () => {
                             </button>
                           </div>
                         </div>
-                        <div class="d-sm-flex align-items-center gap-6 pt-8 mb-7">
-                          <a href="javascript:void(0)" class="btn d-block btn-primary px-5 py-8 mb-6 mb-sm-0">Buy Now</a>
-                          <a href="javascript:void(0)" class="btn d-block btn-danger px-7 py-8">Add to Cart</a>
+                        <div class="d-sm-flex align-items-center justify-content-center gap-6 pt-2 mb-7">
+                          <button type='button' class="btn d-block btn-primary px-5 py-2 mb-sm-0">Buy Now</button>
+                          <button type='button' class="btn d-block btn-danger px-7 py-2">Add to Cart</button>
                         </div>
                         <p class="mb-0">Dispatched in 2-3 weeks</p>
                         <a href="javascript:void(0)">Why the longer time for delivery?</a>
@@ -321,191 +216,6 @@ const ProductDetails = () => {
                               </button>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="related-products pt-7">
-                <h4 class="mb-3 fw-semibold">Related Products</h4>
-                <div class="row">
-                  <div class="col-sm-6 col-xl-3">
-                    <div class="card hover-img overflow-hidden">
-                      <div class="position-relative">
-                        <a href="javascript:void(0)">
-                          <img src="../assets/images/products/s2.jpg" class="card-img-top" alt="spike-img" />
-                        </a>
-                      </div>
-                      <div class="card-body pt-3 p-4">
-                        <h6 class="fs-4">Body Lotion</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                          <h6 class="fs-4 mb-0">$89 <span class="ms-2 fw-normal text-muted fs-3">
-                            <del>$99</del>
-                          </span>
-                          </h6>
-                          <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-3">
-                    <div class="card hover-img overflow-hidden">
-                      <div class="position-relative">
-                        <a href="javascript:void(0)">
-                          <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="spike-img" />
-                        </a>
-                      </div>
-                      <div class="card-body pt-3 p-4">
-                        <h6 class="fs-4">Glossy Solution</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                          <h6 class="fs-4 mb-0">$50 <span class="ms-2 fw-normal text-muted fs-3">
-                            <del>$65</del>
-                          </span>
-                          </h6>
-                          <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-3">
-                    <div class="card hover-img overflow-hidden">
-                      <div class="position-relative">
-                        <a href="javascript:void(0)">
-                          <img src="../assets/images/products/s5.jpg" class="card-img-top" alt="spike-img" />
-                        </a>
-                      </div>
-                      <div class="card-body pt-3 p-4">
-                        <h6 class="fs-4">Derma-E</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                          <h6 class="fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3">
-                            <del>$900</del>
-                          </span>
-                          </h6>
-                          <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-3">
-                    <div class="card hover-img overflow-hidden">
-                      <div class="position-relative">
-                        <a href="javascript:void(0)">
-                          <img src="../assets/images/products/s6.jpg" class="card-img-top" alt="spike-img" />
-                        </a>
-                      </div>
-                      <div class="card-body pt-3 p-4">
-                        <h6 class="fs-4">SockSoho</h6>
-                        <div class="d-flex align-items-center justify-content-between">
-                          <h6 class="fs-4 mb-0">$25 <span class="ms-2 fw-normal text-muted fs-3">
-                            <del>$31</del>
-                          </span>
-                          </h6>
-                          <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a class="me-1" href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="javascript:void(0)">
-                                <i class="ti ti-star text-warning"></i>
-                              </a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                     </div>
