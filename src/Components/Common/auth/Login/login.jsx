@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from "react-hook-form";
 // import { FaRegUser, FaLock } from "react-icons/fa";
 
@@ -6,6 +6,7 @@ import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { LoginAPI } from '../../APIs/api';
+import { UserContext } from '../../UseContext/usecontext';
 const Login = () => {
     const {
         register,
@@ -15,7 +16,8 @@ const Login = () => {
     } = useForm();
 
 
-    const navigate  = useNavigate();
+    const {navigate}  = useNavigate();
+     const { setUserLogin } = useContext(UserContext);
 
     const onSubmit = async (data) => {
         console.log('data: ', data);
@@ -27,12 +29,13 @@ const Login = () => {
             // const response = (payload)
               const response = await LoginAPI(payload);
 
-            // reset();
+            reset();
             if (response?.data?.success) {
+                setUserLogin(response?.data?.message);
                 localStorage.setItem("userDetails", JSON.stringify(response));
                 toast.success(response?.data?.message);
                 navigate("/"); // ✅ Use navigate instead of window.location
-                // window.location = "/home"
+                window.location = "/"
             }
             toast.error(response?.data?.message);
         } catch (error) {

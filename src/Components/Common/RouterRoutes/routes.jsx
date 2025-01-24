@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Product from "../../Pages/Product/product";
 import Home from "../../Pages/Home/home";
 import ProductDetails from "../../Pages/Product/productdetails";
@@ -12,6 +12,7 @@ import Login from "../auth/Login/login";
 import Registration from "../auth/Registration/registration";
 import Feedback from "../../Pages/Feedback/feedback";
 import { UserContext } from "../UseContext/usecontext";
+import Forgot from "../auth/Forgot/forgot";
 
 const RouterRoutes = () => {
   const { setUserLogin, UserLogins } = useContext(UserContext);
@@ -29,6 +30,7 @@ const RouterRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/forgot" element={<Forgot />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </>
       ) : (
         <>
@@ -41,9 +43,9 @@ const RouterRoutes = () => {
           <Route path="/contactinfo" element={<ContactInfo />} />
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </>
       )}
-      <Route path="*" element={<Login />} />
     </Routes>
   );
 };
