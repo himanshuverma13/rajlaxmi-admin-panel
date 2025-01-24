@@ -8,3 +8,27 @@ foreignObject{
 .apexcharts-menu-icon{
   display: none;
 }
+.slick-dots{
+  bottom: -37px !important;
+}
+.slick-dots li{
+  margin: 0 22px !important;
+}
+.slick-arrow{
+  z-index: 10 !important;
+  /* background-color: rgba( 0,0,0,0.4) !important; */
+  /* padding: 3px !important; */
+  /* border-radius: 10px !important; */
+}
+.slick-next,.slick-prev{
+  top: 90% !important;
+}
+.slick-prev {
+  left: 350px !important;
+}
+.slick-next {
+  right: 45px !important;
+}
+.slick-prev:before, .slick-next:before{
+  color: black !important;
+}

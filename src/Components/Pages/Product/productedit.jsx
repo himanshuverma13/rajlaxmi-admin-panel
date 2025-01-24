@@ -563,432 +563,7 @@ const ProductEdit = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title mb-7">Customer Reviews</h4>
-                                        <div cass="table-responsive mb-4 rounded-1">
-                                            <table className="table mb-0 align-middle">
-                                                <thead className="text-dark fs-4">
-                                                    <tr>
-                                                        <th>
-                                                            <h6 className="fs-3 fw-semibold mb-0">Customer</h6>
-                                                        </th>
-                                                        <th>
-                                                            <h6 className="fs-3 fw-semibold mb-0">Comment</h6>
-                                                        </th>
-                                                        <th>
-                                                            <h6 className="fs-3 fw-semibold mb-0 text-end">Date</h6>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-11.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Sunil Joshi
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                I like this design
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                1 day ago
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-8.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Mark Richard
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-linear"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Awesome quality with great materials used, but could be more
-                                                                comfortable
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                11:20 PM
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-3.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Hanry Lord
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                This is the best product I have ever used.
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                Today
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-4.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Britny Cox
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-linear"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Beautifully crafted. Worth every penny.
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                Today
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-5.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Olvin wild
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-linear"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Awesome value for money. Shipping could be faster tho.
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                12:00 PM
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-6.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Dan wilsed
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Excellent quality, I got it for my sons birthday and he
-                                                                loved it.
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                1 May 2024
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-7.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                /{" "}
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Jon Miller
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Firesale is on! Buy now! Totally worth it!
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                25 April 2024
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div className="d-flex align-items-center">
-                                                                <img
-                                                                    src="../assets/images/profile/user-10.jpg"
-                                                                    className="rounded-circle"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                                <div className="ms-3">
-                                                                    <h6 className="fs-4 fw-semibold mb-0 text-nowrap">
-                                                                        Anaa Crown
-                                                                    </h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div className="d-flex align-items-center gap-1 mb-1">
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-bold"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                                <iconify-icon
-                                                                    icon="solar:star-linear"
-                                                                    className="text-warning fs-3"
-                                                                />
-                                                            </div>
-                                                            <span className="mb-0 fw-normal fs-3 mt-2">
-                                                                Excellent quality, I got it for my sons birthday and he
-                                                                loved it
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <p className="mb-0 fw-normal fs-3 text-end text-nowrap">
-                                                                25 April 2024
-                                                            </p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div className="form-actions mb-5">
                                     <button type="submit" className="btn btn-primary">
                                         Save changes
@@ -1022,342 +597,340 @@ const ProductEdit = () => {
                                         </div>
                                     </div>
                                 </div>
-                           
 
-
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="d-flex align-items-center justify-content-between mb-7">
-                                        <h4 className="card-title">Status</h4>
-                                        <div className="p-2 h-100 bg-success rounded-circle" />
-                                    </div>
-                                    <form action="" className="form-horizontal">
-                                        <div>
-                                            <select
-                                                className="form-select mr-sm-2  mb-2"
-                                                id="inlineFormCustomSelect"
-                                            >
-                                                <option selected="">Published</option>
-                                                <option value={1}>Draft</option>
-                                                <option value={2}>Sheduled</option>
-                                                <option value={3}>Inactive</option>
-                                            </select>
-                                            <p className="fs-2 mb-0">Set the product status.</p>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex align-items-center justify-content-between mb-7">
+                                            <h4 className="card-title">Status</h4>
+                                            <div className="p-2 h-100 bg-success rounded-circle" />
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h4 className="card-title mb-7">Product Details</h4>
-                                    <div className="mb-3">
-                                        <label className="form-label">Categories</label>
-                                        <select
-                                            className="select2 form-control select2-hidden-accessible"
-                                            multiple=""
-                                            data-select2-id="select2-data-4-y2s7"
-                                            tabIndex={-1}
-                                            aria-hidden="true"
-                                        >
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-6-w49j"
-                                            >
-                                                Computer
-                                            </option>
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-7-zjpb"
-                                            >
-                                                Watches
-                                            </option>
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-8-gubz"
-                                            >
-                                                Headphones
-                                            </option>
-                                            <option value="">Beauty</option>
-                                            <option value="">Fashion</option>
-                                            <option value="">Footwear</option>
-                                        </select>
-                                        <span
-                                            className="select2 select2-container select2-container--default"
-                                            dir="ltr"
-                                            data-select2-id="select2-data-5-7h9j"
-                                            style={{ width: "332.388px" }}
-                                        >
-                                            <span className="selection">
-                                                <span
-                                                    className="select2-selection select2-selection--multiple"
-                                                    role="combobox"
-                                                    aria-haspopup="true"
-                                                    aria-expanded="false"
-                                                    tabIndex={-1}
-                                                    aria-disabled="false"
+                                        <form action="" className="form-horizontal">
+                                            <div>
+                                                <select
+                                                    className="form-select mr-sm-2  mb-2"
+                                                    id="inlineFormCustomSelect"
                                                 >
-                                                    <ul
-                                                        className="select2-selection__rendered"
-                                                        id="select2-wv63-container"
-                                                    >
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="Computer"
-                                                            data-select2-id="select2-data-9-h465"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-wv63-container-choice-ete7-t978"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-wv63-container-choice-ete7-t978"
-                                                            >
-                                                                Computer
-                                                            </span>
-                                                        </li>
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="Watches"
-                                                            data-select2-id="select2-data-10-k40c"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-wv63-container-choice-05o0-lwjr"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-wv63-container-choice-05o0-lwjr"
-                                                            >
-                                                                Watches
-                                                            </span>
-                                                        </li>
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="Headphones"
-                                                            data-select2-id="select2-data-11-mxqc"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-wv63-container-choice-soyf-zclh"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-wv63-container-choice-soyf-zclh"
-                                                            >
-                                                                Headphones
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                    <span className="select2-search select2-search--inline">
-                                                        <textarea
-                                                            className="select2-search__field"
-                                                            type="search"
-                                                            tabIndex={0}
-                                                            autoCorrect="off"
-                                                            autoCapitalize="none"
-                                                            spellCheck="false"
-                                                            role="searchbox"
-                                                            aria-autocomplete="list"
-                                                            autoComplete="off"
-                                                            aria-label="Search"
-                                                            aria-describedby="select2-wv63-container"
-                                                            placeholder=""
-                                                            style={{ width: "0.75em" }}
-                                                            defaultValue={""}
-                                                        />
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span className="dropdown-wrapper" aria-hidden="true" />
-                                        </span>
-                                        <p className="fs-2 mb-0">Add product to a category.</p>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        className="btn bg-primary-subtle text-primary fs-3 fw-bold p-2"
-                                    >
-                                        <span className="fs-4 me-1">+</span>
-                                        Create New Category
-                                    </button>
-                                    <div className="mt-7">
-                                        <label className="form-label">Tags</label>
-                                        <select
-                                            className="select2 form-control select2-hidden-accessible"
-                                            multiple=""
-                                            data-select2-id="select2-data-12-xj11"
-                                            tabIndex={-1}
-                                            aria-hidden="true"
-                                        >
-                                            <option value="">New</option>
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-14-0a2j"
-                                            >
-                                                trending
-                                            </option>
-                                            <option value="">Headphones</option>
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-15-707b"
-                                            >
-                                                Beauty
-                                            </option>
-                                            <option
-                                                value=""
-                                                selected=""
-                                                data-select2-id="select2-data-16-mexu"
-                                            >
-                                                Fashion
-                                            </option>
-                                            <option value="">Footwear</option>
-                                        </select>
-                                        <span
-                                            className="select2 select2-container select2-container--default"
-                                            dir="ltr"
-                                            data-select2-id="select2-data-13-ppsf"
-                                            style={{ width: "332.388px" }}
-                                        >
-                                            <span className="selection">
-                                                <span
-                                                    className="select2-selection select2-selection--multiple"
-                                                    role="combobox"
-                                                    aria-haspopup="true"
-                                                    aria-expanded="false"
-                                                    tabIndex={-1}
-                                                    aria-disabled="false"
-                                                >
-                                                    <ul
-                                                        className="select2-selection__rendered"
-                                                        id="select2-h4gn-container"
-                                                    >
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="trending"
-                                                            data-select2-id="select2-data-17-poxh"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-h4gn-container-choice-uxmr-bavb"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-h4gn-container-choice-uxmr-bavb"
-                                                            >
-                                                                trending
-                                                            </span>
-                                                        </li>
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="Beauty"
-                                                            data-select2-id="select2-data-18-z4z1"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-h4gn-container-choice-1s78-8hfq"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-h4gn-container-choice-1s78-8hfq"
-                                                            >
-                                                                Beauty
-                                                            </span>
-                                                        </li>
-                                                        <li
-                                                            className="select2-selection__choice"
-                                                            title="Fashion"
-                                                            data-select2-id="select2-data-19-ibmj"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                className="select2-selection__choice__remove"
-                                                                tabIndex={-1}
-                                                                title="Remove item"
-                                                                aria-label="Remove item"
-                                                                aria-describedby="select2-h4gn-container-choice-n57d-nzow"
-                                                            >
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span
-                                                                className="select2-selection__choice__display"
-                                                                id="select2-h4gn-container-choice-n57d-nzow"
-                                                            >
-                                                                Fashion
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                    <span className="select2-search select2-search--inline">
-                                                        <textarea
-                                                            className="select2-search__field"
-                                                            type="search"
-                                                            tabIndex={0}
-                                                            autoCorrect="off"
-                                                            autoCapitalize="none"
-                                                            spellCheck="false"
-                                                            role="searchbox"
-                                                            aria-autocomplete="list"
-                                                            autoComplete="off"
-                                                            aria-label="Search"
-                                                            aria-describedby="select2-h4gn-container"
-                                                            placeholder=""
-                                                            style={{ width: "0.75em" }}
-                                                            defaultValue={""}
-                                                        />
-                                                    </span>
-                                                </span>
-                                            </span>
-                                            <span className="dropdown-wrapper" aria-hidden="true" />
-                                        </span>
-                                        <p className="fs-2 mb-0">Add product to a category.</p>
+                                                    <option selected="">Published</option>
+                                                    <option value={1}>Draft</option>
+                                                    <option value={2}>Sheduled</option>
+                                                    <option value={3}>Inactive</option>
+                                                </select>
+                                                <p className="fs-2 mb-0">Set the product status.</p>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h4 className="card-title mb-2">$2,420</h4>
-                                    <div className="d-flex align-items-center">
-                                        <p className="fs-4 fw-base mb-0">Average Daily Sales</p>
-                                        <p className="fs-2 text-success bg-success-subtle mb-0 px-2 py-1 rounded-1">
-                                            2.6%
-                                        </p>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title mb-7">Product Details</h4>
+                                        <div className="mb-3">
+                                            <label className="form-label">Categories</label>
+                                            <select
+                                                className="select2 form-control select2-hidden-accessible"
+                                                multiple=""
+                                                data-select2-id="select2-data-4-y2s7"
+                                                tabIndex={-1}
+                                                aria-hidden="true"
+                                            >
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-6-w49j"
+                                                >
+                                                    Computer
+                                                </option>
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-7-zjpb"
+                                                >
+                                                    Watches
+                                                </option>
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-8-gubz"
+                                                >
+                                                    Headphones
+                                                </option>
+                                                <option value="">Beauty</option>
+                                                <option value="">Fashion</option>
+                                                <option value="">Footwear</option>
+                                            </select>
+                                            <span
+                                                className="select2 select2-container select2-container--default"
+                                                dir="ltr"
+                                                data-select2-id="select2-data-5-7h9j"
+                                                style={{ width: "332.388px" }}
+                                            >
+                                                <span className="selection">
+                                                    <span
+                                                        className="select2-selection select2-selection--multiple"
+                                                        role="combobox"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        tabIndex={-1}
+                                                        aria-disabled="false"
+                                                    >
+                                                        <ul
+                                                            className="select2-selection__rendered"
+                                                            id="select2-wv63-container"
+                                                        >
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="Computer"
+                                                                data-select2-id="select2-data-9-h465"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-wv63-container-choice-ete7-t978"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-wv63-container-choice-ete7-t978"
+                                                                >
+                                                                    Computer
+                                                                </span>
+                                                            </li>
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="Watches"
+                                                                data-select2-id="select2-data-10-k40c"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-wv63-container-choice-05o0-lwjr"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-wv63-container-choice-05o0-lwjr"
+                                                                >
+                                                                    Watches
+                                                                </span>
+                                                            </li>
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="Headphones"
+                                                                data-select2-id="select2-data-11-mxqc"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-wv63-container-choice-soyf-zclh"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-wv63-container-choice-soyf-zclh"
+                                                                >
+                                                                    Headphones
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <span className="select2-search select2-search--inline">
+                                                            <textarea
+                                                                className="select2-search__field"
+                                                                type="search"
+                                                                tabIndex={0}
+                                                                autoCorrect="off"
+                                                                autoCapitalize="none"
+                                                                spellCheck="false"
+                                                                role="searchbox"
+                                                                aria-autocomplete="list"
+                                                                autoComplete="off"
+                                                                aria-label="Search"
+                                                                aria-describedby="select2-wv63-container"
+                                                                placeholder=""
+                                                                style={{ width: "0.75em" }}
+                                                                defaultValue={""}
+                                                            />
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span className="dropdown-wrapper" aria-hidden="true" />
+                                            </span>
+                                            <p className="fs-2 mb-0">Add product to a category.</p>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className="btn bg-primary-subtle text-primary fs-3 fw-bold p-2"
+                                        >
+                                            <span className="fs-4 me-1">+</span>
+                                            Create New Category
+                                        </button>
+                                        <div className="mt-7">
+                                            <label className="form-label">Tags</label>
+                                            <select
+                                                className="select2 form-control select2-hidden-accessible"
+                                                multiple=""
+                                                data-select2-id="select2-data-12-xj11"
+                                                tabIndex={-1}
+                                                aria-hidden="true"
+                                            >
+                                                <option value="">New</option>
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-14-0a2j"
+                                                >
+                                                    trending
+                                                </option>
+                                                <option value="">Headphones</option>
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-15-707b"
+                                                >
+                                                    Beauty
+                                                </option>
+                                                <option
+                                                    value=""
+                                                    selected=""
+                                                    data-select2-id="select2-data-16-mexu"
+                                                >
+                                                    Fashion
+                                                </option>
+                                                <option value="">Footwear</option>
+                                            </select>
+                                            <span
+                                                className="select2 select2-container select2-container--default"
+                                                dir="ltr"
+                                                data-select2-id="select2-data-13-ppsf"
+                                                style={{ width: "332.388px" }}
+                                            >
+                                                <span className="selection">
+                                                    <span
+                                                        className="select2-selection select2-selection--multiple"
+                                                        role="combobox"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        tabIndex={-1}
+                                                        aria-disabled="false"
+                                                    >
+                                                        <ul
+                                                            className="select2-selection__rendered"
+                                                            id="select2-h4gn-container"
+                                                        >
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="trending"
+                                                                data-select2-id="select2-data-17-poxh"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-h4gn-container-choice-uxmr-bavb"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-h4gn-container-choice-uxmr-bavb"
+                                                                >
+                                                                    trending
+                                                                </span>
+                                                            </li>
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="Beauty"
+                                                                data-select2-id="select2-data-18-z4z1"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-h4gn-container-choice-1s78-8hfq"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-h4gn-container-choice-1s78-8hfq"
+                                                                >
+                                                                    Beauty
+                                                                </span>
+                                                            </li>
+                                                            <li
+                                                                className="select2-selection__choice"
+                                                                title="Fashion"
+                                                                data-select2-id="select2-data-19-ibmj"
+                                                            >
+                                                                <button
+                                                                    type="button"
+                                                                    className="select2-selection__choice__remove"
+                                                                    tabIndex={-1}
+                                                                    title="Remove item"
+                                                                    aria-label="Remove item"
+                                                                    aria-describedby="select2-h4gn-container-choice-n57d-nzow"
+                                                                >
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span
+                                                                    className="select2-selection__choice__display"
+                                                                    id="select2-h4gn-container-choice-n57d-nzow"
+                                                                >
+                                                                    Fashion
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <span className="select2-search select2-search--inline">
+                                                            <textarea
+                                                                className="select2-search__field"
+                                                                type="search"
+                                                                tabIndex={0}
+                                                                autoCorrect="off"
+                                                                autoCapitalize="none"
+                                                                spellCheck="false"
+                                                                role="searchbox"
+                                                                aria-autocomplete="list"
+                                                                autoComplete="off"
+                                                                aria-label="Search"
+                                                                aria-describedby="select2-h4gn-container"
+                                                                placeholder=""
+                                                                style={{ width: "0.75em" }}
+                                                                defaultValue={""}
+                                                            />
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span className="dropdown-wrapper" aria-hidden="true" />
+                                            </span>
+                                            <p className="fs-2 mb-0">Add product to a category.</p>
+                                        </div>
                                     </div>
+                                </div>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title mb-2">$2,420</h4>
+                                        <div className="d-flex align-items-center">
+                                            <p className="fs-4 fw-base mb-0">Average Daily Sales</p>
+                                            <p className="fs-2 text-success bg-success-subtle mb-0 px-2 py-1 rounded-1">
+                                                2.6%
+                                            </p>
+                                        </div>
 
-                                    {/* <div className="mt-7">
+                                        {/* <div className="mt-7">
                                                 <div id="sales" style={{ minHeight: 80 }}>
                                                     <div
                                                         id="apexchartsew8efewk"
@@ -1924,35 +1497,35 @@ const ProductEdit = () => {
                                                 </div>
                                             </div> */}
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h4 className="card-title mb-7">Product Template</h4>
-                                    <form action="" className="form-horizontal">
-                                        <div>
-                                            <label className="form-label text-nowrap">
-                                                Select a product template
-                                            </label>
-                                            <select
-                                                className="form-select mr-sm-2  mb-2"
-                                                id="inlineFormCustomSelect"
-                                            >
-                                                <option selected="">Default Template</option>
-                                                <option value={1}>Fashion</option>
-                                                <option value={2}>Office Stationary</option>
-                                                <option value={3}>Electronics</option>
-                                            </select>
-                                            <p className="fs-2 mb-0">
-                                                Assign a template from your current theme to define how a single
-                                                product is displayed.
-                                            </p>
-                                        </div>
-                                    </form>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h4 className="card-title mb-7">Product Template</h4>
+                                        <form action="" className="form-horizontal">
+                                            <div>
+                                                <label className="form-label text-nowrap">
+                                                    Select a product template
+                                                </label>
+                                                <select
+                                                    className="form-select mr-sm-2  mb-2"
+                                                    id="inlineFormCustomSelect"
+                                                >
+                                                    <option selected="">Default Template</option>
+                                                    <option value={1}>Fashion</option>
+                                                    <option value={2}>Office Stationary</option>
+                                                    <option value={3}>Electronics</option>
+                                                </select>
+                                                <p className="fs-2 mb-0">
+                                                    Assign a template from your current theme to define how a single
+                                                    product is displayed.
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>      
                     </div>
                 </div>
             </div>

@@ -39,9 +39,9 @@ const SalesCard = () => {
             <div className="row g-4">
                 {SalesCardData.map((item, index) => (
                     <div key={index} className="col-md-3">
-                        <div className="card border-0 shadow-sm rounded-4 p-3">
+                        <div className="card border-0 shadow-sm rounded-4 p-4">
                             <div className="d-flex align-items-center">
-                                <div className={`px-2 py-1 rounded-circle ${item.bgColor} ${item.textColor}`}>
+                                <div className={`px-2 py-1 fs-6 rounded-circle ${item.bgColor} ${item.textColor}`}>
                                     {/* <i className={`${item.icon} fs-3`}></i> */}
                                     {item.icon}
                                 </div>
