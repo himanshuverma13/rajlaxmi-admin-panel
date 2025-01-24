@@ -11,6 +11,7 @@ const DashboardGraph = () => {
   return (
     <>
       {/* <div className="row">
+      {/* <div className="row">
         <div class="col-lg-3">
           <div class="card">
           
@@ -93,8 +94,6 @@ const DashboardGraph = () => {
         </div>
 
       </div> */}
-             <SalesCard/>
-      
       <div className="row">
         <div className="col-lg-8 d-flex align-items-strech">
           <div className="card w-100">

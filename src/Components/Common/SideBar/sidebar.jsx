@@ -89,7 +89,7 @@ const Sidebar = () => {
                         <span className="hide-menu">Edit</span>
                       </li>
                     </NavLink>
-                    <NavLink to={""} className="sidebar-link">
+                    <NavLink to={"/productcreate"} className="sidebar-link">
                       <li className="sidebar-item">
                         <span className="sidebar-icon mx-3">3</span>
                         <span className="hide-menu">Create</span>
