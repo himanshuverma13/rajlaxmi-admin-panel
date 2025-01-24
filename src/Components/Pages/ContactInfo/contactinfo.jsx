@@ -1,47 +1,67 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../../Common/SideBar/sidebar';
 import Navbar from '../../Common/Navbar/navbar';
 import profile from "../../Assets/images/profile/user2.jpg";
+import { GetAllContactAPI } from '../../Common/APIs/api';
 
 const ContactInfo = () => {
-    const Contact =[
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-        {
-            user_name: "Demo",
-            user_email: "demo121@gmail.com",
-            user_mobile: 1237988,
-            user_message: "fdsdhkjfdsklfkhgh",
-        },
-    ]
+    // const Contact =[
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    //     {
+    //         user_name: "Demo",
+    //         user_email: "demo121@gmail.com",
+    //         user_mobile: 1237988,
+    //         user_message: "fdsdhkjfdsklfkhgh",
+    //     },
+    // ]
+
+
+    const [Contact, setContact] = useState();
+
+    const FetchContact = async () => {
+        try {
+            const response = await GetAllContactAPI();
+            console.log("response: ", response);
+            setContact(response);
+        } catch (error) {
+            console.log("error: ", error);
+        }
+    };
+
+    useEffect(() => {
+        FetchContact();
+    }, []);
+
+
     return (
         <>
             <div
@@ -89,7 +109,7 @@ const ContactInfo = () => {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    {Contact.map((item) => (
+                                    {Contact?.map((item) => (
                                       <tr key={item.id} className="search-items">
                                         <td>
                                           <div className="n-chk align-self-center text-center">
