@@ -182,6 +182,21 @@ const Sidebar = () => {
                 </a>
               </li>
             </NavLink>
+            
+            <NavLink to={"/feedback"}>
+              <li className="sidebar-item">
+                <a
+                  className={`sidebar-link sidebar-link primary-hover-bg ${ params?.pathname == "/userinfo" ? "primary-hover-bg-sidebar-active":""}`}
+              
+                  aria-expanded="false"
+                >
+                  <span className="aside-icon p-2 bg-light-primary rounded-1">
+                    <i className="ti ti-cards fs-7" />
+                  </span>
+                  <span className="hide-menu ps-1">Feedback</span>
+                </a>
+              </li>
+            </NavLink>
 
             <NavLink to={"/contactinfo"}>
               <li className="sidebar-item">
@@ -233,7 +248,7 @@ const Sidebar = () => {
                 <span className="hide-menu ps-1">Register</span>
               </a>
             </li>
-
+           
             {/* ============================= */}
             {/* Upgrade to Pro */}
             {/* ============================= */}
