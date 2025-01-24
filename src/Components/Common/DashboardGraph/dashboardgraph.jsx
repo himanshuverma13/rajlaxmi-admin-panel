@@ -9,7 +9,7 @@ import DonutChart from '../Charts/DonutChart'
 const DashboardGraph = () => {
   return (
     <>
-      <div className="row">
+      {/* <div className="row">
         <div class="col-lg-3">
           <div class="card">
           
@@ -91,7 +91,7 @@ const DashboardGraph = () => {
           </div>
         </div>
 
-      </div>
+      </div> */}
       <div className="row">
         <div className="col-lg-8 d-flex align-items-strech">
           <div className="card w-100">

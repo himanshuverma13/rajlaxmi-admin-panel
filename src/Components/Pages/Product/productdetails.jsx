@@ -24,9 +24,9 @@ const ProductDetails = () => {
             {/* Main Content */}
             <div class="shop-detail">
               <div class="card shadow-none border">
-                <div class="card-body p-5">
-                  <div class="row">
-                    <div class="col-lg-7">
+                <div class="card-body pb-8">
+                  <div class="row gap-3 p-4">
+                    <div class="col-lg-6">
                       <ProductSlider />
                     </div>
                     <div class="col-lg-5">
@@ -87,8 +87,8 @@ const ProductDetails = () => {
                             </button>
                           </div>
                         </div>
-                        <div class="d-sm-flex align-items-center justify-content-center gap-6 pt-2 mb-7">
-                          <button type='button' class="btn d-block btn-primary px-5 py-2 mb-sm-0">Buy Now</button>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2 mb-7">
+                          <button type='button' class="btn d-block btn-primary px-5 py-2">Buy Now</button>
                           <button type='button' class="btn d-block btn-danger px-7 py-2">Add to Cart</button>
                         </div>
                         <p class="mb-0">Dispatched in 2-3 weeks</p>
