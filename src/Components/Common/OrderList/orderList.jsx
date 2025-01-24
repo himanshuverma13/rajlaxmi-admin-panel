@@ -3,34 +3,34 @@ import React, { useState } from "react";
 import orderimg from "../../Assets/images/profile/user1.jpg";
 const data = [
   {
-    id: 1,
-    name: "John Doe",
-    age: 28,
-    date: '1/07/25',
-    city: "New York",
-    country: "USA",
-    details: "John is a software engineer from New York, USA.",
+    user_id: 1,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
     status: "Completed",
   },
   {
-    id: 2,
-    name: "Jane Smith",
-    age: 34,
-    date: '2/07/25',
-    city: "London",
-    country: "UK",
-    details: "Jane is a data scientist based in London, UK.",
-    status: "Pending",
+    user_id: 2,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
+    status: "Completed",
   },
   {
-    id: 3,
-    name: "Mark Wilson",
-    age: 45,
-    date: '7/07/25',
-    city: "Sydney",
-    country: "Australia",
-    details: "Mark is a project manager in Sydney, Australia.",
-    status: "Cancelled",
+    user_id: 3,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
+    status: "Completed",
   },
 ];
 const OrderList = () => {
@@ -45,9 +45,9 @@ const OrderList = () => {
     setActiveTab(tabName);
   };
 
-  const filteredData = data.filter((row) => {
+  const currentItems = data.filter((row) => {
     const isWithinDateRange = (!startDate || new Date(row.date) >= new Date(startDate)) &&
-                              (!endDate || new Date(row.date) <= new Date(endDate));
+      (!endDate || new Date(row.date) <= new Date(endDate));
     const isMatchingId = searchId ? row.id.toString().includes(searchId) : true;
     const isMatchingStatus = activeTab === "All" || row.status === activeTab;
 
@@ -72,24 +72,21 @@ const OrderList = () => {
               {tabs.map((tab) => (
                 <li
                   key={tab}
-                  className={`nav-item mx-2 order-filter d-flex align-items-center ${
-                    activeTab === tab ? "active border-bottom border-bottom-primary pb-1 border-2" : ""
-                  }`}
+                  className={`nav-item mx-2 order-filter my-1 d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-bottom-primary pb-1 border-2" : ""
+                    }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   <span
-                    className={`d-none d-md-block fw-medium ${
-                      activeTab === tab ? "fs-4 text-primary " : ""
-                    }`}
+                    className={` d-md-block fs-3 fw-medium ${activeTab === tab ? "fs-2 text-primary " : ""
+                      }`}
                   >
                     {tab}
                   </span>
                   <span
-                    className={`mx-1 px-1 rounded ${
-                      activeTab === tab
-                        ? "fs-4 text-primary bg-primary text-white"
+                    className={`mx-1 px-1 rounded ${activeTab === tab
+                        ? "fs-3 text-primary bg-primary text-white"
                         : "bg-light"
-                    }`}
+                      }`}
                   >
                     07
                   </span>
@@ -97,8 +94,8 @@ const OrderList = () => {
               ))}
             </ul>
           </div>
-          <div className="d-flex row justify-content-between align-items-center gap-6 mb-3">
-          <div className="d-flex col-lg-6">
+          <div className="d-flex row align-items-center gap-6 mb-3">
+            <div className="col-lg-3">
               <div className="mx-2">
                 <label className="form-label" htmlFor="">
                   Start Date
@@ -112,6 +109,8 @@ const OrderList = () => {
                   onChange={(e) => setStartDate(e.target.value)}
                 />
               </div>
+            </div>
+            <div className="col-lg-3">
               <div className="mx-2">
                 <label className="form-label" htmlFor="">
                   End Date
@@ -125,24 +124,24 @@ const OrderList = () => {
                   onChange={(e) => setEndDate(e.target.value)}
                 />
               </div>
-              </div>
-              <div className="col-lg-4">
-                <label className="form-label" htmlFor="">
-                  Search
-                </label>
-                <div className="position-relative">
-                  <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3" />
-                  <input
-                    type="text"
-                    className="form-control search-chat py-2 ps-5"
-                    id="text-srh"
-                    placeholder="Search Product Order Id"
-                    value={searchId}
+            </div>
+            <div className="col-lg-4">
+              <label className="form-label" htmlFor="">
+                Search
+              </label>
+              <div className="position-relative">
+                <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3" />
+                <input
+                  type="text"
+                  className="form-control search-chat py-2 ps-5"
+                  id="text-srh"
+                  placeholder="Search Product Order Id"
+                  value={searchId}
                   onChange={(e) => setSearchId(e.target.value)}
-                  />
-                </div>
+                />
               </div>
-              
+            </div>
+
           </div>
           <div className="table-responsive border rounded">
             <table className="table align-middle text-nowrap mb-0">
@@ -158,17 +157,18 @@ const OrderList = () => {
                       />
                     </div>
                   </th>
-                  <th scope="col">Order</th>
+                  <th scope="col">Id</th>
                   <th scope="col">Customer</th>
+                  <th scope="col">Phone No.</th>
                   <th scope="col">Date</th>
-                  <th scope="col">Items</th>
+                  <th scope="col">City</th>
                   <th scope="col">Price</th>
                   <th scope="col">Status</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                {filteredData?.map((row) => (
+                {currentItems?.map((row) => (
                   <>
                     <tr key={row?.id}>
                       <td>
@@ -177,12 +177,12 @@ const OrderList = () => {
                             className="form-check-input"
                             type="checkbox"
                             defaultValue=""
-                            id={`flexCheckDefault${row.id}`}
+                            id={`flexCheckDefault${row.user_id}`}
                           />
                         </div>
                       </td>
                       <td>
-                        <h6 className="mb-0 fs-4">{row?.id}</h6>
+                        <h6 className="mb-0 fs-4">{row?.user_id}</h6>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -190,32 +190,36 @@ const OrderList = () => {
                             src={orderimg}
                             className="rounded-circle"
                             alt="spike-img"
-                            width={40}
+                            wuser_ididth={40}
                             height={40}
                           />
                           <div className="ms-3 text-start">
-                            <h6 className="mb-0 fs-4">Curology</h6>
+                            <h6 className="mb-0 fs-4">{row.user_name}</h6>
                             <p className="mb-0 text-muted">
-                              Admin.panel@123gmail.com
+                              {row.user_email}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p className="mb-0">{row?.date}</p>
+                        <p className="mb-0">{row?.user_mobile_num}</p>
+                      </td>
+
+                      <td>
+                        <p className="mb-0">{new Date(row?.date)?.toLocaleString()}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
-                          <p className="mb-0 ms-2">1</p>
+                          <p className="mb-0 ms-2">{row.user_city}</p>
                         </div>
                       </td>
                       <td>
-                        <h6 className="mb-0 fs-4">$275</h6>
+                        <h6 className="mb-0 fs-4">{row?.user_total_amount}</h6>
                       </td>
                       <td>
-                      <span className={`badge rounded-pill bg-${row.status === "Cancelled" ? "danger" : "success"} text-white`}>
-                        {row.status}
-                      </span>
+                        <span className={`badge rounded-pill bg-${row.status === "Cancelled" ? "danger" : "success"} text-white`}>
+                          {row.status}
+                        </span>
                       </td>
                       <td>
                         <i
@@ -320,7 +324,7 @@ const OrderList = () => {
                   <li className="page-item p-1">
                     <a
                       className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                      //   href="javascript:void(0)"
+                    //   href="javascript:void(0)"
                     >
                       <i className="ti ti-chevron-left" />
                     </a>
@@ -328,7 +332,7 @@ const OrderList = () => {
                   <li className="page-item p-1">
                     <a
                       className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                      //   href="javascript:void(0)"
+                    //   href="javascript:void(0)"
                     >
                       <i className="ti ti-chevron-right" />
                     </a>
