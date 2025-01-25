@@ -97,8 +97,8 @@ const UserInfo = () => {
 
                         <div className="card card-body">
                             <div className="table-responsive">
-                                <table className="table search-table align-middle text-nowrap">
-                                    <thead className="header-item">
+                                <table className="table search-table align-middle table-hover text-nowrap">
+                                    <thead className="header-item table-light">
                                         <tr>
                                             <th>
                                                 <div className="n-chk align-self-center text-center">
@@ -118,7 +118,6 @@ const UserInfo = () => {
                                             </th>
                                             <th>Id</th>
                                             <th>Name</th>
-                                            <th>Email</th>
                                             <th>Phone</th>
                                             <th>Address</th>
                                             <th>Country</th>
@@ -159,17 +158,15 @@ const UserInfo = () => {
                                                         />
                                                         <div className="ms-3">
                                                             <div className="user-meta-info">
-                                                                <h6 className="user-name mb-0">{items?.user_name}</h6>
-                                                                <span className="user-work fs-3">
-                                                                    {/* {order.occupation} */}
+                                                                <h6 className="user-name mb-1">{items?.user_name}</h6>
+                                                                <span className="user-work text-secondary fs-3">
+                                                                {items?.user_email}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <span className="usr-email-addr">{items?.user_email}</span>
-                                                </td>
+                                               
                                                 <td>
                                                     <span className="usr-ph-no">{items?.user_mobile_num}</span>
                                                 </td>

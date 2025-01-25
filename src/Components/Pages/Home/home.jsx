@@ -8,6 +8,7 @@ import RecentOrder from '../../Common/RecentOrderTable/RecentOrder';
 import UpcoingOrder from '../../Common/UpcomingOrder/upcoimg';
 import DashboardGraph from '../../Common/DashboardGraph/dashboardgraph';
 import SalesCard from '../../Common/SalesCard/salescard';
+import ProductTable from '../../Common/test/test';
 const Home = () => {
   return (
     <div
@@ -286,6 +287,7 @@ const Home = () => {
             </p>
           </div>
           <RecentOrder />
+          <ProductTable/>
         </div>
         <div className="dark-transparent sidebartoggler" />
       </div>
