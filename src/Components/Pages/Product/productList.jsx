@@ -17,86 +17,70 @@ import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
 
 // Sample Product Data
-const productsData = [
-  {
-    id: 1,
-    image: Product1,
-    name: "Curology Face wash",
-    category: "books",
-    date: "Thu, Jan 12 2024",
-    status: "InStock",
-    price: "$275",
-    statusClass: "text-bg-success",
-  },
-  {
-    id: 2,
-    image: Product4,
-    name: "Body Lotion",
-    category: "books",
-    date: "Thu, Jan 10 2024",
-    status: "Out of Stock",
-    price: "$89",
-    statusClass: "text-bg-danger",
-  },
-  {
-    id: 3,
-    image: Product2,
-    name: "Smart Watch",
-    category: "fashionbooks",
-    date: "Thu, Jan 12 2024",
-    status: "InStock",
-    price: "$125",
-    statusClass: "text-bg-success",
-  },
-  {
-    id: 4,
-    image: Product3,
-    name: "Glossy Solution",
-    category: "electronics",
-    date: "Mon, Jan 16 2024",
-    status: "InStock",
-    price: "$50",
-    statusClass: "text-bg-success",
-  },
-  {
-    id: 5,
-    image: Product4,
-    name: "Derma-E",
-    category: "fashionelectronics",
-    date: "Wed, Jan 18 2024",
-    status: "Out of Stock",
-    price: "$650",
-    statusClass: "text-bg-danger",
-  },
-];
-
 
 const Product = () => {
+  // const [productDetails, setProductDetails] = useState([]);
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredProducts, setFilteredProducts] = useState([]);
+
+  // const { setCurrentProductDetails } = useContext(UserContext);
+
+  // const fetchProducts = async () => {
+  //   const response = await GetProductAPI();
+  //   setProductDetails(response?.products);
+  // };
+
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
+
+  // useEffect(() => {
+  //   // Filter products by search query when the search query or all products change
+  //   setFilteredProducts(
+  //     productDetails?.filter((product) =>
+  //       product?.product_name?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+  //     )
+  //   );
+  // }, [searchQuery, productDetails]);
+
+
   const [productDetails, setProductDetails] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
-  const [currentProductIndex, setCurrentProductIndex] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const [currentPrdId, setcurrentPrdId] = useState();
-  const [imageError, setimageError] = useState("");
+const [searchQuery, setSearchQuery] = useState("");
+const [filteredProducts, setFilteredProducts] = useState([]);
+const [stockFilter, setStockFilter] = useState("all"); // New state to handle stock filter
 
-  const { setCurrentProductDetails } = useContext(UserContext);
+const { setCurrentProductDetails } = useContext(UserContext);
 
-  const fetchProducts = async () => {
-    const response = await GetProductAPI();
-    setProductDetails(response?.products);
-  };
+const fetchProducts = async () => {
+  const response = await GetProductAPI();
+  setProductDetails(response?.products);
+};
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+useEffect(() => {
+  fetchProducts();
+}, []);
+
+console.log('filteredProducts: ', filteredProducts);
+useEffect(() => {
+  // Filter products by search query and stock filter
+  let filtered = productDetails?.filter((product) =>
+    product?.product_name?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+  );
+
+  if (stockFilter === "more") {
+    filtered = filtered?.filter((product) => product?.product_stock > 5);
+  } else if (stockFilter === "less") {
+    filtered = filtered?.filter((product) => product?.product_stock < 5);
+  }
+
+  setFilteredProducts(filtered);
+}, [searchQuery, productDetails, stockFilter]);
 
   const handleProductDelete = async (item) => {
-    console.log('item: ', item);
     try {
       const response = await DeleteProductAPI(item?.product_id);
       // setProductDetails(updatedProducts);
-      setDeleteConfirm(false);
+      // setDeleteConfirm(false);
       fetchProducts();
     } catch (error) {
       console.log("error: ", error);
@@ -106,10 +90,29 @@ const Product = () => {
   //   productDetails
 
   const handleProductView = (item) => {
-    setCurrentProductDetails(item)
+    setCurrentProductDetails(item);
   };
   const handleProductEdit = (item) => {
-    setCurrentProductDetails(item)
+    setCurrentProductDetails(item);
+  };
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(3); // You can adjust the number of products per page
+
+  // Calculate the index of the last and first product on the current page
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts?.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  // Calculate the total number of pages
+  const totalPages = Math?.ceil(filteredProducts?.length / productsPerPage);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -124,48 +127,39 @@ const Product = () => {
     >
       <Sidebar />
 
-      {/* Main Wrapper */}
       <div className="body-wrapper">
         <div className="container-fluid">
           <Navbar />
           <div className="product-list">
             <div className="card">
-              <div className='mt-3 px-4'>
-                <h2 className='fw-bolder'>Product List</h2>
-                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product List</span>
+              <div className="mt-3 px-4">
+                <h2 className="fw-bolder">Product List</h2>
+                <p className="text-dark">
+                  Dashboard <LuDot /> Product <LuDot />{" "}
+                  <span className="text-muted">Product List</span>
                 </p>
               </div>
               <div className="card-body p-3">
                 <div className="d-flex justify-content-between align-items-center gap-6 mb-3">
-                  <form className="row ">
-                    <div class="col-lg-6 dropdown">
-                      <button class="btn btn-outline-secondary w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Stock <span class="float-end">&#9662;</span>
-                      </button>
-                      <ul class="dropdown-menu custom-dropdown-menu">
-                        <li class="form-check">
-                          <input class="form-check-input" type="checkbox" id="inStock" />
-                          <label class="form-check-label" for="inStock">In stock</label>
-                        </li>
-                        <li class="form-check mt-2">
-                          <input class="form-check-input" type="checkbox" id="lowStock" />
-                          <label class="form-check-label" for="lowStock">Low stock</label>
-                        </li>
-                        <li class="form-check mt-2">
-                          <input class="form-check-input" type="checkbox" id="outStock" />
-                          <label class="form-check-label" for="outStock">Out of stock</label>
-                        </li>
-                        <li class="mt-3">
-                          <button class="btn custom-btn-apply w-100">Apply</button>
-                        </li>
-                      </ul>
-                    </div>
+                  <form className="row w-50">
+                  <select
+                    className="form-select col-lg-2 w-50"
+                    aria-label="Default select example"
+                    value={stockFilter}
+                    onChange={(e) => setStockFilter(e.target.value)} // Update stock filter state
+                  >
+                    <option value="all">Stock</option>
+                    <option value="more">+5</option>
+                    <option value="less">-5</option>
+                  </select>
                     <div className="col-lg-6 position-relative">
                       <input
                         type="text"
                         className="form-control search-chat py-2 ps-5"
                         id="text-srh"
                         placeholder="Search Product"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                       />
                       <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
@@ -185,11 +179,8 @@ const Product = () => {
                   <table className="table align-middle table-hover text-nowrap mb-0">
                     <thead className="table-light">
                       <tr>
-                        <th scope="col">
-                         S No.
-                        </th>
+                        <th scope="col">S No.</th>
                         <th scope="col">Products</th>
-                        {/* <th scope="col">Description</th> */}
                         <th scope="col">Date</th>
                         <th scope="col">Price</th>
                         <th scope="col">Category</th>
@@ -199,12 +190,10 @@ const Product = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {productDetails?.map((product, index) => (
+                      {currentProducts?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
-                            {/* <div className=" mb-0"> */}
-                            {++index}
-                            {/* </div> */}
+                            {indexOfFirstProduct + index + 1}
                           </td>
                           <td>
                             <div className="d-flex align-items-center">
@@ -225,11 +214,10 @@ const Product = () => {
                               </div>
                             </div>
                           </td>
-                          {/* <td>
-                            <p className="mb-0">{product?.product_description}</p>
-                          </td> */}
                           <td>
-                            <p className="mb-0">{product?.date}</p>
+                            <p className="mb-0">
+                              {new Date(product?.date)?.toLocaleDateString()}
+                            </p>
                           </td>
                           <td>
                             <p className="mb-0">{product?.product_price}</p>
@@ -243,15 +231,6 @@ const Product = () => {
                           <td>
                             <p className="mb-0">{product?.product_quantity}</p>
                           </td>
-                          {/* <td>
-                            <div className="d-flex align-items-center">
-                              <span
-                                className={`${product.statusClass} p-1 rounded-circle`}
-                              ></span>
-                              <p className="mb-0 ms-2">{product?.status}</p>
-                            </div>
-                          </td> */}
-
                           <td>
                             <div className="dropdown">
                               <button
@@ -265,41 +244,31 @@ const Product = () => {
                               <ul
                                 className="dropdown-menu dropdown-menu-end bg-gradient"
                                 aria-labelledby="dropdownMenuButton1"
-                                style={{
-                                  position: "absolute",
-                                  inset: "0px 0px auto auto",
-                                  margin: 0,
-                                  transform: "translate3d(0px, 36px, 0px)",
-                                }}
-                                data-popper-placement="bottom-end"
                               >
                                 <NavLink to={"/productdetails"}>
-                                  <li onClick={() => handleProductView(product)}>
-                                    <a
-                                      className="dropdown-item fw-bold text-dark"
-
-                                    >
+                                  <li
+                                    onClick={() => handleProductView(product)}
+                                  >
+                                    <a className="dropdown-item fw-bold text-dark">
                                       <FaEye className="fs-2 me-3" />
                                       View
                                     </a>
                                   </li>
                                 </NavLink>
                                 <NavLink to={"/productedit"}>
-                                  <li onClick={() => handleProductEdit(product)}>
-                                    <a
-                                      className="dropdown-item fw-bold text-dark"
-
-                                    >
+                                  <li
+                                    onClick={() => handleProductEdit(product)}
+                                  >
+                                    <a className="dropdown-item fw-bold text-dark">
                                       <FaPen className="fs-2 me-3" />
                                       Edit
                                     </a>
                                   </li>
                                 </NavLink>
-                                <li onClick={() => handleProductDelete(product)}>
-                                  <a
-                                    className="dropdown-item text-danger fw-bold"
-
-                                  >
+                                <li
+                                  onClick={() => handleProductDelete(product)}
+                                >
+                                  <a className="dropdown-item text-danger fw-bold">
                                     <RiDeleteBin5Fill className="fs-3 me-3" />
                                     Delete
                                   </a>
@@ -312,35 +281,25 @@ const Product = () => {
                     </tbody>
                   </table>
                 </div>
-
-                <div className="d-flex align-items-center justify-content-end py-1">
-                  <p className="mb-0 fs-2">Rows per page:</p>
-                  <select className="form-select w-auto ms-0 ms-sm-2 me-8 me-sm-4 py-1 pe-7 ps-2 border-0">
-                    <option>5</option>
-                    <option value="1">10</option>
-                    <option value="2">25</option>
-                  </select>
-                  <p className="mb-0 fs-2">1–5 of 12</p>
-                  <nav aria-label="Pagination">
-                    <ul className="pagination justify-content-center mb-0 ms-8 ms-sm-9">
-                      <li className="page-item p-1">
-                        <a
-                          className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                          href="#!"
-                        >
-                          <i className="ti ti-chevron-left"></i>
-                        </a>
-                      </li>
-                      <li className="page-item p-1">
-                        <a
-                          className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                          href="#!"
-                        >
-                          <i className="ti ti-chevron-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
+              </div>
+              {/* Pagination Controls */}
+              <div className="d-flex align-items-center justify-content-end pb-3">
+                <div
+                  className="fs-5 me-2"
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  <i className="ti ti-chevron-left fs-5" />
+                </div>
+                <span className="fs-5">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <div
+                  className="fs-5 ms-2 me-5"
+                  disabled={currentPage === totalPages}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  <i className="ti ti-chevron-right fs-5" />
                 </div>
               </div>
             </div>
