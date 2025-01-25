@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dashimg1 from '../../Assets/images/svgs/chart.svg'
 import dashimg2 from '../../Assets/images/svgs/paypal.svg'
 import dashimg3 from '../../Assets/images/svgs/screen.svg'
@@ -6,8 +6,28 @@ import dashimg4 from '../../Assets/images/svgs/total.svg'
 import BarChart from '../Charts/bargraph'
 import DonutChart from '../Charts/DonutChart'
 import SalesCard from "../SalesCard/salescard";
+import { GetSaleReportAPI } from "../APIs/api";
 
 const DashboardGraph = () => {
+
+
+
+
+  const [ChartData, setChartData] = useState();
+  const FetchDasboardData = async () => {
+    try {
+      const saleData = await GetSaleReportAPI();
+      console.log('saleData: ', saleData);
+      setChartData(saleData?.data);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchDasboardData();
+  }, []);
+
   return (
     <>
       {/* <div className="row">
@@ -136,7 +156,7 @@ const DashboardGraph = () => {
                 </div>
               </div>
               <div id="profit" />
-              <BarChart/>
+              <BarChart BarChartData={ChartData}/>
             </div>
           </div>
         </div>
@@ -173,7 +193,7 @@ const DashboardGraph = () => {
                     <div className="col-12">
                       <div className="d-flex justify-content-center">
                         <div id="grade" />
-                        <DonutChart />
+                        <DonutChart  DonutChartData={ChartData} />
                       </div>
                       <div>
                         <ul className="d-flex justify-content-center">

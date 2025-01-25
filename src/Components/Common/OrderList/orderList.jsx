@@ -20,7 +20,7 @@ const data = [
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
-    status: "Completed",
+    status: "Pending",
   },
   {
     user_id: 3,
@@ -30,7 +30,7 @@ const data = [
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
-    status: "Completed",
+    status: "Cancelled",
   },
 ];
 const OrderList = () => {
@@ -146,7 +146,7 @@ const OrderList = () => {
           <div className="table-responsive border rounded">
             <table className="table align-middle text-nowrap table-hover mb-0">
               <thead className="table-light">
-                <tr className="border-bottom">
+                <tr className="border-bottom border-dark">
                   <th scope="col">
                     <div className="form-check">
                       <input
@@ -226,9 +226,9 @@ const OrderList = () => {
                           class="ti ti-chevron-down fs-6"
                           type="button"
                           data-bs-toggle="collapse"
-                          data-bs-target={`#collapse-${row.id}`}
+                          data-bs-target={`#collapse-${row?.user_id}`}
                           aria-expanded="false"
-                          aria-controls={`collapse-${row.id}`}
+                          aria-controls={`collapse-${row?.user_id}`}
                         ></i>
                       </td>
 
@@ -274,7 +274,7 @@ const OrderList = () => {
                     </tr>
                     <tr>
                       <td colSpan="10" className="py-0 border-0 bg-light px-1">
-                        <div className="collapse" id={`collapse-${row.id}`}>
+                        <div className="collapse" id={`collapse-${row?.user_id}`}>
                           <div className="card card-body my-2 py-3 px-3">
                             <div className="d-flex align-items-center justify-content-between">
                               <div className="d-flex align-items-center">
