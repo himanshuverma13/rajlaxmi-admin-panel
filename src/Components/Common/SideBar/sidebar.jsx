@@ -79,7 +79,7 @@ const Sidebar = () => {
             {/* ============================= */}
             <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
-              <span className="hide-menu">UI Componenst</span>
+              <span className="hide-menu">Pages</span>
             </li>
 
             <li className="sidebar-item">
@@ -253,8 +253,7 @@ const Sidebar = () => {
 
             {/* ============================= */}
             {/* Auth */}
-            {/* ============================= */}
-            <li className="nav-small-cap">
+            {/* <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
               <span className="hide-menu">Auth</span>
             </li>

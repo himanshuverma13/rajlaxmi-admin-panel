@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import orderimg from "../../Assets/images/profile/user1.jpg";
+import { LuDot } from "react-icons/lu";
 const data = [
   {
     user_id: 1,
@@ -32,27 +33,66 @@ const data = [
     user_total_amount: "12345",
     status: "Cancelled",
   },
+  {
+    user_id: 3,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
+    status: "Completed",
+  },
+  {
+    user_id: 5,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
+    status: "Pending",
+  },
+  {
+    user_id: 6,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    user_date: '1/07/25',
+    user_city: "New York",
+    user_country: "USA",
+    user_total_amount: "12345",
+    status: "Cancelled",
+  },
 ];
 const OrderList = () => {
   const [activeTab, setActiveTab] = useState("All");
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [searchId, setSearchId] = useState('');
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 5;
   const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
-
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+    setCurrentPage(1);
   };
 
-  const currentItems = data.filter((row) => {
-    const isWithinDateRange = (!startDate || new Date(row.date) >= new Date(startDate)) &&
-      (!endDate || new Date(row.date) <= new Date(endDate));
-    const isMatchingId = searchId ? row.id.toString().includes(searchId) : true;
-    const isMatchingStatus = activeTab === "All" || row.status === activeTab;
+  const filteredData = data.filter(
+    (row) => activeTab === "All" || row.status === activeTab
+  );
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
-    return isWithinDateRange && isMatchingId && isMatchingStatus;
-  });
+  // const currentItems = data.filter((row) => {
+  //   const isWithinDateRange = (!startDate || new Date(row.date) >= new Date(startDate)) &&
+  //     (!endDate || new Date(row.date) <= new Date(endDate));
+  //   const isMatchingId = searchId ? row.id.toString().includes(searchId) : true;
+  //   const isMatchingStatus = activeTab === "All" || row.status === activeTab;
+
+  //   return isWithinDateRange && isMatchingId && isMatchingStatus;
+  // });
 
 
   // // Array of tab names
@@ -66,6 +106,11 @@ const OrderList = () => {
   return (
     <div className="product-list">
       <div className="card">
+        <div className='mt-3 px-4'>
+          <h2 className='fw-bolder'>List</h2>
+          <p className='text-dark'>Dashboard <LuDot /> Order <LuDot /> <span className='text-muted'>List</span>
+          </p>
+        </div>
         <div className="card-body p-3">
           <div>
             <ul className="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
@@ -84,8 +129,8 @@ const OrderList = () => {
                   </span>
                   <span
                     className={`mx-1 px-1 rounded ${activeTab === tab
-                        ? "fs-3 text-primary bg-primary text-white"
-                        : "bg-light"
+                      ? "fs-3 text-primary bg-primary text-white"
+                      : "bg-light"
                       }`}
                   >
                     07
@@ -135,7 +180,7 @@ const OrderList = () => {
                   type="text"
                   className="form-control search-chat py-2 ps-5"
                   id="text-srh"
-                  placeholder="Search Product Order Id"
+                  placeholder="Order Order Id"
                   value={searchId}
                   onChange={(e) => setSearchId(e.target.value)}
                 />
@@ -148,14 +193,7 @@ const OrderList = () => {
               <thead className="table-light">
                 <tr className="border-bottom border-dark">
                   <th scope="col">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="flexCheckDefault"
-                      />
-                    </div>
+                    S No.
                   </th>
                   <th scope="col">Id</th>
                   <th scope="col">Customer</th>
@@ -165,21 +203,15 @@ const OrderList = () => {
                   <th scope="col">Price</th>
                   <th scope="col">Status</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                {currentItems?.map((row) => (
+                {currentItems?.map((row, index) => (
                   <>
                     <tr key={row?.id}>
                       <td>
-                        <div className="form-check mb-0">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            defaultValue=""
-                            id={`flexCheckDefault${row.user_id}`}
-                          />
-                        </div>
+                        {++index}
                       </td>
                       <td>
                         <h6 className="mb-0 fs-4">{row?.user_id}</h6>
@@ -217,9 +249,9 @@ const OrderList = () => {
                         <h6 className="mb-0 fs-4">{row?.user_total_amount}</h6>
                       </td>
                       <td>
-                        <span className={`badge rounded-pill bg-${row.status === "Cancelled" ? "danger" : "success"} text-white`}>
-                          {row.status}
-                        </span>
+                        <div className={`badge rounded-pill ${row.status === "Cancelled" ? "bg-red text-danger" : "bg-green text-success"}`}>
+                          <span className={`fw-bold`}> {row.status}</span>
+                        </div>
                       </td>
                       <td>
                         <i
@@ -318,15 +350,14 @@ const OrderList = () => {
                 <option value={1}>10</option>
                 <option value={2}>25</option>
               </select> */}
-              <p className="mb-0 fs-2">1–5 of 12</p>
-              <nav aria-label="...">
+              {/* <p className="mb-0 fs-2">1–5 of 12</p> */}
+              {/* <nav aria-label="...">
                 <ul className="pagination justify-content-center mb-0 ms-8 ms-sm-9">
                   <li className="page-item p-1">
                     <a
                       className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
                     //   href="javascript:void(0)"
                     >
-                      <i className="ti ti-chevron-left" />
                     </a>
                   </li>
                   <li className="page-item p-1">
@@ -334,11 +365,33 @@ const OrderList = () => {
                       className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
                     //   href="javascript:void(0)"
                     >
-                      <i className="ti ti-chevron-right" />
+                    
                     </a>
                   </li>
                 </ul>
-              </nav>
+              </nav> */}
+              <div className="d-flex align-items-center justify-content-end py-2">
+                <div
+                  className="fs-5 me-2"
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  <i className="ti ti-chevron-left fs-5" />
+
+                </div>
+                <span className="fs-5">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <div
+                  className="fs-5 ms-2 me-5"
+                  disabled={currentPage === totalPages}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  <i className="ti ti-chevron-right fs-5" />
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

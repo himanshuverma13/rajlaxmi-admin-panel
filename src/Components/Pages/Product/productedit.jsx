@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { UpdateProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { useEffect } from "react";
+import { LuDot } from "react-icons/lu";
 const ProductEdit = () => {
   const {
     register,
@@ -102,9 +103,13 @@ const ProductEdit = () => {
             <Navbar />
 
             <form onSubmit={handleSubmit(onSubmit)}>
+              <div className='my-2 px-3'>
+                <h2 className='fw-bolder'>Product Edit</h2>
+                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Edit</span>
+                </p>
+              </div>
               <div class="card p-4">
-                <h5>Product Details</h5>
-                {/* <small class="text-muted">Title, short description, image...</small> */}
+
 
                 <div className="row">
                   <div class="col-lg-6 mb-2">

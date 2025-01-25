@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../../Common/SideBar/sidebar';
 import Navbar from '../../Common/Navbar/navbar';
 import profile from "../../Assets/images/profile/user2.jpg";
+import { LuDot } from "react-icons/lu";
 
 const UserInfo = () => {
+    const itemsPerPage = 3;
+    const [currentPage, setCurrentPage] = useState(1);
     const currentUsers = [
         {
             user_id: 1,
@@ -78,6 +81,15 @@ const UserInfo = () => {
             user_mobile_num: "+91 (070) 123-4567",
         },
     ];
+
+    const totalPages = Math.ceil(currentUsers.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = currentUsers.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
     return (
         <>
             <div
@@ -96,25 +108,17 @@ const UserInfo = () => {
                         <Navbar />
 
                         <div className="card card-body">
+                            <div>
+                                <h2 className='fw-bolder'>List</h2>
+                                <p className='text-dark'>Dashboard <LuDot /> User <LuDot /> <span className='text-muted'>List</span>
+                                </p>
+                            </div>
                             <div className="table-responsive">
                                 <table className="table search-table align-middle table-hover text-nowrap">
                                     <thead className="header-item table-light">
                                         <tr>
                                             <th>
-                                                <div className="n-chk align-self-center text-center">
-                                                    <div className="form-check">
-                                                        <input
-                                                            type="checkbox"
-                                                            className="form-check-input primary"
-                                                            id="contact-check-all"
-                                                        />
-                                                        <label
-                                                            className="form-check-label"
-                                                            htmlFor="contact-check-all"
-                                                        />
-                                                        <span className="new-control-indicator" />
-                                                    </div>
-                                                </div>
+                                                SNo.
                                             </th>
                                             <th>Id</th>
                                             <th>Name</th>
@@ -128,22 +132,10 @@ const UserInfo = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {currentUsers?.map((items) => (
+                                        {currentUsers?.map((items , index) => (
                                             <tr key={items.id} className="search-items">
                                                 <td>
-                                                    <div className="n-chk align-self-center text-center">
-                                                        <div className="form-check">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="form-check-input contact-chkbox primary"
-                                                                id={`checkbox${items?.id}`}
-                                                            />
-                                                            <label
-                                                                className="form-check-label"
-                                                                htmlFor={`checkbox${items?.id}`}
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                    {++index}
                                                 </td>
                                                 <td>
                                                     <span className="usr-email-addr">{items?.user_id}</span>
@@ -160,13 +152,13 @@ const UserInfo = () => {
                                                             <div className="user-meta-info">
                                                                 <h6 className="user-name mb-1">{items?.user_name}</h6>
                                                                 <span className="user-work text-secondary fs-3">
-                                                                {items?.user_email}
+                                                                    {items?.user_email}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                               
+
                                                 <td>
                                                     <span className="usr-ph-no">{items?.user_mobile_num}</span>
                                                 </td>
@@ -199,6 +191,13 @@ const UserInfo = () => {
                                         ))}
                                     </tbody>
                                 </table>
+                            </div>
+                            <div className="pagination d-flex justify-content-center mt-3">
+                                {[...Array(totalPages)].map((_, index) => (
+                                    <button key={index} onClick={() => handlePageChange(index + 1)} className={`btn btn-sm mx-1 ${currentPage === index + 1 ? 'btn-primary' : 'btn-light'}`}>
+                                        {index + 1}
+                                    </button>
+                                ))}
                             </div>
                         </div>
                     </div>

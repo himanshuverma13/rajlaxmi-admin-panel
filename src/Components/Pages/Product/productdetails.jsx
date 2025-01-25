@@ -3,9 +3,10 @@ import Navbar from "../../Common/Navbar/navbar";
 import Sidebar from '../../Common/SideBar/sidebar';
 import ProductSlider from '../../Common/ProductSlider/productslier';
 import { UserContext } from '../../Common/UseContext/usecontext';
+import { LuDot } from 'react-icons/lu';
 const ProductDetails = () => {
-    const { CurrentProductDetails} = useContext(UserContext);
-    console.log('CurrentProductDetails: ', CurrentProductDetails);
+  const { CurrentProductDetails } = useContext(UserContext);
+  console.log('CurrentProductDetails: ', CurrentProductDetails);
 
   return (
     <>
@@ -28,6 +29,11 @@ const ProductDetails = () => {
             {/* Main Content */}
             <div class="shop-detail">
               <div class="card shadow-none border">
+               <div className='mt-2 mx-5  '>
+               <h2 className='fw-bolder'>Product Details</h2>
+                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Details</span>
+                </p>
+               </div>
                 <div class="card-body pb-8">
                   <div class="row gap-3 p-4">
                     <div class="col-lg-6">
