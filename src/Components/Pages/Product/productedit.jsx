@@ -28,7 +28,7 @@ const ProductEdit = () => {
     setValue("product_website_name", CurrentProductDetails?.product_website_name);
     setValue("product_image", CurrentProductDetails?.product_image);
   }, [])
-  
+
 
   const [productDetails, setProductDetails] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
@@ -106,45 +106,132 @@ const ProductEdit = () => {
                 <h5>Product Details</h5>
                 {/* <small class="text-muted">Title, short description, image...</small> */}
 
-                <div class="mb-3 mt-3">
-                  <label for="productName" class="form-label">
-                    Product Name
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="product_name"
-                    placeholder="Product name"
-                    {...register("product_name", {
-                      required: "Name is required",
-                    })}
-                  />
-                  {errors.product_name && (
-                    <span className="text-danger">
-                      {errors.product_name.message}
-                    </span>
-                  )}
+                <div className="row">
+                  <div class="col-lg-6 mb-2">
+                    <label for="productName" class="form-label">
+                      Product Name
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="product_name"
+                      placeholder="Product name"
+                      {...register("product_name", {
+                        required: "Name is required",
+                      })}
+                    />
+                    {errors.product_name && (
+                      <span className="text-danger">
+                        {errors.product_name.message}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="col-lg-6 form-group mb-2">
+                    <label for="product_price">Price</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="product_price"
+                      placeholder="Enter price"
+                      {...register("product_price", {
+                        required: "Price is required",
+                        min: {
+                          value: 1,
+                          message: "Price must be positive",
+                        },
+                      })}
+                    />
+                    {errors.product_price && (
+                      <span className="text-danger">
+                        {errors.product_price.message}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="col-lg-6 form-group mb-2">
+                    <label for="product_stock">Stock</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="product_stock"
+                      placeholder="Enter price"
+                      {...register("product_stock", {
+                        required: "Stock is required",
+                        min: {
+                          value: 0,
+                          message: "Stock cannot be negative",
+                        },
+                      })}
+                    />
+                    {errors.product_stock && (
+                      <span className="text-danger">
+                        {errors.product_stock.message}
+                      </span>
+                    )}
+                  </div>
+                  <div class="col-lg-6 form-group mb-2">
+                    <label for="product_category">Category</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="product_category"
+                      placeholder="Enter product code"
+                      {...register("product_category", {
+                        required: "Category is required",
+                      })}
+                    />
+                    {errors.product_category && (
+                      <span className="text-danger">
+                        {errors.product_category.message}
+                      </span>
+                    )}
+                  </div>
+                  <div class="col-lg-6 form-group mb-2">
+                    <label for="product_quantity">Quantity</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="product_quantity"
+                      {...register("product_quantity", {
+                        required: "Quantity is required",
+                        min: {
+                          value: 1,
+                          message: "Quantity must be positive",
+                        },
+                      })}
+                    />
+                    {errors.product_quantity && (
+                      <span className="text-danger">
+                        {errors.product_quantity.message}
+                      </span>
+                    )}
+                  </div>
+                  <div className="col-lg-6 form-group mb-2">
+                    <label>Select</label>
+                    <select
+                      className="form-select py-2"
+                      {...register("product_website_name", {
+                        required: "Please select an option",
+                      })}
+                    >
+                      <option value="">Select</option>
+                      <option value="RajLaxmi">Raj Laxmi</option>
+                      <option value="GauSwarn">GauSwarn</option>
+                      <option value="Both">Both</option>
+                    </select>
+                    {errors.product_website_name && (
+                      <span className="text-danger">
+                        {errors.product_website_name.message}
+                      </span>
+                    )}
+                  </div>
+
+
                 </div>
 
-                <div class="mb-3">
-                  <label for="product_description" class="form-label">
-                    Product Description
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="product_description"
-                    rows="3"
-                    placeholder="Description"
-                    {...register("product_description", {
-                      required: "Description is required",
-                    })}
-                  ></textarea>
-                  {errors.product_description && (
-                    <span className="text-danger">
-                      {errors.product_description.message}
-                    </span>
-                  )}
-                </div>
+
+
               </div>
               <div className="card p-4">
                 {/* <h1 class="mb-4">Product Form</h1> */}
@@ -156,102 +243,22 @@ const ProductEdit = () => {
                                                 <h5 class="card-title">Properties</h5>
                                             </div> */}
                       <div class="card-body">
-                        <div class="form-group mb-2">
-                          <label for="product_price">Price</label>
-                          <input
-                            type="number"
+                        <div class="mb-3">
+                          <label for="product_description" class="form-label">
+                            Product Description
+                          </label>
+                          <textarea
                             class="form-control"
-                            id="product_price"
-                            placeholder="Enter price"
-                            {...register("product_price", {
-                              required: "Price is required",
-                              min: {
-                                value: 1,
-                                message: "Price must be positive",
-                              },
+                            id="product_description"
+                            rows="3"
+                            placeholder="Description"
+                            {...register("product_description", {
+                              required: "Description is required",
                             })}
-                          />
-                          {errors.product_price && (
+                          ></textarea>
+                          {errors.product_description && (
                             <span className="text-danger">
-                              {errors.product_price.message}
-                            </span>
-                          )}
-                        </div>
-
-                        <div class="form-group mb-2">
-                          <label for="product_stock">Stock</label>
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="product_stock"
-                            placeholder="Enter price"
-                            {...register("product_stock", {
-                              required: "Stock is required",
-                              min: {
-                                value: 0,
-                                message: "Stock cannot be negative",
-                              },
-                            })}
-                          />
-                          {errors.product_stock && (
-                            <span className="text-danger">
-                              {errors.product_stock.message}
-                            </span>
-                          )}
-                        </div>
-                        <div class="form-group mb-2">
-                          <label for="product_category">Category</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="product_category"
-                            placeholder="Enter product code"
-                            {...register("product_category", {
-                              required: "Category is required",
-                            })}
-                          />
-                          {errors.product_category && (
-                            <span className="text-danger">
-                              {errors.product_category.message}
-                            </span>
-                          )}
-                        </div>
-                        <div class="form-group mb-2">
-                          <label for="product_quantity">Quantity</label>
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="product_quantity"
-                            {...register("product_quantity", {
-                              required: "Quantity is required",
-                              min: {
-                                value: 1,
-                                message: "Quantity must be positive",
-                              },
-                            })}
-                          />
-                          {errors.product_quantity && (
-                            <span className="text-danger">
-                              {errors.product_quantity.message}
-                            </span>
-                          )}
-                        </div>
-                        <div className="form-group">
-                          <label>Select</label>
-                          <select
-                            className="form-select py-2"
-                            {...register("product_website_name", {
-                              required: "Please select an option",
-                            })}
-                          >
-                            <option value="">Select</option>
-                            <option value="RajLaxmi">Raj Laxmi</option>
-                            <option value="GauSwarn">GauSwarn</option>
-                            <option value="Both">Both</option>
-                          </select>
-                          {errors.product_website_name && (
-                            <span className="text-danger">
-                              {errors.product_website_name.message}
+                              {errors.product_description.message}
                             </span>
                           )}
                         </div>
@@ -288,9 +295,8 @@ const ProductEdit = () => {
                           />
                           {
                             <span
-                              className={`text-danger ${
-                                SetImage ? "d-none" : ""
-                              }`}
+                              className={`text-danger ${SetImage ? "d-none" : ""
+                                }`}
                             >
                               {imageError}
                             </span>
@@ -301,10 +307,10 @@ const ProductEdit = () => {
                     </div>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary w-auto px-5">
-                  Submit
-                </button>
               </div>
+              <button type="submit" className="btn btn-primary w-auto px-5">
+                Submit
+              </button>
             </form>
           </div>
         </div>
