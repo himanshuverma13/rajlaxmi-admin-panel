@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Slider from "react-slick";
 // Import Slick styles
 import "slick-carousel/slick/slick.css";
@@ -8,8 +8,12 @@ import Product1 from "../../Assets/images/products/s11.jpg";
 import Product2 from "../../Assets/images/products/s4.jpg";
 import Product3 from "../../Assets/images/products/s5.jpg";
 import Product4 from "../../Assets/images/products/s7.jpg";
+import { UserContext } from '../UseContext/usecontext';
 
 const ProductSlider = () => {
+      const { CurrentProductDetails } = useContext(UserContext);
+      console.log('CurrentProductDetails: ', CurrentProductDetails);
+    
     // Slider settings
     const settings = {
         dots: true,
@@ -18,7 +22,7 @@ const ProductSlider = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         customPaging: function (i) {
-            const thumbnails = [Product1, Product2, Product3, Product4];
+            const thumbnails = [CurrentProductDetails?.product_image, Product2, Product3, Product4];
             return (
                 <a>
                     <img
@@ -42,7 +46,7 @@ const ProductSlider = () => {
         <div className="slider-container">
             <Slider {...settings}>
                 <div className='product-img'>
-                    <img  className='rounded-3 w-100' src={Product1} alt="Product 1" />
+                    <img  className='rounded-3 w-100' src={CurrentProductDetails?.product_image} alt="Product 1" />
                 </div>
                 <div className='product-img'>
                     <img  className='rounded-3 w-100' src={Product2} alt="Product 2" />
