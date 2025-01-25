@@ -94,7 +94,7 @@ const Product = () => {
     console.log('item: ', item);
     try {
       const response = await DeleteProductAPI(item?.product_id);
-        // setProductDetails(updatedProducts);
+      // setProductDetails(updatedProducts);
       setDeleteConfirm(false);
       fetchProducts();
     } catch (error) {
@@ -131,14 +131,38 @@ const Product = () => {
             <div className="card">
               <div className="card-body p-3">
                 <div className="d-flex justify-content-between align-items-center gap-6 mb-3">
-                  <form className="position-relative">
-                    <input
-                      type="text"
-                      className="form-control search-chat py-2 ps-5"
-                      id="text-srh"
-                      placeholder="Search Product"
-                    />
-                    <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                  <form className="row ">
+                    <div class="col-lg-6 dropdown">
+                      <button class="btn btn-outline-secondary w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Stock <span class="float-end">&#9662;</span>
+                      </button>
+                      <ul class="dropdown-menu custom-dropdown-menu">
+                        <li class="form-check">
+                          <input class="form-check-input" type="checkbox" id="inStock" />
+                          <label class="form-check-label" for="inStock">In stock</label>
+                        </li>
+                        <li class="form-check mt-2">
+                          <input class="form-check-input" type="checkbox" id="lowStock" />
+                          <label class="form-check-label" for="lowStock">Low stock</label>
+                        </li>
+                        <li class="form-check mt-2">
+                          <input class="form-check-input" type="checkbox" id="outStock" />
+                          <label class="form-check-label" for="outStock">Out of stock</label>
+                        </li>
+                        <li class="mt-3">
+                          <button class="btn custom-btn-apply w-100">Apply</button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="col-lg-6 position-relative">
+                      <input
+                        type="text"
+                        className="form-control search-chat py-2 ps-5"
+                        id="text-srh"
+                        placeholder="Search Product"
+                      />
+                      <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                    </div>
                   </form>
                   <a
                     className="fs-6 text-muted"
@@ -152,8 +176,8 @@ const Product = () => {
                 </div>
 
                 <div className="table-responsive border rounded">
-                  <table className="table align-middle text-nowrap mb-0">
-                    <thead>
+                  <table className="table align-middle table-hover text-nowrap mb-0">
+                    <thead className="table-light">
                       <tr>
                         <th scope="col">
                           <div className="form-check">
@@ -252,33 +276,33 @@ const Product = () => {
                                 data-popper-placement="bottom-end"
                               >
                                 <NavLink to={"/productdetails"}>
-                                  <li onClick={()=>handleProductView(product)}>
+                                  <li onClick={() => handleProductView(product)}>
                                     <a
                                       className="dropdown-item fw-bold text-dark"
-                                      
+
                                     >
-                                      <FaEye className="fs-2 me-3"  />
+                                      <FaEye className="fs-2 me-3" />
                                       View
                                     </a>
                                   </li>
                                 </NavLink>
                                 <NavLink to={"/productedit"}>
-                                <li onClick={()=>handleProductEdit(product)}>
-                                  <a
-                                    className="dropdown-item fw-bold text-dark"
-                                    
-                                  >
-                                    <FaPen className="fs-2 me-3"  />
-                                    Edit
-                                  </a>
-                                </li>
+                                  <li onClick={() => handleProductEdit(product)}>
+                                    <a
+                                      className="dropdown-item fw-bold text-dark"
+
+                                    >
+                                      <FaPen className="fs-2 me-3" />
+                                      Edit
+                                    </a>
+                                  </li>
                                 </NavLink>
-                                <li onClick={()=>handleProductDelete(product)}>
+                                <li onClick={() => handleProductDelete(product)}>
                                   <a
                                     className="dropdown-item text-danger fw-bold"
-                                    
+
                                   >
-                                    <RiDeleteBin5Fill className="fs-3 me-3"  />
+                                    <RiDeleteBin5Fill className="fs-3 me-3" />
                                     Delete
                                   </a>
                                 </li>

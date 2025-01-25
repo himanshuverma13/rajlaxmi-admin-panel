@@ -5,44 +5,44 @@ import profile from "../../Assets/images/profile/user2.jpg";
 import { GetAllContactAPI } from '../../Common/APIs/api';
 
 const ContactInfo = () => {
-    // const Contact =[
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    //     {
-    //         user_name: "Demo",
-    //         user_email: "demo121@gmail.com",
-    //         user_mobile: 1237988,
-    //         user_message: "fdsdhkjfdsklfkhgh",
-    //     },
-    // ]
+    const ContactJson =[
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+        {
+            user_name: "Demo",
+            user_email: "demo121@gmail.com",
+            user_mobile: 1237988,
+            user_message: "fdsdhkjfdsklfkhgh",
+        },
+    ]
 
 
     const [Contact, setContact] = useState();
@@ -78,12 +78,12 @@ const ContactInfo = () => {
                 <div className="body-wrapper">
                     <div className="container-fluid">
                         <Navbar/>
-
-
+                        {/* <h2>Contact</h2>
+                        <p>Dashboard</p> */}
                          <div className="card card-body">
                               <div className="table-responsive">
-                                <table className="table search-table align-middle text-nowrap">
-                                  <thead className="header-item">
+                                <table className="table search-table align-middle table-hover  text-nowrap">
+                                  <thead className="header-item table-light">
                                     <tr>
                                       <th>
                                         <div className="n-chk align-self-center text-center">
@@ -109,7 +109,7 @@ const ContactInfo = () => {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    {Contact?.map((item) => (
+                                    {ContactJson?.map((item) => (
                                       <tr key={item.id} className="search-items">
                                         <td>
                                           <div className="n-chk align-self-center text-center">

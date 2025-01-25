@@ -144,8 +144,8 @@ const OrderList = () => {
 
           </div>
           <div className="table-responsive border rounded">
-            <table className="table align-middle text-nowrap mb-0">
-              <thead>
+            <table className="table align-middle text-nowrap table-hover mb-0">
+              <thead className="table-light">
                 <tr className="border-bottom border-dark">
                   <th scope="col">
                     <div className="form-check">
@@ -223,7 +223,7 @@ const OrderList = () => {
                       </td>
                       <td>
                         <i
-                          class="ti ti-chevron-down"
+                          class="ti ti-chevron-down fs-6"
                           type="button"
                           data-bs-toggle="collapse"
                           data-bs-target={`#collapse-${row?.user_id}`}
