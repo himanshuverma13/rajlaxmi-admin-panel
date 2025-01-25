@@ -1,17 +1,30 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
 
-const BarChart = (BarChartData) => {
-  console.log('BarChartData: ', BarChartData);
+const BarChart = ({BarChartData}) => {
+  const sixMonthsData = BarChartData?.sixMonths?.data || [];
+
+  // Create labels from sixMonths data
+  const labels = sixMonthsData?.map((item) => {
+    const [year, month] = item?.month?.split("-");
+    const date = new Date(year, month - 1);
+    return date?.toLocaleString("default", { month: "short" });
+  });
+
+  // Extract data for Monthly and Weekly datasets
+  const monthValue = sixMonthsData?.map((item) =>
+    parseInt(item?.monthly_total_sales, 10)
+);
+
   const options = {
     series: [
       {
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58, 63, ],
+        name: 'Gau Swarn',
+        data: monthValue,
       },
       {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105, 91, ],
+        name: 'RajLaxmi',
+        data: [1500, ],
       },
       // {
       //   name: 'Free Cash Flow',
@@ -39,7 +52,7 @@ const BarChart = (BarChartData) => {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', ],
+      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', ], // replace with labels variable
     },
     yaxis: {
       // title: {

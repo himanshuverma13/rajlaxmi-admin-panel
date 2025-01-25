@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Product from "../../Pages/Product/product";
+import Product from "../../Pages/Product/productList";
 import Home from "../../Pages/Home/home";
 import ProductDetails from "../../Pages/Product/productdetails";
 import Order from "../../Pages/Order/order";

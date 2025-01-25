@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../../Common/SideBar/sidebar'
 import BarChart from '../../Common/Charts/bargraph'
 import DonutChart from '../../Common/Charts/DonutChart'
@@ -9,7 +9,22 @@ import UpcoingOrder from '../../Common/UpcomingOrder/upcoimg';
 import DashboardGraph from '../../Common/DashboardGraph/dashboardgraph';
 import SalesCard from '../../Common/SalesCard/salescard';
 import ProductTable from '../../Common/test/test';
+import { GetSaleReportAPI } from '../../Common/APIs/api';
 const Home = () => {
+  const [SaleData, setSaleData] = useState();
+  const FetchDasboardData = async () => {
+    try {
+      const saleData = await GetSaleReportAPI();
+      setSaleData(saleData?.data);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchDasboardData();
+  }, []);
+
   return (
     <div
       className="page-wrapper"
@@ -28,11 +43,11 @@ const Home = () => {
         <div className="container-fluid">
           <Navbar />
           {/*  Row 1 */}
-          <SalesCard />
+          <SalesCard  SaleData={SaleData}/>
           <DashboardGraph/>
           
           <UpcoingOrder/>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-sm-6 col-xl-3">
               <div className="card overflow-hidden">
                 <div className="position-relative">
@@ -273,8 +288,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="py-6 px-6 text-center">
+          </div> */}
+          {/* <div className="py-6 px-6 text-center">
             <p className="mb-0 fs-4">
               Design and Developed by{" "}
               <a
@@ -285,9 +300,9 @@ const Home = () => {
                 wrappixel.com
               </a>
             </p>
-          </div>
-          <RecentOrder />
-          <ProductTable/>
+          </div> */}
+          {/* <RecentOrder /> */}
+          {/* <ProductTable/> */}
         </div>
         <div className="dark-transparent sidebartoggler" />
       </div>
