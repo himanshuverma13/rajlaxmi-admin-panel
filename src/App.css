@@ -46,8 +46,12 @@ foreignObject{
 
 .left-sidebar .scroll-sidebar {
   padding: 0 16px;
-  overflow-y: hidden !important;
+  /* overflow-y: hidden !important; */
   height: calc(100% - 70px);
+}
+
+.scroll-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 

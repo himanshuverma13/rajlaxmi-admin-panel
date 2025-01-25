@@ -185,7 +185,7 @@ const Sidebar = () => {
             <NavLink to={"/feedback"}>
               <li className="sidebar-item">
                 <a
-                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/userinfo" ? "primary-hover-bg-sidebar-active" : ""}`}
+                  className={`sidebar-link sidebar-link primary-hover-bg ${params?.pathname == "/feedback" ? "primary-hover-bg-sidebar-active" : ""}`}
 
                   aria-expanded="false"
                 >
