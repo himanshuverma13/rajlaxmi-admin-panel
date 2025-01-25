@@ -6,7 +6,6 @@ import { UserContext } from '../../Common/UseContext/usecontext';
 import { LuDot } from 'react-icons/lu';
 const ProductDetails = () => {
   const { CurrentProductDetails } = useContext(UserContext);
-  console.log('CurrentProductDetails: ', CurrentProductDetails);
 
   return (
     <>

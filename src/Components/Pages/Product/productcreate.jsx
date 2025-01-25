@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AddProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
+import { toast } from "react-toastify";
 const ProductCreate = () => {
   const {
     register,
@@ -35,21 +36,19 @@ const ProductCreate = () => {
     console.log("data: ", data);
 
     try {
-      // if (!SetImage || SetImage.length === 0) {
-      //   setimageError("At least one product image is required");
-      // } else {
+      if (!SetImage) {
+        setimageError("At least one product image is required");
+      } else {
       setimageError("");
       const productData = { ...data, product_image: images[0] }; // Attach multiple images to the product data
       setProductDetails([...productDetails, productData]);
-
       const response = await AddProductAPI(productData);
-      console.log('response: ', response);
-      // toast.success(response?.data?.message);
+      toast?.success(response?.data?.message);
 
       // fetchProducts();
       // setModalOpen(false);
-      // navigate('/product');
-      // }
+      navigate('/product');
+      }
     } catch (error) {
       console.log("error: ", error);
     }
