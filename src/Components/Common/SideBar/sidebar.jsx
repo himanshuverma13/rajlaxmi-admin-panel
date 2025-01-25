@@ -71,7 +71,7 @@ const Sidebar = () => {
             {/* ============================= */}
             <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
-              <span className="hide-menu">UI Componenst</span>
+              <span className="hide-menu">Pages</span>
             </li>
             <NavLink>
               <li className="sidebar-item">
@@ -217,8 +217,7 @@ const Sidebar = () => {
 
             {/* ============================= */}
             {/* Auth */}
-            {/* ============================= */}
-            <li className="nav-small-cap">
+            {/* <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
               <span className="hide-menu">Auth</span>
             </li>
@@ -245,20 +244,17 @@ const Sidebar = () => {
                 </span>
                 <span className="hide-menu ps-1">Register</span>
               </a>
-            </li>
-
-            {/* ============================= */}
-            {/* Upgrade to Pro */}
-            {/* ============================= */}
-            <li className="sidebar-item my-4">
-              <a
-                href="https://www.wrappixel.com/templates/spike-bootstrap-admin-dashboard/?ref=33"
-                target="_blank"
-                className="btn btn-primary d-block"
-              >
-                Upgrade to Pro
-              </a>
-            </li>
+            </li> */}
+            {/* Logout */}
+            <NavLink to={"/login"}>
+              <li className="sidebar-item my-2">
+                <button type="button"
+                  className="btn btn-primary d-block"
+                >
+                  Logout
+                </button>
+              </li>
+            </NavLink>
           </ul>
         </nav>
         {/* End Sidebar navigation */}

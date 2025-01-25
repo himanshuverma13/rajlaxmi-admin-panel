@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { useForm } from "react-hook-form";
 // import { FaRegUser, FaLock } from "react-icons/fa";
-
-import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { LoginAPI } from '../../APIs/api';
 import { UserContext } from '../../UseContext/usecontext';
+
+// Images
+import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
+import SideImg from '../../../Assets/images/Login-img/img1.png';
 const Login = () => {
     const {
         register,
@@ -16,8 +18,8 @@ const Login = () => {
     } = useForm();
 
 
-    const {navigate}  = useNavigate();
-     const { setUserLogin } = useContext(UserContext);
+    const { navigate } = useNavigate();
+    const { setUserLogin } = useContext(UserContext);
 
     const onSubmit = async (data) => {
         console.log('data: ', data);
@@ -27,7 +29,7 @@ const Login = () => {
                 password: data?.password,
             };
             // const response = (payload)
-              const response = await LoginAPI(payload);
+            const response = await LoginAPI(payload);
 
             reset();
             if (response?.data?.success) {
@@ -44,9 +46,14 @@ const Login = () => {
     };
     return (
         <>
-            <div className='container-fluid bg-light vh-100'>
+            <div className='container-fluid bg-light-gradient vh-100'>
                 <div className='row d-flex align-items-center justify-content-center pt-8'>
-                    <div className='col-lg-6'></div>
+                    <div className='col-lg-6 d-flex justify-content-center align-items-center'>
+                        <div className='Form-Side-Img'>
+                            <h1 className='fw-bold text-success text-center mt-3'><span className='text-warning'>Welcome,</span> To RajLaxmi</h1>
+                            <img className='mt-5 ms-2' src={SideImg} alt="" />
+                        </div>
+                    </div>
                     <div className='col-lg-6 d-flex align-items-center justify-content-center'>
                         {/* <div className="d-flex align-items-center justify-content-center shadow mt-5 w-100 z-1 position-relative"> */}
                         <div className="card auth-card mb-0 mx-3 shadow mt-5">
@@ -105,22 +112,8 @@ const Login = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="d-md-flex align-items-center justify-content-between mb-4">
-                                        <div className="form-check mb-3 mb-md-0">
-                                            <input
-                                                className="form-check-input primary"
-                                                type="checkbox"
-                                                defaultValue=""
-                                                id="flexCheckChecked"
-                                                defaultChecked=""
-                                            />
-                                            <label
-                                                className="form-check-label text-dark"
-                                                htmlFor="flexCheckChecked"
-                                            >
-                                                Remeber this Device
-                                            </label>
-                                        </div>
+                                    <div className="d-md-flex align-items-center justify-content-end mb-4">
+
                                         <NavLink to={"/forgot"}
                                             className="text-primary fw-medium"
                                         >

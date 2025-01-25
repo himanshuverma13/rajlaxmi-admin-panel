@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form"; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { ForgotAPI, ResetAPI } from "../../APIs/api"; // Import APIs
+import { toast } from "react-toastify";
+
 // Images
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
-import { toast } from "react-toastify";
+import SideImg from '../../../Assets/images/Login-img/img1.png';
 
 const Forgot = () => {
     const [step, setStep] = useState(1); // Step 1: Input email/mobile, Step 2: Input OTP
@@ -60,9 +62,14 @@ const Forgot = () => {
 
     return (
         <>
-            <div className='container-fluid bg-light vh-100'>
+            <div className='container-fluid bg-light-gradient vh-100'>
                 <div className='row d-flex align-items-center justify-content-center pt-8'>
-                    <div className='col-lg-6'></div>
+                    <div className='col-lg-6 d-flex justify-content-center align-items-center'>
+                        <div className='Form-Side-Img'>
+                            <h1 className='fw-bold text-success text-center mt-3'><span className='text-warning'>Welcome,</span> To RajLaxmi</h1>
+                            <img className='mt-5 ms-2' src={SideImg} alt="" />
+                        </div>
+                    </div>
                     <div className='col-lg-6 d-flex align-items-center justify-content-center'>
                         {/* <div className="d-flex align-items-center justify-content-center shadow mt-5 w-100 z-1 position-relative"> */}
                         <div className="card auth-card mb-0 mx-3 shadow mt-5">

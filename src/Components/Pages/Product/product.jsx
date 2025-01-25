@@ -14,6 +14,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import { DeleteProductAPI, GetProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
+import { LuDot } from "react-icons/lu";
 
 // Sample Product Data
 const productsData = [
@@ -129,6 +130,11 @@ const Product = () => {
           <Navbar />
           <div className="product-list">
             <div className="card">
+              <div className='mt-3 px-4'>
+                <h2 className='fw-bolder'>Product List</h2>
+                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product List</span>
+                </p>
+              </div>
               <div className="card-body p-3">
                 <div className="d-flex justify-content-between align-items-center gap-6 mb-3">
                   <form className="row ">
@@ -180,12 +186,7 @@ const Product = () => {
                     <thead className="table-light">
                       <tr>
                         <th scope="col">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                            />
-                          </div>
+                         S No.
                         </th>
                         <th scope="col">Products</th>
                         {/* <th scope="col">Description</th> */}
@@ -200,13 +201,10 @@ const Product = () => {
                     <tbody>
                       {productDetails?.map((product, index) => (
                         <tr key={product.id}>
-                          <td>
-                            <div className="form-check mb-0">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                              />
-                            </div>
+                          <td className="fw-bold">
+                            {/* <div className=" mb-0"> */}
+                            {++index}
+                            {/* </div> */}
                           </td>
                           <td>
                             <div className="d-flex align-items-center">

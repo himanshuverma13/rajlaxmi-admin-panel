@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AddProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
+import { LuDot } from "react-icons/lu";
 const ProductCreate = () => {
   const {
     register,
@@ -92,9 +93,12 @@ const ProductCreate = () => {
             <Navbar />
 
             <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="my-2 px-3">
+              <h2 className='fw-bolder'>Product Create</h2>
+                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Create </span>
+                </p>
+              </div>
               <div className="card p-4">
-                <h5>Product Details</h5>
-                {/* <small className="text-muted">Title, short description, image...</small> */}
                 <div className="row">
 
                   <div className="col-lg-6 mb-3">
