@@ -100,3 +100,17 @@ foreignObject{
   height: 60px;
   width: 60px;
 }
+
+.Form-Side-Img img{
+  height: 500px;
+  width: 100%;
+}
+.bg-light-gradient{
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.bg-red{
+  background: rgba(231, 13, 13, 0.1) !important;
+}
+.bg-green{
+  background-color: rgb(0, 128, 0 , 0.1);
+}

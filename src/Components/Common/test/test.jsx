@@ -113,7 +113,7 @@ const ProductTable = () => {
       </table>
 
     </div>
-      <div className="d-flex justify-content-between align-items-center mt-3">
+      <div className="d-flex bg-white justify-content-between align-items-center mt-3">
         <span>Rows per page: 10</span>
         <span>1-10 of {productData.length}</span>
       </div>
