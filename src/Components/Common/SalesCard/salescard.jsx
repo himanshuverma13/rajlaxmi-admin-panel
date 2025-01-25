@@ -3,7 +3,7 @@ import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import { HiBriefcase } from "react-icons/hi2";
 import { MdBarChart } from "react-icons/md";
 
-const SalesCard = () => {
+const SalesCard = ({SaleData}) => {
     const SalesCardData = [
         {
             count: "178+",
@@ -13,14 +13,14 @@ const SalesCard = () => {
             textColor: "text-primary"
         },
         {
-            count: "20+",
+            count: `${SaleData?.month?.data?.monthly_total_sales ?? "00"}+`,
             text: "Total Sales",
             icon:<MdBarChart className='' />,
             bgColor: "bg-warning bg-opacity-10",
             textColor: "text-warning"
         },
         {
-            count: "190+",
+            count: `${SaleData?.monthlyProfit ?? "00"} +`,
             text: "Total Profit",
             icon: <FaShoppingBag className='' />,
             bgColor: "bg-danger bg-opacity-10",
@@ -37,7 +37,7 @@ const SalesCard = () => {
     return (
         <>
             <div className="row g-4">
-                {SalesCardData.map((item, index) => (
+                {SalesCardData?.map((item, index) => (
                     <div key={index} className="col-md-3">
                         <div className="card border-0 shadow-sm rounded-4 p-4">
                             <div className="d-flex align-items-center">

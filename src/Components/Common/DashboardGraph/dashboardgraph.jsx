@@ -17,7 +17,6 @@ const DashboardGraph = () => {
   const FetchDasboardData = async () => {
     try {
       const saleData = await GetSaleReportAPI();
-      console.log('saleData: ', saleData);
       setChartData(saleData?.data);
     } catch (error) {
       console.log("error: ", error);
@@ -30,90 +29,7 @@ const DashboardGraph = () => {
 
   return (
     <>
-      {/* <div className="row">
-      {/* <div className="row">
-        <div class="col-lg-3">
-          <div class="card">
-          
-            <div class="card-body p-4 d-flex align-items-center gap-3">
-              <img
-                src={dashimg2}
-                alt="spike-img"
-                class="rounded-circle"
-                width="40"
-                height="40"
-              />
-              <div>
-                <h3 class=" mb-1 fw-bold">107 /-</h3>
-                <span class="fs-2 d-flex align-items-center">
-                Total Order
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="card">
-          
-            <div class="card-body p-4 d-flex align-items-center gap-3">
-              <img
-                src={dashimg1}
-                alt="spike-img"
-                class="rounded-circle"
-                width="40"
-                height="40"
-              />
-              <div>
-                <h3 class=" mb-1 fw-bold">107 /-</h3>
-                <span class="fs-2 d-flex align-items-center">
-                Total Sale
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="card">
-          
-            <div class="card-body p-4 d-flex align-items-center gap-3">
-              <img
-                src={dashimg3}
-                alt="spike-img"
-                class="rounded-circle"
-                width="40"
-                height="40"
-              />
-              <div>
-                <h3 class=" mb-1 fw-bold">107 /-</h3>
-                <span class="fs-2 d-flex align-items-center">
-                Total Profit
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="card">
-          
-            <div class="card-body p-4 d-flex align-items-center gap-3">
-              <img
-                src={dashimg4}
-                alt="spike-img"
-                class="rounded-circle"
-                width="40"
-                height="40"
-              />
-              <div>
-                <h3 class=" mb-1 fw-bold">107 /-</h3>
-                <span class="fs-2 d-flex align-items-center">
-                Total Products
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-      </div> */}
       <div className="row">
         <div className="col-lg-8 d-flex align-items-strech">
           <div className="card w-100">
@@ -170,26 +86,7 @@ const DashboardGraph = () => {
                   Analytics
                   </h5>
                   <div className="row align-items-center">
-                    {/* <div className="col-7">
-                      <h4 className="fw-semibold mb-3">$36,358</h4>
-                      <div className="d-flex align-items-center mb-2">
-                        <span className="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
-                          <i className="ti ti-arrow-up-left text-success" />
-                        </span>
-                        <p className="text-dark me-1 fs-3 mb-0">+9%</p>
-                        <p className="fs-3 mb-0">last year</p>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <div className="me-3">
-                          <span className="round-8 bg-primary rounded-circle me-2 d-inline-block" />
-                          <span className="fs-2">Oragnic</span>
-                        </div>
-                        <div>
-                          <span className="round-8 bg-danger rounded-circle me-2 d-inline-block" />
-                          <span className="fs-2">Refferal</span>
-                        </div>
-                      </div>
-                    </div> */}
+          
                     <div className="col-12">
                       <div className="d-flex justify-content-center">
                         <div id="grade" />

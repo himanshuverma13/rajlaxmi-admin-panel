@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import ApexCharts from 'react-apexcharts';
 
-const DonutChart = () => {
-  const [series, setSeries] = useState([44, 55, 13, 33]);
+const DonutChart = ({DonutChartData}) => {
+  const weeklyData = DonutChartData?.week?.data || [];
+
+  // Extract data for Monthly and Weekly datasets
+  const weekValue = weeklyData?.map((item) =>
+    parseInt(item?.daily_total_sales, 10)
+);
+console.log('weekValue: ', weekValue);
+
+
+  const [series, setSeries] = useState([...weekValue , ...[440, 550, 130, 33]]);
   
   const options = {
     chart: {
