@@ -36,9 +36,9 @@ const DashboardGraph = () => {
             <div className="card-body">
               <div className="d-flex align-items-center justify-content-between mb-10">
                 <div className="">
-                  <h5 className="card-title fw-semibold">
-                    Profit &amp; Expenses
-                  </h5>
+                    <h5 className="card-title fw-semibold">
+                      Monthly Data
+                    </h5>
                 </div>
                 <div className="dropdown">
                   <button

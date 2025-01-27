@@ -93,6 +93,12 @@ foreignObject{
   .left-sidebar.closed {
     left: -270px; /* Hidden sidebar */
   }
+  .note-date{
+    width: 80%;
+  }
+  .form-Side-Img{
+    width: auto;
+  }
 }
 
 /* Login & Registration */
@@ -101,7 +107,7 @@ foreignObject{
   width: 60px;
 }
 
-.Form-Side-Img img{
+.form-Side-Img img{
   height: 500px;
   width: 100%;
 }

@@ -46,36 +46,36 @@ const Product = () => {
 
 
   const [productDetails, setProductDetails] = useState([]);
-const [searchQuery, setSearchQuery] = useState("");
-const [filteredProducts, setFilteredProducts] = useState([]);
-const [stockFilter, setStockFilter] = useState("all"); // New state to handle stock filter
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [stockFilter, setStockFilter] = useState("all"); // New state to handle stock filter
 
-const { setCurrentProductDetails } = useContext(UserContext);
+  const { setCurrentProductDetails } = useContext(UserContext);
 
-const fetchProducts = async () => {
-  const response = await GetProductAPI();
-  console.log('response: ', response);
-  setProductDetails(response?.products);
-};
+  const fetchProducts = async () => {
+    const response = await GetProductAPI();
+    console.log('response: ', response);
+    setProductDetails(response?.products);
+  };
 
-useEffect(() => {
-  fetchProducts();
-}, []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-useEffect(() => {
-  // Filter products by search query and stock filter
-  let filtered = productDetails?.filter((product) =>
-    product?.product_name?.toLowerCase()?.includes(searchQuery?.toLowerCase())
-  );
+  useEffect(() => {
+    // Filter products by search query and stock filter
+    let filtered = productDetails?.filter((product) =>
+      product?.product_name?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+    );
 
-  if (stockFilter === "more") {
-    filtered = filtered?.filter((product) => product?.product_stock > 5);
-  } else if (stockFilter === "less") {
-    filtered = filtered?.filter((product) => product?.product_stock < 5);
-  }
+    if (stockFilter === "more") {
+      filtered = filtered?.filter((product) => product?.product_stock > 5);
+    } else if (stockFilter === "less") {
+      filtered = filtered?.filter((product) => product?.product_stock < 5);
+    }
 
-  setFilteredProducts(filtered);
-}, [searchQuery, productDetails, stockFilter]);
+    setFilteredProducts(filtered);
+  }, [searchQuery, productDetails, stockFilter]);
 
   const handleProductDelete = async (item) => {
     try {
@@ -141,19 +141,21 @@ useEffect(() => {
                 </p>
               </div>
               <div className="card-body p-3">
-                <div className="d-flex justify-content-between align-items-center gap-6 mb-3">
-                  <form className="row w-50">
-                  <select
-                    className="form-select col-lg-2 w-50"
-                    aria-label="Default select example"
-                    value={stockFilter}
-                    onChange={(e) => setStockFilter(e.target.value)} // Update stock filter state
-                  >
-                    <option value="all">Stock</option>
-                    <option value="more">+5</option>
-                    <option value="less">-5</option>
-                  </select>
-                    <div className="col-lg-6 position-relative">
+                <div className="mb-3">
+                  <form className="row gap-2">
+                    <div className="col-md-4">
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={stockFilter}
+                        onChange={(e) => setStockFilter(e.target.value)} // Update stock filter state
+                      >
+                        <option value="all">Stock</option>
+                        <option value="more">+5</option>
+                        <option value="less">-5</option>
+                      </select>
+                    </div>
+                    <div className="col-md-4 position-relative ">
                       <input
                         type="text"
                         className="form-control search-chat py-2 ps-5"
