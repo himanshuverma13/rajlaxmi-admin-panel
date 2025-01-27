@@ -8,6 +8,7 @@ import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
 import { toast } from "react-toastify";
 import dummyimg from "../../Assets/images/products/dummy.jpg";
+import LoaderButton from "../../Common/LoaderButton/loaderButton";
 const ProductCreate = () => {
   const {
     register,
@@ -20,13 +21,13 @@ const ProductCreate = () => {
 
   const [imageError, setimageError] = useState("");
   const [images, setImages] = useState([]); // To store multiple images
-
+const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const SetImage = watch("product_image"); // Ensure that this is an array of images now
 
   const onSubmit = async (data) => {
-
+    setLoading(true);
     try {
       if (!images) {
         setimageError("At least one product image is required");
@@ -41,6 +42,8 @@ const ProductCreate = () => {
       }
     } catch (error) {
       toast?.success(error?.response?.data?.message);
+      setLoading(false);
+
     }
   };
 
@@ -99,7 +102,7 @@ const ProductCreate = () => {
                       type="text"
                       className="form-control"
                       id="product_name"
-                      placeholder="Product name"
+                      placeholder="Enter Product"
                       {...register("product_name", {
                         required: "Name is required",
                       })}
@@ -142,7 +145,7 @@ const ProductCreate = () => {
                       type="number"
                       className="form-control"
                       id="product_stock"
-                      placeholder="Enter price"
+                      placeholder="Enter Stock"
                       {...register("product_stock", {
                         required: "Stock is required",
                         min: {
@@ -166,7 +169,7 @@ const ProductCreate = () => {
                       type="text"
                       className="form-control"
                       id="product_category"
-                      placeholder="Enter product code"
+                      placeholder="Enter Category"
                       {...register("product_category", {
                         required: "Category is required",
                       })}
@@ -186,6 +189,7 @@ const ProductCreate = () => {
                       type="number"
                       className="form-control"
                       id="product_quantity"
+                      placeholder="Enter Quantity"
                       {...register("product_quantity", {
                         required: "Quantity is required",
                         min: {
@@ -201,7 +205,7 @@ const ProductCreate = () => {
                     )}
                   </div>
                   <div className="col-lg-6 mb-3">
-                    <label className="form-label">Select</label>
+                    <label className="form-label">Select Website</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
@@ -328,9 +332,10 @@ const ProductCreate = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary w-auto px-5">
+              <LoaderButton text={`Submit`} styleClass={`btn btn-primary mb-4 rounded-pill`} loadingButtonStatus={loading} />
+              {/* <button type="submit" className="btn btn-primary w-auto px-5">
                 Submit
-              </button>
+              </button> */}
             </form>
           </div>
         </div>

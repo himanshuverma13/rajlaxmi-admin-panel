@@ -55,7 +55,7 @@ const Login = () => {
             <div className='container-fluid bg-light-gradient vh-100'>
                 <div className='row d-flex align-items-center justify-content-center pt-8'>
                     <div className='col-lg-6 d-flex justify-content-center align-items-center'>
-                        <div className='Form-Side-Img'>
+                        <div className='form-Side-Img'>
                             <h1 className='fw-bold text-success text-center mt-3'><span className='text-warning'>Welcome,</span> To RajLaxmi</h1>
                             <img className='mt-5 ms-2' src={SideImg} alt="" />
                         </div>
@@ -126,7 +126,7 @@ const Login = () => {
                                             Forgot Password ?
                                         </NavLink>
                                     </div>
-                                  
+
                                     <LoaderButton text={`Sign In`} styleClass={`btn btn-primary w-100 mb-4 rounded-pill`} loadingButtonStatus={loading} />
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-medium">Don't have an account?</p>

@@ -10,7 +10,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/01/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Completed",
   },
@@ -20,7 +22,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/02/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Pending",
   },
@@ -30,7 +34,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/03/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Cancelled",
   },
@@ -40,7 +46,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/04/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Completed",
   },
@@ -50,7 +58,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/05/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Pending",
   },
@@ -60,7 +70,9 @@ const data = [
     user_mobile_num: 2813245678,
     user_date: '07/06/25',
     user_city: "New York",
+    user_state: "dasdkf",
     user_country: "USA",
+    user_pincode: 232345,
     user_total_amount: "12345",
     status: "Cancelled",
   },
@@ -71,7 +83,7 @@ const OrderList = () => {
   const [endDate, setEndDate] = useState('');
   const [searchId, setSearchId] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [Orders , setOrders] = useState()
+  const [Orders, setOrders] = useState()
   const rowsPerPage = 5;
   const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
   const getTabColor = (tab) => {
@@ -93,21 +105,21 @@ const OrderList = () => {
     setCurrentPage(1);
   };
 
-    const [OrderDetails, setOrderDetails] = useState();
-  
-    const FetchOrderDetails = async () => {
-      try {
-        const response = await GetAllOrderDetailsAPI();
-        setOrderDetails(response);
-      } catch (error) {
-        console.log("error: ", error);
-      }
-    };
-  
-    useEffect(() => {
-      FetchOrderDetails();
-    }, []);
-  
+  const [OrderDetails, setOrderDetails] = useState();
+
+  const FetchOrderDetails = async () => {
+    try {
+      const response = await GetAllOrderDetailsAPI();
+      setOrderDetails(response);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchOrderDetails();
+  }, []);
+
 
   const filteredData = (OrderDetails || data)?.filter(
     (row) => activeTab === "All" || row.status === activeTab
@@ -119,11 +131,11 @@ const OrderList = () => {
 
   const CurrentSearchFilter = data?.filter((row) => {
     const isWithinDateRange =
-    (!startDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
-    (!endDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
+      (!startDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
+      (!endDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
     const isMatchingId = searchId ? row?.user_id?.toString()?.includes(searchId) : true;
     const isMatchingStatus = activeTab === "All" || row?.status === activeTab;
-    
+
     return isWithinDateRange && isMatchingId && isMatchingStatus;
   });
   console.log('CurrentSearchFilter: ', CurrentSearchFilter);
@@ -161,7 +173,7 @@ const OrderList = () => {
                     {tab}
                   </span>
                   <span
-                     className={`mx-1 px-1 rounded ${activeTab === tab
+                    className={`mx-1 px-1 rounded ${activeTab === tab
                       ? "fs-3 text-primary  fw-bold bg-primary text-white"
                       : getTabColor(tab)
                       }`}
@@ -282,8 +294,10 @@ const OrderList = () => {
                         <h6 className="mb-0 fs-4">{row?.user_total_amount}</h6>
                       </td>
                       <td>
-                        <div className={`badge rounded-pill ${row.status === "Cancelled" ? "bg-red text-danger" : "bg-green text-success"}`}>
-                          <span className={`fw-bold`}> {row.status}</span>
+                        <div className={`badge rounded-pill ${row.status === "Cancelled" ? "bg-red text-danger" :
+                            row.status === "Pending" ? "bg-yellow text-warning" :
+                              row.status === "Completed" ? "bg-green text-success" : ""
+                          }`}>                          <span className={`fw-bold`}> {row.status}</span>
                         </div>
                       </td>
                       <td>
@@ -307,7 +321,7 @@ const OrderList = () => {
                           >
                             <i className="ti ti-dots-vertical fs-7 d-block" />
                           </button>
-                          <ul
+                          {/* <ul
                             className="dropdown-menu dropdown-menu-end"
                             aria-labelledby="dropdownMenuButton1"
                             style={{
@@ -333,7 +347,7 @@ const OrderList = () => {
                                 Something else here
                               </a>
                             </li>
-                          </ul>
+                          </ul> */}
                         </div>
                       </td>
                     </tr>
@@ -352,7 +366,7 @@ const OrderList = () => {
                                 />
                                 <div className="ms-3">
                                   <h6 className="mb-0 fs-2">
-                                   Pincode
+                                    Pincode
                                   </h6>
                                   <p className="mb-0">{row?.user_pincode}</p>
                                 </div>
@@ -374,7 +388,7 @@ const OrderList = () => {
               </tbody>
             </table>
             <div className="d-flex align-items-center justify-content-end py-1">
-              
+
               <div className="d-flex align-items-center justify-content-end py-2">
                 <div
                   className="fs-5 me-2"

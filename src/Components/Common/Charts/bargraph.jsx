@@ -74,7 +74,7 @@ const BarChart = ({BarChartData}) => {
 
   return (
     <div>
-      <h2>Financial Overview</h2>
+      {/* <h2>Financial Overview</h2> */}
       <div id="chart">
         <ApexCharts options={options} series={options.series} type="bar" height={350} />
       </div>

@@ -40,52 +40,52 @@ const FeedbackCards = () => {
         </p>
       </div>
       {Feedback?.map((item) => (
-        <div class="col-md-4 single-note-item all-category">
-          <div class="card card-body">
-            <span class="side-stick"></span>
+        <div className="col-md-4 single-note-item all-category">
+          <div className="card card-body">
+            <span className="side-stick"></span>
             <div className="d-flex mb-3">
               <img width={50} className="me-3 rounded-circle" src={feedimg} alt="" />
               <div className="text-start">
                 <h6
-                  class="note-title text-truncate w-75 mb-0"
+                  className="note-title text-truncate w-75 mb-0"
                   data-noteheading="Book a Ticket for Movie"
                 >
                   {" "}
                   {item?.name}{" "}
                 </h6>
-                <p class="note-date fs-2">{item?.email}</p>
+                <p className="note-date fs-2 text-truncate">{item?.email}</p>
               </div>
 
             </div>
-            <div class="note-content">
+            <div className="note-content">
               <h6
-                class="note-title fs-4 fw-bold text-start text-truncate w-75 mb-1"
+                className="note-title fs-4 fw-bold text-start text-truncate w-75 mb-1"
                 data-noteheading="Book a Ticket for Movie"
               >
                 {" "}
                 Book a Ticket for Movie{" "}
               </h6>
               <p
-                class="note-inner-content"
+                className="note-inner-content"
                 data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis."
               >
                 {" "}
                 {item?.feedback}{" "}
               </p>
             </div>
-            <div class="d-flex align-items-center">
-              <a href="javascript:void(0)" class="link me-1">
-                <i class="ti ti-star fs-4 favourite-note"></i>
+            <div className="d-flex align-items-center">
+              <a href="javascript:void(0)" className="link me-1">
+                <i className="ti ti-star fs-4 favourite-note"></i>
               </a>
-              <a class="link text-danger ms-2" onClick={() => DeleteFeedback(item?.user_id)}>
-                <i class="ti ti-trash fs-4 remove-note"></i>
+              <a className="link text-danger ms-2" onClick={() => DeleteFeedback(item?.user_id)}>
+                <i className="ti ti-trash fs-4 remove-note"></i>
               </a>
-              <div class="ms-auto">
-                <div class="category-selector btn-group">
+              <div className="ms-auto">
+                {/* <div class="category-selector btn-group">
                   <a
                     class="nav-link category-dropdown label-group p-0"
                     data-bs-toggle="dropdown"
-                    href="javascript:void(0)"
+                    href="#"
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="true"
@@ -99,53 +99,53 @@ const FeedbackCards = () => {
                       </span>
                     </div>
                   </a>
-                  {/* <div class="dropdown-menu dropdown-menu-right category-menu">
-                    <a
-                      class="
-                                  note-business
-                                  badge-group-item badge-business
-                                  dropdown-item
-                                  position-relative
-                                  category-business
-                                  d-flex
-                                  align-items-center
-                                "
-                      href="javascript:void(0);"
-                    >
-                      Business
-                    </a>
-                    <a
-                      class="
-                                  note-social
-                                  badge-group-item badge-social
-                                  dropdown-item
-                                  position-relative
-                                  category-social
-                                  d-flex
-                                  align-items-center
-                                "
-                      href="javascript:void(0);"
-                    >
-                      {" "}
-                      Social
-                    </a>
-                    <a
-                      class="
-                                  note-important
-                                  badge-group-item badge-important
-                                  dropdown-item
-                                  position-relative
-                                  category-important
-                                  d-flex
-                                  align-items-center
-                                "
-                      href="javascript:void(0);"
-                    >
-                      {" "}
-                      Important
-                    </a>
-                  </div> */}
-                </div>
+                    <div class="dropdown-menu dropdown-menu-right category-menu">
+                      <a
+                        class="
+                                    note-business
+                                    badge-group-item badge-business
+                                    dropdown-item
+                                    position-relative
+                                    category-business
+                                    d-flex
+                                    align-items-center
+                                  "
+                        href="javascript:void(0);"
+                      >
+                        Business
+                      </a>
+                      <a
+                        class="
+                                    note-social
+                                    badge-group-item badge-social
+                                    dropdown-item
+                                    position-relative
+                                    category-social
+                                    d-flex
+                                    align-items-center
+                                  "
+                        href="javascript:void(0);"
+                      >
+                        {" "}
+                        Social
+                      </a>
+                      <a
+                        class="
+                                    note-important
+                                    badge-group-item badge-important
+                                    dropdown-item
+                                    position-relative
+                                    category-important
+                                    d-flex
+                                    align-items-center
+                                  "
+                        href="javascript:void(0);"
+                      >
+                        {" "}
+                        Important
+                      </a>
+                    </div>
+                </div> */}
               </div>
             </div>
           </div>

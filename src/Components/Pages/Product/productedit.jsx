@@ -9,6 +9,7 @@ import { LuDot } from "react-icons/lu";
 import { toast } from "react-toastify";
 import dummyimg from "../../Assets/images/products/dummy.jpg";
 import { useNavigate } from "react-router-dom";
+import LoaderButton from "../../Common/LoaderButton/loaderButton";
 const ProductEdit = () => {
   const {
     register,
@@ -21,7 +22,7 @@ const ProductEdit = () => {
 
   const { CurrentProductDetails } = useContext(UserContext);
 
-  
+
   useEffect(() => {
     setValue("product_name", CurrentProductDetails?.product_name);
     setValue("product_description", CurrentProductDetails?.product_description);
@@ -47,7 +48,7 @@ const ProductEdit = () => {
   const [imageError, setimageError] = useState("");
   const [images, setImages] = useState([]);
 
-
+  const [loading, setLoading] = useState(false);
   const handleImageUpload = (event) => {
     const files = event.target.files;
     if (files.length > 0) {
@@ -58,8 +59,8 @@ const ProductEdit = () => {
         reader.onloadend = () => {
           newImages.push(reader.result); // Store the image result (data URL)
           if (newImages?.length === files?.length) {
-            
-            setImages((prev)=>[...prev,...newImages]); // Update the state with all uploaded images
+
+            setImages((prev) => [...prev, ...newImages]); // Update the state with all uploaded images
           }
         };
         reader.readAsDataURL(file);
@@ -71,12 +72,13 @@ const ProductEdit = () => {
   const onSubmit = async (data) => {
     const productData = { ...data, product_image: images };
     console.log("productData: ", productData);
+    setLoading(true);
     try {
       if (!images) {
         setimageError("product image required");
       } else {
         setimageError("");
-        const productData = { ...data, product_image: images};
+        const productData = { ...data, product_image: images };
         console.log('productData: ', productData);
         setProductDetails(productData);
         const response = await UpdateProductAPI(
@@ -88,6 +90,7 @@ const ProductEdit = () => {
       }
     } catch (error) {
       toast?.error(error?.response?.message);
+      setLoading(false);
     }
   };
 
@@ -123,17 +126,17 @@ const ProductEdit = () => {
                   <span className="text-muted">Product Edit</span>
                 </p>
               </div>
-              <div class="card p-4">
+              <div className="card p-4">
                 <div className="row">
-                  <div class="col-lg-6 mb-2">
-                    <label for="productName" class="form-label">
+                  <div className="col-lg-6 mb-2">
+                    <label for="productName" className="form-label">
                       Product Name
                     </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="product_name"
-                      placeholder="Product name"
+                      placeholder="Enter Product"
                       {...register("product_name", {
                         required: "Name is required",
                       })}
@@ -145,11 +148,11 @@ const ProductEdit = () => {
                     )}
                   </div>
 
-                  <div class="col-lg-6 form-group mb-2">
-                    <label for="product_price">Price</label>
+                  <div className="col-lg-6 form-group mb-2">
+                    <label for="product_price" className="form-label">Price</label>
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="product_price"
                       placeholder="Enter price"
                       {...register("product_price", {
@@ -167,13 +170,13 @@ const ProductEdit = () => {
                     )}
                   </div>
 
-                  <div class="col-lg-6 form-group mb-2">
-                    <label for="product_stock">Stock</label>
+                  <div className="col-lg-6 form-group mb-2">
+                    <label for="product_stock" className="form-label">Stock</label>
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="product_stock"
-                      placeholder="Enter price"
+                      placeholder="Enter Stock"
                       {...register("product_stock", {
                         required: "Stock is required",
                         min: {
@@ -188,13 +191,13 @@ const ProductEdit = () => {
                       </span>
                     )}
                   </div>
-                  <div class="col-lg-6 form-group mb-2">
-                    <label for="product_category">Category</label>
+                  <div className="col-lg-6 form-group mb-2">
+                    <label for="product_category" className="form-label">Category</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="product_category"
-                      placeholder="Enter product code"
+                      placeholder="Enter Category"
                       {...register("product_category", {
                         required: "Category is required",
                       })}
@@ -205,12 +208,13 @@ const ProductEdit = () => {
                       </span>
                     )}
                   </div>
-                  <div class="col-lg-6 form-group mb-2">
-                    <label for="product_quantity">Quantity</label>
+                  <div className="col-lg-6 form-group mb-2">
+                    <label for="product_quantity" className="form-label">Quantity</label>
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="product_quantity"
+                      placeholder="Enter Quantity"
                       {...register("product_quantity", {
                         required: "Quantity is required",
                         min: {
@@ -226,7 +230,7 @@ const ProductEdit = () => {
                     )}
                   </div>
                   <div className="col-lg-6 form-group mb-2">
-                    <label>Select</label>
+                    <label className="form-label">Select Website</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
@@ -249,19 +253,19 @@ const ProductEdit = () => {
               <div className="card p-4">
                 {/* <h1 class="mb-4">Product Form</h1> */}
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card mb-3">
-                      {/* <div class="card-header">
-                                                <h5 class="card-title">Properties</h5>
-                                            </div> */}
-                      <div class="card-body">
-                        <div class="mb-3">
-                          <label for="product_description" class="form-label">
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="card mb-3">
+                      {/* <div className="card-header">
+                            <h5 className="card-title">Properties</h5>
+                         </div> */}
+                      <div className="card-body">
+                        <div className="mb-3">
+                          <label for="product_description" className="form-label">
                             Product Description
                           </label>
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             id="product_description"
                             rows="3"
                             placeholder="Description"
@@ -279,84 +283,85 @@ const ProductEdit = () => {
                     </div>
                   </div>
                   <div className="row">
-                  <h5 className="card-title py-0">
-                          Uploaded Product Images
-                        </h5>
-                        <div className="col-md-6">
-                          <div className="card-body p-0">
-                            <div className="container d-flex justify-content-center align-items-center">
-                              <div className="card p-4 border-0 shadow w-100">
-                                <div
-                                  className="border border-primary border-dashed p-4 text-center rounded"
-                                  style={{
-                                    borderStyle: "dashed",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() =>
-                                    document.getElementById("fileInput").click()
-                                  }
-                                >
-                                  {SetImage ? (
-                                    <img
-                                      src={dummyimg}
-                                      alt="Uploaded Preview"
-                                      className="img-fluid rounded w-50"
-                                    />
-                                  ) : (
-                                    <>
-                                      <img
-                                        src={dummyimg}
-                                        alt="Upload Icon"
-                                        className="w-25"
-                                      />
-                                      <p className="text-muted">
-                                        Click to browse
-                                      </p>
-                                    </>
-                                  )}
-                                </div>
-
-                                <input
-                                  type="file"
-                                  id="fileInput"
-                                  multiple
-                                  className="d-none"
-                                  accept="image/*"
-                                  onChange={handleImageUpload}
+                    <h5 className="card-title py-0">
+                      Uploaded Product Images
+                    </h5>
+                    <div className="col-md-6">
+                      <div className="card-body p-0">
+                        <div className="container d-flex justify-content-center align-items-center">
+                          <div className="card p-4 border-0 shadow w-100">
+                            <div
+                              className="border border-primary border-dashed p-4 text-center rounded"
+                              style={{
+                                borderStyle: "dashed",
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                document.getElementById("fileInput").click()
+                              }
+                            >
+                              {SetImage ? (
+                                <img
+                                  src={dummyimg}
+                                  alt="Uploaded Preview"
+                                  className="img-fluid rounded w-50"
                                 />
-
-                                {imageError && (
-                                  <span
-                                    className={`text-danger ${
-                                      images[0] ? "d-none" : ""
-                                    }`}
-                                  >
-                                    {imageError}
-                                  </span>
-                                )}
-                              </div>
+                              ) : (
+                                <>
+                                  <img
+                                    src={dummyimg}
+                                    alt="Upload Icon"
+                                    className="w-25"
+                                  />
+                                  <p className="text-muted">
+                                    Click to browse
+                                  </p>
+                                </>
+                              )}
                             </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 ">
-                          <div className="row">
-                          {images?.map((i,index)=>
-                          <>
-                          <div className="col-lg-3 d-flex">
-                          <img src={i} className="border border-info border-dashed rounded-4 shadow m-2"  width={100} height={100} alt="" />
-                          <span className=" cursor-pointer" onClick={() => handleImgRemove(index)}>x</span>
-                          </div>
-                          </>
-                          )}
 
+                            <input
+                              type="file"
+                              id="fileInput"
+                              multiple
+                              className="d-none"
+                              accept="image/*"
+                              onChange={handleImageUpload}
+                            />
+
+                            {imageError && (
+                              <span
+                                className={`text-danger ${images[0] ? "d-none" : ""
+                                  }`}
+                              >
+                                {imageError}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div className="col-lg-6 ">
+                      <div className="row">
+                        {images?.map((i, index) =>
+                          <>
+                            <div className="col-lg-3 d-flex">
+                              <img src={i} className="border border-info border-dashed rounded-4 shadow m-2" width={100} height={100} alt="" />
+                              <span className=" cursor-pointer" onClick={() => handleImgRemove(index)}>x</span>
+                            </div>
+                          </>
+                        )}
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary w-auto px-5">
+              <LoaderButton text={`Submit`} styleClass={`btn btn-primary mb-4 rounded-pill`} loadingButtonStatus={loading} />
+
+              {/* <button type="submit" className="btn btn-primary w-auto px-5">
                 Submit
-              </button>
+              </button> */}
             </form>
           </div>
         </div>
