@@ -115,6 +115,7 @@ const Sidebar = () => {
                   <div
                     id="collapseProduct"
                     className={`accordion-collapse collapse ${
+                      params?.pathname == "/product" ||
                       params?.pathname == "/productdetails" ||
                       params?.pathname == "/productedit" ||
                       params?.pathname == "/productcreate"
@@ -125,10 +126,10 @@ const Sidebar = () => {
                     data-bs-parent="#productAccordion"
                   >
                     <div className="accordion-body p-0 ">
-                      <ul className="list-unstyled ms-2">
+                      <ul className="list-unstyled tree-menu ms-2">
                         <NavLink to={"/product"} className="sidebar-link">
                           <li className="sidebar-item">
-                            <span className="sidebar-icon mx-3">1</span>
+                            {/* <span className="sidebar-icon mx-3">1</span> */}
                             <span className="hide-menu">List</span>
                           </li>
                         </NavLink>
@@ -137,19 +138,19 @@ const Sidebar = () => {
                           className="sidebar-link"
                         >
                           <li className="sidebar-item">
-                            <span className="sidebar-icon mx-3">2</span>
+                            {/* <span className="sidebar-icon mx-3">2</span> */}
                             <span className="hide-menu">Details</span>
                           </li>
                         </NavLink>
                         <NavLink to={"/productedit"} className="sidebar-link">
                           <li className="sidebar-item">
-                            <span className="sidebar-icon mx-3">3</span>
+                            {/* <span className="sidebar-icon mx-3">3</span> */}
                             <span className="hide-menu">Edit</span>
                           </li>
                         </NavLink>
                         <NavLink to={"/productcreate"} className="sidebar-link">
                           <li className="sidebar-item">
-                            <span className="sidebar-icon mx-3">4</span>
+                            {/* <span className="sidebar-icon mx-3">4</span> */}
                             <span className="hide-menu">Create</span>
                           </li>
                         </NavLink>

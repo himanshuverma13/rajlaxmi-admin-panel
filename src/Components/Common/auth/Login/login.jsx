@@ -52,7 +52,7 @@ const Login = () => {
     };
     return (
         <>
-            <div className='container-fluid bg-light-gradient vh-100'>
+            <div className='container-fluid bg-light-gradient min-vh-100'>
                 <div className='row d-flex align-items-center justify-content-center pt-8'>
                     <div className='col-lg-6 d-flex justify-content-center align-items-center'>
                         <div className='form-Side-Img'>
