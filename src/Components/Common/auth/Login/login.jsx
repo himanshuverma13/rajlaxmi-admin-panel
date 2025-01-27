@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from "react-hook-form";
 // import { FaRegUser, FaLock } from "react-icons/fa";
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { UserContext } from '../../UseContext/usecontext';
 // Images
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 import SideImg from '../../../Assets/images/Login-img/img1.png';
+import LoaderButton from '../../LoaderButton/loaderButton';
 const Login = () => {
     const {
         register,
@@ -20,6 +21,7 @@ const Login = () => {
 
     const { navigate } = useNavigate();
     const { setUserLogin } = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data) => {
         console.log('data: ', data);
@@ -28,6 +30,7 @@ const Login = () => {
                 email: data?.username,
                 password: data?.password,
             };
+            setLoading(true)
             // const response = (payload)
             const response = await LoginAPI(payload);
 
@@ -36,12 +39,15 @@ const Login = () => {
                 setUserLogin(response?.data?.message);
                 localStorage.setItem("userDetails", JSON.stringify(response));
                 toast.success(response?.data?.message);
+                setLoading(false);
                 navigate("/"); // ✅ Use navigate instead of window.location
-                window.location = "/"
+                // window.location = "/"
             }
             toast.error(response?.data?.message);
+            setLoading(false)
         } catch (error) {
             toast.error(error?.response?.data?.message);
+            setLoading(false);
         }
     };
     return (
@@ -120,12 +126,8 @@ const Login = () => {
                                             Forgot Password ?
                                         </NavLink>
                                     </div>
-                                    <button
-                                        type='submit'
-                                        className="btn btn-primary w-100 mb-4 rounded-pill"
-                                    >
-                                        Sign In
-                                    </button>
+                                  
+                                    <LoaderButton text={`Sign In`} styleClass={`btn btn-primary w-100 mb-4 rounded-pill`} loadingButtonStatus={loading} />
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-medium">Don't have an account?</p>
                                         <NavLink to={"/register"}

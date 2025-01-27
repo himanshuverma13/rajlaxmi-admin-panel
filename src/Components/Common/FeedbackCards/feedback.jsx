@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import feedimg from '../../Assets/images/profile/user2.jpg'
 import { DeleteFeedbackAPI, FeedbackAPI } from "../APIs/api";
 import { LuDot } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 const FeedbackCards = () => {
 
@@ -24,10 +25,9 @@ const FeedbackCards = () => {
   const DeleteFeedback = async (id) => {
     try {
       const response = await DeleteFeedbackAPI(id)
-      console.log('response: ', response);
-      //  toast?.success(response?.message)
+       toast?.success(response?.message)
     } catch (error) {
-      // toast?.success(error?.message)
+      toast?.error(error?.message)
     }
 
   }
