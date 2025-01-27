@@ -1,10 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import profile from "../../Assets/images/profile/user1.jpg";
 import { UserContext } from "../UseContext/usecontext";
 import { useNavigate } from "react-router-dom";
+import { GetUserDetailsAPI } from "../APIs/api";
 const Navbar = () => {
   const { toggleSidebar ,setUserLogin} = useContext(UserContext);
+
   const navigation = useNavigate()
+
+  const [UserDTLS, setUserDTLS] = useState()
+
+          const fetchUserDetails = async () => {
+            const response = await GetUserDetailsAPI();
+           setUserDTLS(response?.user)
+            
+          };
+
+          useEffect(() => {
+            fetchUserDetails();
+          }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("userDetails");
@@ -68,8 +82,8 @@ const Navbar = () => {
                       />
                       <div class="ms-3">
                         <div class="user-meta-info">
-                          <h6 class="user-name mb-0">Emma Adams</h6>
-                          <span class="user-work fs-3">Web Developer</span>
+                          <h6 class="user-name mb-0 text-uppercase">{UserDTLS?.userName || "unknown"}</h6>
+                          <span class="user-work fs-3">{UserDTLS?.email || "unknown"}</span>
                         </div>
                       </div>
                     </div>
