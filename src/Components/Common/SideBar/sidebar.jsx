@@ -6,11 +6,11 @@ import { UserContext } from "../UseContext/usecontext";
 import Logo from "../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 
 const Sidebar = () => {
+    const { setUserLogin} = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false); // State to control collapse
 
   const params = useLocation();
   const navigation = useNavigate();
-  console.log("params: ", params?.pathname);
 
   const { toggleSidebar, isSidebarOpen } = useContext(UserContext);
 
@@ -20,6 +20,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userDetails");
+    setUserLogin('')
     navigation("/login");
   };
 

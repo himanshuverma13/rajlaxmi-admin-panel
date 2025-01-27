@@ -2,7 +2,7 @@ import axios from "axios";
 
 const URL = process.env.REACT_APP_API;
 const WTHRURL = process.env.REACT_APP_API_WEATHER;
-const Token = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
+const Token = JSON?.parse(localStorage?.getItem("userDetails") ?? "[]");
 
 
 // ---------------- Feedback API --------------------------------
@@ -54,7 +54,6 @@ export const GetProductAPI = async () => {
   }
 };
 export const UpdateProductAPI = async (id, payload) => {
-  console.log("id,payload: ", id, payload);
   try {
     const response = await axios.post(
       `${URL}/admin/updateProductById/${id}`,
@@ -69,7 +68,7 @@ export const UpdateProductAPI = async (id, payload) => {
     );
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 export const DeleteProductAPI = async (payload) => {
@@ -83,7 +82,7 @@ export const DeleteProductAPI = async (payload) => {
     });
     return response?.data;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;  
   }
 };
 export const AddProductAPI = async (payload) => {
@@ -97,7 +96,7 @@ export const AddProductAPI = async (payload) => {
     });
     return response;
   } catch (error) {
-    console.log("error: ", error);
+    throw error;
   }
 };
 

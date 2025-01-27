@@ -51,7 +51,6 @@ const ContactInfo = () => {
   const FetchContact = async () => {
     try {
       const response = await GetAllContactAPI();
-      console.log("response: ", response);
       setContact(response);
     } catch (error) {
       console.log("error: ", error);
@@ -102,7 +101,7 @@ const ContactInfo = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {ContactJson?.map((item, index) => (
+                    {(Contact || ContactJson)?.map((item, index) => (
                       <tr key={item.id} className="search-items">
                         <td>
                          {++index}

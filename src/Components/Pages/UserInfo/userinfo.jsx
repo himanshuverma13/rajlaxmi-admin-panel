@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../Common/SideBar/sidebar";
 import Navbar from "../../Common/Navbar/navbar";
 import profile from "../../Assets/images/profile/user2.jpg";
 import { LuDot } from "react-icons/lu";
 import { Pagination } from "react-bootstrap";
+import { GetAllUser } from "../../Common/APIs/api";
 
 const UserInfo = () => {
   const itemsPerPage = 3;
@@ -82,13 +83,29 @@ const UserInfo = () => {
     },
   ];
 
+    const [UserInfo, setUserInfo] = useState();
+  
+    const FetchUserinfo = async () => {
+      try {
+        const response = await GetAllUser();
+        setUserInfo(response);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+  
+    useEffect(() => {
+      FetchUserinfo();
+    }, []);
+  
+
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5; // Set number of users per page
 
   // Get the current users for the current page
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsersPage = currentUsers?.slice(
+  const currentUsersPage = (UserInfo||currentUsers)?.slice(
     indexOfFirstUser,
     indexOfLastUser
   );

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import orderimg from "../../Assets/images/profile/user1.jpg";
 import { LuDot } from "react-icons/lu";
+import { GetAllOrderDetailsAPI } from "../APIs/api";
 const data = [
   {
     user_id: 1,
@@ -77,7 +78,23 @@ const OrderList = () => {
     setCurrentPage(1);
   };
 
-  const filteredData = data.filter(
+    const [OrderDetails, setOrderDetails] = useState();
+  
+    const FetchOrderDetails = async () => {
+      try {
+        const response = await GetAllOrderDetailsAPI();
+        setOrderDetails(response);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+  
+    useEffect(() => {
+      FetchOrderDetails();
+    }, []);
+  
+
+  const filteredData = (OrderDetails || data)?.filter(
     (row) => activeTab === "All" || row.status === activeTab
   );
   const indexOfLastRow = currentPage * rowsPerPage;
@@ -238,7 +255,7 @@ const OrderList = () => {
                       </td>
 
                       <td>
-                        <p className="mb-0">{new Date(row?.date)?.toLocaleString()}</p>
+                        <p className="mb-0">{new Date(row?.date)?.toLocaleDateString()}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
