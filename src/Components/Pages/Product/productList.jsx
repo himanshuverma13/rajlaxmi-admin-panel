@@ -164,7 +164,7 @@ useEffect(() => {
                       <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
                   </form>
-                  <a
+                  {/* <a
                     className="fs-6 text-muted"
                     href="#!"
                     data-bs-toggle="tooltip"
@@ -172,7 +172,7 @@ useEffect(() => {
                     data-bs-title="Filter list"
                   >
                     <i className="ti ti-filter"></i>
-                  </a>
+                  </a> */}
                 </div>
 
                 <div className="table-responsive border rounded">
