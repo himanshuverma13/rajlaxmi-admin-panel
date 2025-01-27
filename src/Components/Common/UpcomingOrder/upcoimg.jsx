@@ -281,7 +281,7 @@ const UpcoingOrder = () => {
                                 <img
                                   src={Profile}
                                   alt="avatar"
-                                  className="rounded-circle"
+                                  className="rounded-3 shadow"
                                   width={35}
                                 />
                                 <div className="ms-3">

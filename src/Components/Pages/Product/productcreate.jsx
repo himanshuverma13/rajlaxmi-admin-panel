@@ -7,7 +7,7 @@ import { AddProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
 import { toast } from "react-toastify";
-import dummyimg from "../../Assets/images/products/dummy.jpg";
+import dummyimg from "../../Assets/images/products/img-icon.png";
 import LoaderButton from "../../Common/LoaderButton/loaderButton";
 const ProductCreate = () => {
   const {

@@ -98,7 +98,7 @@ const Product = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(3); // You can adjust the number of products per page
+  const [productsPerPage] = useState(6); // You can adjust the number of products per page
 
   // Calculate the index of the last and first product on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -192,7 +192,7 @@ const Product = () => {
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody height={350}>
                       {currentProducts?.reverse()?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">

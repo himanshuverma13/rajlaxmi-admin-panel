@@ -55,7 +55,7 @@ const ProductDetails = () => {
                     <div class="col-lg-6">
                       <ProductSlider prdImg={CurrentImg || defaultImg  } />
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 pt-3">
                       <div class="shop-content">
                         {/* <div class="d-flex align-items-center gap-2 mb-2">
                           <span class="badge text-bg-success fs-2 fw-semibold">In Stock</span>
@@ -100,11 +100,11 @@ const ProductDetails = () => {
                           <h6 class="mb-0 fs-4">Category:</h6>
                           <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_category || productDetails[0]?.product_category}</div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between gap-8 py-7">
+                        <div class="d-flex align-items-center justify-content-between gap-8 pb-7">
                           <h6 class="mb-0 fs-4">Stock:</h6>
                           <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_stock || productDetails[0]?.product_stock}</div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between gap-7 pb-7 mb-7 border-bottom">
+                        <div class="d-flex align-items-center justify-content-between gap-7 pb-7  border-bottom">
                           <h6 class="mb-0 fs-4">QTY:</h6>
                           <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_quantity || productDetails[0]?.product_quantity}</div>
                         </div>
@@ -119,7 +119,7 @@ const ProductDetails = () => {
                   </div>
                 </div>
               </div>
-              <div class="card shadow-none border">
+              {/* <div class="card shadow-none border">
                 <div class="card-body py-2 px-4">
                 
                   <div class="pt-2">
@@ -130,7 +130,7 @@ const ProductDetails = () => {
                    
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
