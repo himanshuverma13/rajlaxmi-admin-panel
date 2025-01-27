@@ -146,7 +146,7 @@ const DonutChart = ({ DonutChartData }) => {
           <ApexCharts options={options} series={series} type="donut" width={200} />
         </div>
 
-        <div>
+        <div className="d-flex">
           {/* <ul className=" justify-content-center list-unstyled"> */}
             {series.map((_, index) => (
               <div key={index} className="mx-2 d-flex align-items-center">
