@@ -99,7 +99,7 @@ const FeedbackCards = () => {
                       </span>
                     </div>
                   </a>
-                  <div class="dropdown-menu dropdown-menu-right category-menu">
+                  {/* <div class="dropdown-menu dropdown-menu-right category-menu">
                     <a
                       class="
                                   note-business
@@ -144,7 +144,7 @@ const FeedbackCards = () => {
                       {" "}
                       Important
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

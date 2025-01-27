@@ -71,8 +71,23 @@ const OrderList = () => {
   const [endDate, setEndDate] = useState('');
   const [searchId, setSearchId] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [Orders , setOrders] = useState()
   const rowsPerPage = 5;
-  // const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+  const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+  const getTabColor = (tab) => {
+    switch (tab) {
+      case "Pending":
+        return "bg-yellow text-warning"; // Yellow
+      case "Cancelled":
+        return "bg-red text-danger"; // Red
+      case "Completed":
+        return "bg-green text-success"; // Green
+      case "Refunded":
+        return "bg-gray text-secondary"; // Gray
+      default:
+        return "bg-light text-dark"; // Default color
+    }
+  };
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
     setCurrentPage(1);
@@ -99,8 +114,8 @@ const OrderList = () => {
   );
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentItems = filteredData.slice(indexOfFirstRow, indexOfLastRow);
-  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const currentItems = filteredData?.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(filteredData?.length / rowsPerPage);
 
   const CurrentSearchFilter = data?.filter((row) => {
     const isWithinDateRange =
@@ -146,9 +161,9 @@ const OrderList = () => {
                     {tab}
                   </span>
                   <span
-                    className={`mx-1 px-1 rounded ${activeTab === tab
-                      ? "fs-3 text-primary bg-primary text-white"
-                      : "bg-light"
+                     className={`mx-1 px-1 rounded ${activeTab === tab
+                      ? "fs-3 text-primary  fw-bold bg-primary text-white"
+                      : getTabColor(tab)
                       }`}
                   >
                     07
@@ -337,18 +352,16 @@ const OrderList = () => {
                                 />
                                 <div className="ms-3">
                                   <h6 className="mb-0 fs-2">
-                                  {row?.user_name}
+                                   Pincode
                                   </h6>
-                                  <p className="mb-0">{row?.user_mobile_num}</p>
+                                  <p className="mb-0">{row?.user_pincode}</p>
                                 </div>
                               </div>
                               <div>
                                 <div className="d-flex">
-                                  <p className="mx-3 mb-0 ms-2">{row?.user_city}</p>
-                                  <p className="mx-3 mb-0 ms-2">{row?.user_country}</p>
-                                  <p className="mx-3 mb-0 ms-2">x 1</p>
+                                  <p className="mx-3 mb-0 ms-2">{row?.user_state}</p>
 
-                                  <h6 className="mx-3 mb-0 fs-4">₹ {row?.user_total_amount || "00.00"} /-</h6>
+                                  <h6 className="mx-3 mb-0 fs-4">{row?.user_country}</h6>
                                 </div>
                               </div>
                             </div>
