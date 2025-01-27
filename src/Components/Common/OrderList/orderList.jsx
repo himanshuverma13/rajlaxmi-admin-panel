@@ -133,7 +133,7 @@ const OrderList = () => {
   }, [startDate, endDate, searchId]);
 
   // Array of tab names
-  const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+  // const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
 
 
   return (

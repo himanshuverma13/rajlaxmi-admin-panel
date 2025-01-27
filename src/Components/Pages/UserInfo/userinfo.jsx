@@ -103,7 +103,7 @@ const UserInfo = () => {
   // Get the current users for the current page
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsersPage = (UserInfo||currentUsers)?.slice(
+  const currentUsersPage = (Users || currentUsers)?.slice(
     indexOfFirstUser,
     indexOfLastUser
   );
