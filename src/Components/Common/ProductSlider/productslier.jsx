@@ -12,7 +12,6 @@ import { UserContext } from '../UseContext/usecontext';
 import { GetProductAPI } from '../APIs/api';
 
 const ProductSlider = ({prdImg}) => {
-    const productsImages = JSON?.parse(prdImg ?? '[]')
       const { CurrentProductDetails } = useContext(UserContext);
       
          const [productDetails, setProductDetails] = useState([]);
@@ -34,7 +33,7 @@ const ProductSlider = ({prdImg}) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         customPaging: function (i) {
-            const thumbnails = productsImages;
+            const thumbnails = prdImg
             return (
                 <a>
                     <img
@@ -57,7 +56,7 @@ const ProductSlider = ({prdImg}) => {
     return (
         <div className="slider-container">
             <Slider {...settings}>
-                {productsImages?.map((item)=>{
+                {prdImg?.map((item)=>{
                     return(<div className='product-img'>
                     <img  className='rounded-3 w-100' src={item} alt="Product image" />
                 </div>)

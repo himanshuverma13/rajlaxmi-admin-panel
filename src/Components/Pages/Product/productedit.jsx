@@ -35,8 +35,7 @@ const ProductEdit = () => {
       CurrentProductDetails?.product_website_name
     );
     const currentImg = JSON?.parse(CurrentProductDetails?.product_image ?? '[]')
-    setValue("product_image", currentImg[0]);
-
+    
     setImages(currentImg)
   }, []);
 
