@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import TopPrd from "../../Assets/images/profile/user2.jpg";
 import { GetAllOrderDetailsAPI, GetProductAPI } from "../APIs/api";
 
+// Images
+import Profile from "../../Assets/images/profile/user1.jpg";
+
 const UpcoingOrder = () => {
   const product = [
     {
@@ -169,7 +172,7 @@ const UpcoingOrder = () => {
           <div className="card w-100">
             <div className="card-body p-4">
               <div className="d-flex mb-4 justify-content-between align-items-center">
-                <h5 className="mb-0 fw-bold">Top Paying Clients</h5>
+                <h5 className="mb-0 fw-bold">Top Users</h5>
                 <div className="dropdown">
                   <button
                     id="dropdownMenuButton1"
@@ -202,53 +205,56 @@ const UpcoingOrder = () => {
                 </div>
               </div>
               <div className="table-responsive" data-simplebar="">
-               
-                <table className="w-100">
-                  <thead>
+
+                <table className="w-100 table align-middle text-nowrap table-hover">
+                  <thead className="">
                     <tr>
-                      <th class="text-subtitle-1 font-weight-bold">Id</th>
-                      <th class="text-subtitle-1 font-weight-bold">Assigned</th>
-                      <th class="text-subtitle-1 font-weight-bold">Name</th>
-                      <th class="text-subtitle-1 font-weight-bold">Priority</th>
-                      <th class="text-subtitle-1 font-weight-bold text-right">
-                        Budget
-                      </th>
+                      <th class="text-dark font-weight-bold">Id</th>
+                      <th class="text-dark font-weight-bold">User Name</th>
+                      <th class="text-dark font-weight-bold">Mobile Number</th>
+                      <th class="text-dark font-weight-bold text-right">City</th>
+                      <th class="text-dark font-weight-bold">Total Amount</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {customer?.map((item,index)=>{
-                      <>
-                    <tr class="month-item">
-                      <td>
-                        <p class="text-15 font-weight-medium">1</p>
-                      </td>
-                      <td>
-                        <div class="">
-                          <h6 class="text-subtitle-1 font-weight-bold">
-                            Sunil Joshi
-                          </h6>
-                          <div class="text-subtitle-2 mt-1 text-muted">
-                            Web Designer
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="text-body-1 text-muted">Elite Admin</h6>
-                      </td>
-                      <td>
-                        <span
-                          class="v-chip v-theme--BLUE_THEME text-white v-chip--density-default v-chip--size-small v-chip--variant-tonal text-body-2 bg-primary"
-                          draggable="false"
-                        >
-                          <span class="v-chip__underlay"></span>
-                          <div class="v-chip__content">Low</div>
-                        </span>
-                      </td>
-                      <td>
-                        <h6 class="text-h6 text-right">$3.9</h6>
-                      </td>
-                    </tr>
-                      </>
+                    {customer?.map((item, index) => {
+                      return (<>
+                        <tr class="">
+                          <td>
+                            <span class="font-weight-bold">{item.user_id}</span>
+                          </td>
+                          <td>
+                            <div className="d-flex align-items-center">
+                              <img
+                                src={Profile}
+                                alt="avatar"
+                                className="rounded-circle"
+                                width={35}
+                              />
+                              <div className="ms-3">
+                                <div className="user-meta-info">
+                                  <h6 className="user-name mb-0">
+                                    {item?.user_name}
+                                  </h6>
+                                  <span className="user-work text-secondary">
+                                    {item?.user_email}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            
+                              <span class="v-chip__content text-dark">{item.user_mobile_num}</span>
+                          </td>
+                          <td>
+                            <h6 class="text-h6 text-right">{item.user_city}</h6>
+                          </td>
+                          <td className="text-center">
+                              <span className="text-info bg-light-blue rounded p-2">{item.user_total_amount}</span>
+                          </td>
+                        </tr>
+                      </>)
                     })}
                   </tbody>
                 </table>

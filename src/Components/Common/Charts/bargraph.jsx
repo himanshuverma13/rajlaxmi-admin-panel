@@ -52,7 +52,7 @@ const BarChart = ({BarChartData}) => {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', ], // replace with labels variable
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', ], // replace with labels variable
     },
     yaxis: {
       // title: {
