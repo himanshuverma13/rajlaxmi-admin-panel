@@ -126,3 +126,6 @@ foreignObject{
 .bg-gray{
   background-color: hsl(0, 0%, 50%, 0.1);
 }
+.bg-light-blue{
+  background-color: rgba(100, 184, 240, 0.1);
+}
