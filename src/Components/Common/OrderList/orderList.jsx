@@ -8,7 +8,7 @@ const data = [
     user_id: 112,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/01/25',
+    date: '07/01/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -18,7 +18,7 @@ const data = [
     user_id: 1123,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/02/25',
+    date: '07/02/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -28,7 +28,7 @@ const data = [
     user_id: 3,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/03/25',
+    date: '07/03/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -38,7 +38,7 @@ const data = [
     user_id: 4,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/04/25',
+    date: '07/04/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -48,7 +48,7 @@ const data = [
     user_id: 5,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/05/25',
+    date: '07/05/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -58,7 +58,7 @@ const data = [
     user_id: 6,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '07/06/25',
+    date: '07/06/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -94,6 +94,7 @@ const OrderList = () => {
   };
 
     const [OrderDetails, setOrderDetails] = useState();
+
   
     const FetchOrderDetails = async () => {
       try {
@@ -117,10 +118,10 @@ const OrderList = () => {
   const currentItems = filteredData?.slice(indexOfFirstRow, indexOfLastRow);
   const totalPages = Math.ceil(filteredData?.length / rowsPerPage);
 
-  const CurrentSearchFilter = data?.filter((row) => {
+  const CurrentSearchFilter = (OrderDetails||data)?.filter((row) => {
     const isWithinDateRange =
-    (!startDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
-    (!endDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
+    (!startDate || new Date(row?.date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
+    (!endDate || new Date(row?.date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
     const isMatchingId = searchId ? row?.user_id?.toString()?.includes(searchId) : true;
     const isMatchingStatus = activeTab === "All" || row?.status === activeTab;
     
@@ -271,7 +272,7 @@ const OrderList = () => {
                       </td>
 
                       <td>
-                        <p className="mb-0">{new Date(row?.user_date)?.toLocaleDateString('en-GB')}</p>
+                        <p className="mb-0">{new Date(row?.date)?.toLocaleDateString('en-GB')}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
