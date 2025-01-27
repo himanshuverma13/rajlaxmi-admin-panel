@@ -122,3 +122,86 @@
 // };
 
 // export default ProductTable;
+// import React, { useState } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
+
+// const FileUpload = () => {
+//   const [file, setFile] = useState(null);
+
+//   const handleFileChange = (event) => {
+//     setFile(event.target.files[0]);
+//   };
+
+//   const handleDrop = (event) => {
+//     event.preventDefault();
+//     setFile(event.dataTransfer.files[0]);
+//   };
+
+//   return (
+//     <div className="container d-flex justify-content-center align-items-center vh-100">
+//       <div className="card shadow p-4 text-center" style={{ width: "400px", borderRadius: "15px" }}>
+//         <h4 className="fw-bold">Upload your file</h4>
+//         <p className="text-muted">
+//           File should be an image <strong className="text-primary">Like</strong>
+//         </p>
+//         <div
+//           className="border border-primary border-dashed p-4 rounded"
+//           style={{
+//             borderStyle: "dashed",
+//             backgroundColor: "#f8f9fa",
+//             cursor: "pointer",
+//           }}
+//           onDragOver={(e) => e.preventDefault()}
+//           onDrop={handleDrop}
+//         >
+//           <label htmlFor="fileInput" className="d-block">
+//             <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt="Upload" width="50px" />
+//             <p className="text-muted mt-2">Drop your file here or Click to browse</p>
+//           </label>
+//           <input type="file" id="fileInput" className="d-none" onChange={handleFileChange} accept="image/*" />
+//         </div>
+
+//         {file && (
+//           <div className="mt-3">
+//             <p className="text-success fw-bold">File Uploaded:</p>
+//             <p className="text-dark">{file.name}</p>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default FileUpload;
+
+// <div className="form-group col-lg-12">
+// {SetImage && (
+//   <img
+//     src={SetImage}
+//     width={100}
+//     height={100}
+//     alt="Loading"
+//   />
+// )}
+// <label className="font-weight-bold text-uppercase">
+//   Image
+// </label>
+// <input
+//   type="file"
+//   className="form-control shadow"
+//   accept="image/*"
+//   multiple
+//   onChange={(event) =>
+//     handleImageUpload(event, (base64) =>
+//       setValue("product_image", base64)
+//     )
+//   }
+// />
+// {
+// <span
+// className={`text-danger ${SetImage ? "d-none" : ""}`}
+// >
+// {imageError}
+// </span>
+// }
+// </div>

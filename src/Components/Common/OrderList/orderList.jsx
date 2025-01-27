@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 
 import orderimg from "../../Assets/images/profile/user1.jpg";
 import { LuDot } from "react-icons/lu";
-import {GetAllOrderDetailsAPI} from "../APIs/api"
+import { GetAllOrderDetailsAPI } from "../APIs/api";
 const data = [
   {
-    user_id: 1,
+    user_id: 112,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/01/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
     status: "Completed",
   },
   {
-    user_id: 2,
+    user_id: 1123,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/02/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -28,17 +28,17 @@ const data = [
     user_id: 3,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/03/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
     status: "Cancelled",
   },
   {
-    user_id: 3,
+    user_id: 4,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/04/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -48,7 +48,7 @@ const data = [
     user_id: 5,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/05/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -58,7 +58,7 @@ const data = [
     user_id: 6,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    user_date: '1/07/25',
+    user_date: '07/06/25',
     user_city: "New York",
     user_country: "USA",
     user_total_amount: "12345",
@@ -93,45 +93,48 @@ const OrderList = () => {
     setCurrentPage(1);
   };
 
+    const [OrderDetails, setOrderDetails] = useState();
   
-    const FetchOrder = async () => {
+    const FetchOrderDetails = async () => {
       try {
         const response = await GetAllOrderDetailsAPI();
-        console.log("response: order", response);
-        setOrders(response);
+        setOrderDetails(response);
       } catch (error) {
         console.log("error: ", error);
       }
     };
   
     useEffect(() => {
-      FetchOrder();
+      FetchOrderDetails();
     }, []);
-  // const filteredData = data.filter(
-  //   (row) => activeTab === "All" || row.status === activeTab
-  // );
-  const filteredData = Orders?.filter((row) => {
-    const isWithinDateRange = (!startDate || new Date(row.user_date) >= new Date(startDate)) &&
-      (!endDate || new Date(row.user_date) <= new Date(endDate));
-    const isMatchingId = searchId ? row.user_id.toString().includes(searchId) : true;
-    const isMatchingStatus = activeTab === "All" || row.status === activeTab;
+  
 
-    return isWithinDateRange && isMatchingId && isMatchingStatus;
-  });
+  const filteredData = (OrderDetails || data)?.filter(
+    (row) => activeTab === "All" || row.status === activeTab
+  );
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentItems = filteredData?.slice(indexOfFirstRow, indexOfLastRow);
   const totalPages = Math.ceil(filteredData?.length / rowsPerPage);
 
+  const CurrentSearchFilter = data?.filter((row) => {
+    const isWithinDateRange =
+    (!startDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
+    (!endDate || new Date(row?.user_date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
+    const isMatchingId = searchId ? row?.user_id?.toString()?.includes(searchId) : true;
+    const isMatchingStatus = activeTab === "All" || row?.status === activeTab;
+    
+    return isWithinDateRange && isMatchingId && isMatchingStatus;
+  });
+  console.log('CurrentSearchFilter: ', CurrentSearchFilter);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [startDate, endDate, searchId]);
 
-  // // Array of tab names
+  // Array of tab names
   // const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
 
-  // // Function to handle tab click
-  // const handleTabClick = (tabName) => {
-  //   setActiveTab(tabName); // Set the clicked tab as active
-  // };
 
   return (
     <div className="product-list">
@@ -144,7 +147,7 @@ const OrderList = () => {
         <div className="card-body p-3">
           <div>
             <ul className="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
-              {tabs.map((tab) => (
+              {tabs?.map((tab) => (
                 <li
                   key={tab}
                   className={`nav-item mx-2 order-filter my-1 d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-bottom-primary pb-1 border-2" : ""
@@ -210,7 +213,7 @@ const OrderList = () => {
                   type="text"
                   className="form-control search-chat py-2 ps-5"
                   id="text-srh"
-                  placeholder="Order Order Id"
+                  placeholder="Search Order Id"
                   value={searchId}
                   onChange={(e) => setSearchId(e.target.value)}
                 />
@@ -237,9 +240,9 @@ const OrderList = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentItems?.map((row, index) => (
+                {CurrentSearchFilter?.map((row, index) => (
                   <>
-                    <tr key={row?.id}>
+                    <tr key={row?.user_id}>
                       <td>
                         {++index}
                       </td>
@@ -268,7 +271,7 @@ const OrderList = () => {
                       </td>
 
                       <td>
-                        <p className="mb-0">{new Date(row?.date)?.toLocaleDateString()}</p>
+                        <p className="mb-0">{new Date(row?.user_date)?.toLocaleDateString('en-GB')}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -371,35 +374,7 @@ const OrderList = () => {
               </tbody>
             </table>
             <div className="d-flex align-items-center justify-content-end py-1">
-              {/* <p className="mb-0 fs-2">Rows per page:</p>
-              <select
-                className="form-select w-auto ms-0 ms-sm-2 me-8 me-sm-4 py-1 pe-7 ps-2 border-0"
-                aria-label="Default select example"
-              >
-                <option selected="">5</option>
-                <option value={1}>10</option>
-                <option value={2}>25</option>
-              </select> */}
-              {/* <p className="mb-0 fs-2">1–5 of 12</p> */}
-              {/* <nav aria-label="...">
-                <ul className="pagination justify-content-center mb-0 ms-8 ms-sm-9">
-                  <li className="page-item p-1">
-                    <a
-                      className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                    //   href="javascript:void(0)"
-                    >
-                    </a>
-                  </li>
-                  <li className="page-item p-1">
-                    <a
-                      className="page-link border-0 rounded-circle text-dark fs-6 round-32 d-flex align-items-center justify-content-center"
-                    //   href="javascript:void(0)"
-                    >
-                    
-                    </a>
-                  </li>
-                </ul>
-              </nav> */}
+              
               <div className="d-flex align-items-center justify-content-end py-2">
                 <div
                   className="fs-5 me-2"

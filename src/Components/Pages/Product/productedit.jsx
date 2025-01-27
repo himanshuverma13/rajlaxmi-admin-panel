@@ -6,6 +6,9 @@ import { UpdateProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { useEffect } from "react";
 import { LuDot } from "react-icons/lu";
+import { toast } from "react-toastify";
+import dummyimg from "../../Assets/images/products/dummy.jpg";
+import { useNavigate } from "react-router-dom";
 const ProductEdit = () => {
   const {
     register,
@@ -17,8 +20,8 @@ const ProductEdit = () => {
   } = useForm();
 
   const { CurrentProductDetails } = useContext(UserContext);
-  console.log("CurrentProductDetails: ", CurrentProductDetails);
 
+  
   useEffect(() => {
     setValue("product_name", CurrentProductDetails?.product_name);
     setValue("product_description", CurrentProductDetails?.product_description);
@@ -26,10 +29,15 @@ const ProductEdit = () => {
     setValue("product_quantity", CurrentProductDetails?.product_quantity);
     setValue("product_stock", CurrentProductDetails?.product_stock);
     setValue("product_category", CurrentProductDetails?.product_category);
-    setValue("product_website_name", CurrentProductDetails?.product_website_name);
-    setValue("product_image", CurrentProductDetails?.product_image);
-  }, [])
-
+    setValue(
+      "product_website_name",
+      CurrentProductDetails?.product_website_name
+    );
+    const currentImg = JSON?.parse(CurrentProductDetails?.product_image ?? '[]')
+    setValue("product_image",currentImg[0] );
+    
+    setImages(currentImg)
+  }, []);
 
   const [productDetails, setProductDetails] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
@@ -38,49 +46,55 @@ const ProductEdit = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [currentPrdId, setcurrentPrdId] = useState();
   const [imageError, setimageError] = useState("");
+  const [images, setImages] = useState([]);
 
-  const handleImageUpload = (event, callback) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        callback(reader.result);
-      };
-      reader.readAsDataURL(file);
+
+  const handleImageUpload = (event) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+      const newImages = [];
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          newImages.push(reader.result); // Store the image result (data URL)
+          if (newImages?.length === files?.length) {
+            
+            setImages((prev)=>[...prev,...newImages]); // Update the state with all uploaded images
+          }
+        };
+        reader.readAsDataURL(file);
+      }
     }
   };
+  const navigate = useNavigate();
   const SetImage = watch("product_image");
   const onSubmit = async (data) => {
+    const productData = { ...data, product_image: images };
+    console.log("productData: ", productData);
     try {
-      if (!SetImage) {
+      if (!images) {
         setimageError("product image required");
       } else {
         setimageError("");
-        // if (isEdit) {
-        const updatedProducts = [...productDetails];
-        updatedProducts[currentProductIndex] = { ...data };
-        setProductDetails(updatedProducts);
+        const productData = { ...data, product_image: images};
+        console.log('productData: ', productData);
+        setProductDetails(productData);
         const response = await UpdateProductAPI(
-          productDetails[currentProductIndex]?.product_id,
-          data
+          CurrentProductDetails?.product_id,
+          productData
         );
-        //   toast.success(response?.message);
-        //   fetchProducts();
-        setModalOpen(false);
-
-        //     } else {
-        //       setProductDetails([...productDetails, data]);
-        //       const response = await AddProductAPI(data);
-        //       toast.success(response?.data?.message);
-
-        //       fetchProducts();
-        // setModalOpen(false);
-
-        //     }
+        toast?.success(response?.message);
+        navigate('/product');
       }
     } catch (error) {
-      console.log("error: ", error);
+      toast?.error(error?.response?.message);
     }
+  };
+
+  const handleImgRemove = (index) => {
+    const removedImg = images?.filter((_, i) => i !== index);
+    setImages(removedImg);
   };
 
   return (
@@ -103,14 +117,14 @@ const ProductEdit = () => {
             <Navbar />
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className='my-2 px-3'>
-                <h2 className='fw-bolder'>Product Edit</h2>
-                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Edit</span>
+              <div className="my-2 px-3">
+                <h2 className="fw-bolder">Product Edit</h2>
+                <p className="text-dark">
+                  Dashboard <LuDot /> Product <LuDot />{" "}
+                  <span className="text-muted">Product Edit</span>
                 </p>
               </div>
               <div class="card p-4">
-
-
                 <div className="row">
                   <div class="col-lg-6 mb-2">
                     <label for="productName" class="form-label">
@@ -231,12 +245,7 @@ const ProductEdit = () => {
                       </span>
                     )}
                   </div>
-
-
                 </div>
-
-
-
               </div>
               <div className="card p-4">
                 {/* <h1 class="mb-4">Product Form</h1> */}
@@ -270,47 +279,80 @@ const ProductEdit = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-12">
-                    <div className="card mb-3">
-                      <div className="card-header">
-                        <h5 className="card-title">Upload Images</h5>
-                      </div>
-                      <div className="row">
-                        <div className="form-group col-lg-12">
-                          {SetImage && (
-                            <img
-                              src={SetImage}
-                              width={100}
-                              height={100}
-                              alt="Loading"
-                            />
-                          )}
-                          <label className="font-weight-bold text-uppercase">
-                            Image
-                          </label>
-                          <input
-                            type="file"
-                            className="form-control shadow"
-                            accept="image/*"
-                            onChange={(event) =>
-                              handleImageUpload(event, (base64) =>
-                                setValue("product_image", base64)
-                              )
-                            }
-                          />
-                          {
-                            <span
-                              className={`text-danger ${SetImage ? "d-none" : ""
-                                }`}
-                            >
-                              {imageError}
-                            </span>
-                          }
+                  <div className="row">
+                  <h5 className="card-title py-0">
+                          Uploaded Product Images
+                        </h5>
+                        <div className="col-md-6">
+                          <div className="card-body p-0">
+                            <div className="container d-flex justify-content-center align-items-center">
+                              <div className="card p-4 border-0 shadow w-100">
+                                <div
+                                  className="border border-primary border-dashed p-4 text-center rounded"
+                                  style={{
+                                    borderStyle: "dashed",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    document.getElementById("fileInput").click()
+                                  }
+                                >
+                                  {SetImage ? (
+                                    <img
+                                      src={dummyimg}
+                                      alt="Uploaded Preview"
+                                      className="img-fluid rounded w-50"
+                                    />
+                                  ) : (
+                                    <>
+                                      <img
+                                        src={dummyimg}
+                                        alt="Upload Icon"
+                                        className="w-25"
+                                      />
+                                      <p className="text-muted">
+                                        Click to browse
+                                      </p>
+                                    </>
+                                  )}
+                                </div>
+
+                                <input
+                                  type="file"
+                                  id="fileInput"
+                                  multiple
+                                  className="d-none"
+                                  accept="image/*"
+                                  onChange={handleImageUpload}
+                                />
+
+                                {imageError && (
+                                  <span
+                                    className={`text-danger ${
+                                      images[0] ? "d-none" : ""
+                                    }`}
+                                  >
+                                    {imageError}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="col-md-4"></div>
+                        <div className="col-lg-6 ">
+                          <div className="row">
+                          {images?.map((i,index)=>
+                          <>
+                          <div className="col-lg-3 d-flex">
+                          <img src={i} className="border border-info border-dashed rounded-4 shadow m-2"  width={100} height={100} alt="" />
+                          <span className=" cursor-pointer" onClick={() => handleImgRemove(index)}>x</span>
+                          </div>
+                          </>
+                          )}
+
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <button type="submit" className="btn btn-primary w-auto px-5">

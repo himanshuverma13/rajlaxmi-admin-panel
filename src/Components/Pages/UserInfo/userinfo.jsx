@@ -5,6 +5,7 @@ import profile from "../../Assets/images/profile/user2.jpg";
 import { LuDot } from "react-icons/lu";
 import { Pagination } from "react-bootstrap";
 import { GetAllUser } from "../../Common/APIs/api";
+
 const UserInfo = () => {
     const itemsPerPage = 3;
     const currentUsers = [
@@ -99,13 +100,13 @@ const UserInfo = () => {
         FetchUsers();
     }, []);
 
-    // Get the current users for the current page
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsersPage = Users?.slice(
-        indexOfFirstUser,
-        indexOfLastUser
-    );
+  // Get the current users for the current page
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsersPage = (Users || currentUsers)?.slice(
+    indexOfFirstUser,
+    indexOfLastUser
+  );
 
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

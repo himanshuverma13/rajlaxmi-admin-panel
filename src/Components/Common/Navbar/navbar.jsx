@@ -3,11 +3,12 @@ import profile from "../../Assets/images/profile/user1.jpg";
 import { UserContext } from "../UseContext/usecontext";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-  const { toggleSidebar } = useContext(UserContext);
+  const { toggleSidebar ,setUserLogin} = useContext(UserContext);
   const navigation = useNavigate()
 
   const handleLogout = () => {
     localStorage.removeItem("userDetails");
+    setUserLogin('')
     navigation("/login")
   }
   return (

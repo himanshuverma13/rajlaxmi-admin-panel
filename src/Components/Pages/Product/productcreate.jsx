@@ -7,6 +7,7 @@ import { AddProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
 import { toast } from "react-toastify";
+import dummyimg from "../../Assets/images/products/dummy.jpg";
 const ProductCreate = () => {
   const {
     register,
@@ -17,40 +18,29 @@ const ProductCreate = () => {
     formState: { errors },
   } = useForm();
 
-  const [productDetails, setProductDetails] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
-  const [currentProductIndex, setCurrentProductIndex] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const [currentPrdId, setcurrentPrdId] = useState();
   const [imageError, setimageError] = useState("");
   const [images, setImages] = useState([]); // To store multiple images
 
   const navigate = useNavigate();
-  const { CurrentProductDetails } = useContext(UserContext);
-  console.log('CurrentProductDetails: ', CurrentProductDetails);
 
   const SetImage = watch("product_image"); // Ensure that this is an array of images now
 
   const onSubmit = async (data) => {
-    console.log("data: ", data);
 
     try {
-      if (!SetImage) {
+      if (!images) {
         setimageError("At least one product image is required");
       } else {
-      setimageError("");
-      const productData = { ...data, product_image: images[0] }; // Attach multiple images to the product data
-      setProductDetails([...productDetails, productData]);
-      const response = await AddProductAPI(productData);
-      toast?.success(response?.data?.message);
-
-      // fetchProducts();
-      // setModalOpen(false);
-      navigate('/product');
+        setimageError("");
+        const productData = { ...data, product_image: images}; // Attach multiple images to the product data
+        const response = await AddProductAPI(productData);
+        console.log('response: ', response);
+        toast?.success(response?.data?.message);
+        reset();
+        navigate('/product');
       }
     } catch (error) {
-      console.log("error: ", error);
+      toast?.success(error?.response?.data?.message);
     }
   };
 
@@ -93,13 +83,14 @@ const ProductCreate = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="my-2 px-3">
-              <h2 className='fw-bolder'>Product Create</h2>
-                <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Create </span>
+                <h2 className="fw-bolder">Product Create</h2>
+                <p className="text-dark">
+                  Dashboard <LuDot /> Product <LuDot />{" "}
+                  <span className="text-muted">Product Create </span>
                 </p>
               </div>
               <div className="card p-4">
                 <div className="row">
-
                   <div className="col-lg-6 mb-3">
                     <label for="productName" className="form-label">
                       Product Name
@@ -121,7 +112,9 @@ const ProductCreate = () => {
                   </div>
 
                   <div className="col-lg-6 mb-3 ">
-                    <label for="product_price" className="form-label">Price</label>
+                    <label for="product_price" className="form-label">
+                      Price
+                    </label>
                     <input
                       type="number"
                       className="form-control"
@@ -142,7 +135,9 @@ const ProductCreate = () => {
                     )}
                   </div>
                   <div className="col-lg-6 mb-3">
-                    <label for="product_stock" className="form-label">Stock</label>
+                    <label for="product_stock" className="form-label">
+                      Stock
+                    </label>
                     <input
                       type="number"
                       className="form-control"
@@ -164,7 +159,9 @@ const ProductCreate = () => {
                   </div>
 
                   <div className="col-lg-6 mb-3">
-                    <label for="product_category" className="form-label">Category</label>
+                    <label for="product_category" className="form-label">
+                      Category
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -181,9 +178,10 @@ const ProductCreate = () => {
                     )}
                   </div>
 
-
                   <div className="col-lg-6 mb-3">
-                    <label for="product_quantity" className="form-label">Quantity</label>
+                    <label for="product_quantity" className="form-label">
+                      Quantity
+                    </label>
                     <input
                       type="number"
                       className="form-control"
@@ -221,10 +219,6 @@ const ProductCreate = () => {
                       </span>
                     )}
                   </div>
-
-
-
-
                 </div>
               </div>
               <div className="card p-4">
@@ -234,9 +228,11 @@ const ProductCreate = () => {
                   <div className="col-md-12">
                     <div className="card mb-3">
                       <div className="card-body">
-
                         <div className="mb-3">
-                          <label for="product_description" className="form-label">
+                          <label
+                            for="product_description"
+                            className="form-label"
+                          >
                             Product Description
                           </label>
                           <textarea
@@ -254,72 +250,78 @@ const ProductCreate = () => {
                             </span>
                           )}
                         </div>
-
-
                       </div>
                     </div>
                   </div>
                   <div className="col-md-12">
                     <div className="card mb-3">
-                      <div className="card-header">
-                        <h5 className="card-title">Upload Images</h5>
+                      <div className="card-header py-2">
+                        <h5 className="card-title py-0">
+                          Upload Your Product Images
+                        </h5>
                       </div>
                       <div className="row">
-                        <div className="col-md-8">
-                          <div className="card-body">
-                            {/* <div className="mb-3">
-                              <label className="form-label">Images</label>
-                              <div className="border p-4 text-center">
-                                <img
-                                  src="https://cdn-icons-png.flaticon.com/512/747/747374.png"
-                                  width="50"
-                                  alt="upload-icon"
+                        <div className="col-md-6">
+                          <div className="card-body p-0">
+                            <div className="container d-flex justify-content-center align-items-center">
+                              <div className="card p-4 border-0 shadow w-100">
+                                <div
+                                  className="border border-primary border-dashed p-4 text-center rounded"
+                                  style={{
+                                    borderStyle: "dashed",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    document.getElementById("fileInput").click()
+                                  }
+                                >
+                                  {SetImage ? (
+                                    <img
+                                      src={SetImage}
+                                      alt="Uploaded Preview"
+                                      className="img-fluid rounded"
+                                    />
+                                  ) : (
+                                    <>
+                                      <img
+                                        src={images[0] || dummyimg}
+                                        alt="Upload Icon"
+                                        className="w-25"
+                                      />
+                                      <p className="text-muted">
+                                        Click to browse
+                                      </p>
+                                    </>
+                                  )}
+                                </div>
+
+                                <input
+                                  type="file"
+                                  id="fileInput"
+                                  multiple
+                                  className="d-none"
+                                  accept="image/*"
+                                  onChange={handleImageUpload}
                                 />
-                                <p className="mt-2">Drop or select file</p>
-                                <small className="text-muted">
-                                  Drop files here or click to{" "}
-                                  <a href="#">browse</a> through your machine.
-                                </small>
+
+                                {imageError && (
+                                  <span
+                                    className={`text-danger ${
+                                      images[0] ? "d-none" : ""
+                                    }`}
+                                  >
+                                    {imageError}
+                                  </span>
+                                )}
                               </div>
-                            </div> */}
-                            <div className="form-group col-lg-12">
-                              {SetImage && (
-                                <img
-                                  src={SetImage}
-                                  width={100}
-                                  height={100}
-                                  alt="Loading"
-                                />
-                              )}
-                              <label className="font-weight-bold text-uppercase">
-                                Image
-                              </label>
-                              <input
-                                type="file"
-                                className="form-control shadow"
-                                accept="image/*"
-                                multiple
-                                onChange={(event) =>
-                                  handleImageUpload(event, (base64) =>
-                                    setValue("product_image", base64)
-                                  )
-                                }
-                              />
-                              {/* {
-                        <span
-                          className={`text-danger ${SetImage ? "d-none" : ""}`}
-                        >
-                          {imageError}
-                        </span>
-                      } */}
                             </div>
                           </div>
                         </div>
-                        <div
-                          className={`col-md-4 text-danger ${SetImage ? "d-none" : ""
-                            }`}
-                        >
-                          {imageError}
+                        <div className="col-lg-6">
+                          {images?.map((i)=>
+                          <>
+                          <img src={i} className="border border-info border-dashed rounded-4 shadow m-2"  width={100} height={100} alt="" /></>
+                          )}
                         </div>
                       </div>
                     </div>

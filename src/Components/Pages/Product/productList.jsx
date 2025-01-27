@@ -15,6 +15,7 @@ import { NavLink } from "react-router-dom";
 import { DeleteProductAPI, GetProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { LuDot } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 // Sample Product Data
 
@@ -53,6 +54,7 @@ const { setCurrentProductDetails } = useContext(UserContext);
 
 const fetchProducts = async () => {
   const response = await GetProductAPI();
+  console.log('response: ', response);
   setProductDetails(response?.products);
 };
 
@@ -60,7 +62,6 @@ useEffect(() => {
   fetchProducts();
 }, []);
 
-console.log('filteredProducts: ', filteredProducts);
 useEffect(() => {
   // Filter products by search query and stock filter
   let filtered = productDetails?.filter((product) =>
@@ -79,11 +80,11 @@ useEffect(() => {
   const handleProductDelete = async (item) => {
     try {
       const response = await DeleteProductAPI(item?.product_id);
-      // setProductDetails(updatedProducts);
-      // setDeleteConfirm(false);
+      console.log('response: ', response);
+      toast?.success(response?.message);
       fetchProducts();
     } catch (error) {
-      console.log("error: ", error);
+      toast?.error(error?.response?.message);
     }
   };
 
@@ -190,7 +191,7 @@ useEffect(() => {
                       </tr>
                     </thead>
                     <tbody>
-                      {currentProducts?.map((product, index) => (
+                      {currentProducts?.reverse()?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
                             {indexOfFirstProduct + index + 1}

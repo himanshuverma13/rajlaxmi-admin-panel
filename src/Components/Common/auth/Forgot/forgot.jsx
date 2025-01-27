@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form"; // React Hook Form
 import { FaRegUser, FaLock } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ForgotAPI, ResetAPI } from "../../APIs/api"; // Import APIs
 import { toast } from "react-toastify";
 
@@ -20,6 +20,8 @@ const Forgot = () => {
         formState: { errors },
     } = useForm();
 
+    const navigate = useNavigate()
+
     // Step 1: Send OTP
     const handleSendOtp = async (data) => {
         setUserData(data); // Store user data temporarily
@@ -28,7 +30,6 @@ const Forgot = () => {
                 email: data.email,
             };
             const response = await ForgotAPI(payload);
-            console.log('response: ', response?.message);
             if (response?.message == "OTP sent your email successfully.") {
                 toast?.success(response?.message)
                 setStep(2); // Move to OTP verification step
@@ -50,8 +51,8 @@ const Forgot = () => {
             const response = await ResetAPI(payload);
             console.log('response?.message: ', response?.message?.message);
             if (response?.message?.message == "Password reset sucessfully") {
-                toast?.success(response?.message)
-                window.location = "/login"
+                toast?.success(response?.message?.message)
+                navigate('/login')
             } else {
                 toast?.error(response?.message)
             }
@@ -182,7 +183,7 @@ const Forgot = () => {
                                     )}
                                     <button
                                         type='submit'
-                                        className="btn btn-primary w-100 mb-4 rounded-pill"
+                                        className="btn btn-primary w-100 mb-4 mt-3 rounded-pill"
                                     >
                                         {step === 1
                                             ? "Send OTP"

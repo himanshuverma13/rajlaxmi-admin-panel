@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { RegisterAPI } from '../../APIs/api';
 // Images
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 import SideImg from '../../../Assets/images/Login-img/img1.png';
+import LoaderButton from '../../LoaderButton/loaderButton';
 const Registration = () => {
     const {
         register,
@@ -17,6 +18,7 @@ const Registration = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const [loading, setLoading] = useState(false);
 
     
   // Watch the values of password and confirmPassword
@@ -25,6 +27,7 @@ const Registration = () => {
   const onSubmit = async (data) => {
 
     try {
+        setLoading(true)
       const payload = {
         full_name: data?.username,
         email: data?.email,
@@ -36,11 +39,13 @@ const Registration = () => {
       console.log('response: ', response);
       if (response?.message) {
         toast.success(response?.data?.message)
+        setLoading(false)
         window.location = "/login"
       }
       reset();
     } catch (error) {
       toast?.error(error?.response?.data?.message)
+      setLoading(false)
     }
   };
     return (
@@ -180,12 +185,13 @@ const Registration = () => {
                                         )}
                                     </div>
 
-                                    <button
+                                    {/* <button
                                         type='submit'
                                         className="btn btn-primary w-100 mb-4 rounded-pill"
                                     >
                                         Sign Up
-                                    </button>
+                                    </button> */}
+                                    <LoaderButton text={`Sign Up`} styleClass={`btn btn-primary w-100 mb-4 rounded-pill`} loadingButtonStatus={loading} />
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-medium">Already have an account?</p>
                                         <NavLink to={"/login"}
