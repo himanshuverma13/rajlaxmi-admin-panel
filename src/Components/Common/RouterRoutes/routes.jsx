@@ -16,10 +16,8 @@ import Forgot from "../auth/Forgot/forgot";
 
 const RouterRoutes = () => {
   const { setUserLogin, UserLogins } = useContext(UserContext);
-  console.log("UserLogins: ", UserLogins);
   useEffect(() => {
     let getvalue = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
-    console.log("getvalue: ", getvalue);
     setUserLogin(getvalue?.data?.message);
   }, []);
 

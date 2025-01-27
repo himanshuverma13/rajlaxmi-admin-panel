@@ -89,16 +89,16 @@ const DashboardGraph = () => {
           
                     <div className="col-12">
                       <div className="d-flex justify-content-center">
-                        <div id="grade" />
+                        {/* <div id="grade" /> */}
                         <DonutChart  DonutChartData={ChartData} />
                       </div>
-                      <div>
+                      {/* <div>
                         <ul className="d-flex justify-content-center">
                           <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-primary rounded-circle d-inline-block"></span> sale</li>
                           <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-danger rounded-circle d-inline-block"></span> profit</li>
                           <li className="mx-2 d-flex align-items-center"><span class="round-12 me-2 bg-success rounded-circle d-inline-block"></span> products</li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
