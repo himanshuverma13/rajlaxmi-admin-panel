@@ -8,10 +8,12 @@ import { toast } from "react-toastify";
 // Images
 import Logo from "../../../Assets/images/logos/RAJLAXMI JAVIK PNG.png";
 import SideImg from '../../../Assets/images/Login-img/img1.png';
+import LoaderButton from "../../LoaderButton/loaderButton";
 
 const Forgot = () => {
     const [step, setStep] = useState(1); // Step 1: Input email/mobile, Step 2: Input OTP
     const [userData, setUserData] = useState(null); // To store user email/mobile temporarily
+        const [loading, setLoading] = useState(false);
     const {
         register,
         reset,
@@ -26,6 +28,7 @@ const Forgot = () => {
     const handleSendOtp = async (data) => {
         setUserData(data); // Store user data temporarily
         try {
+            setLoading(true)
             const payload = {
                 email: data.email,
             };
@@ -33,17 +36,24 @@ const Forgot = () => {
             if (response?.message == "OTP sent your email successfully.") {
                 toast?.success(response?.message)
                 setStep(2); // Move to OTP verification step
+                setLoading(false);
             } else {
                 toast?.error(response?.message)
+                setLoading(false);
+
             }
         } catch (error) {
             toast?.error(error?.response?.message)
+            setLoading(false);
+
         }
     };
 
     // Step 2: Verify OTP
     const handleVerifyOtp = async (data) => {
         try {
+            setLoading(true);
+
             const payload = {
                 otp: Number(data?.otp),
                 newPassword: data?.password,
@@ -52,12 +62,18 @@ const Forgot = () => {
             console.log('response?.message: ', response?.message?.message);
             if (response?.message?.message == "Password reset sucessfully") {
                 toast?.success(response?.message?.message)
+                setLoading(false);
+
                 navigate('/login')
             } else {
                 toast?.error(response?.message)
+                setLoading(false);
+
             }
         } catch (error) {
             toast?.error(error?.response?.message)
+            setLoading(false);
+
         }
     };
 
@@ -181,7 +197,7 @@ const Forgot = () => {
                                             </div>
                                         </>
                                     )}
-                                    <button
+                                    {/* <button
                                         type='submit'
                                         className="btn btn-primary w-100 mb-4 mt-3 rounded-pill"
                                     >
@@ -190,7 +206,12 @@ const Forgot = () => {
                                             : step === 2
                                                 ? "Reset Password"
                                                 : ""}
-                                    </button>
+                                    </button> */}
+                                    <LoaderButton text={step === 1
+                                            ? "Send OTP"
+                                            : step === 2
+                                                ? "Reset Password"
+                                                : ""} styleClass={`btn btn-primary w-100 mb-4 mt-3 rounded-pill`} loadingButtonStatus={loading} />
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-medium">Don't have an account?</p>
                                         <NavLink to={"/register"}

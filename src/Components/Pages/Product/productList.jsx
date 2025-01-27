@@ -199,7 +199,7 @@ useEffect(() => {
                           <td>
                             <div className="d-flex align-items-center">
                               <img
-                                src={Product1}
+                                src={JSON?.parse(product?.product_image)?.[0] || Product1}
                                 className="rounded-3"
                                 alt={product?.product_name}
                                 width="56"

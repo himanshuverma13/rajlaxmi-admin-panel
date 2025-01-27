@@ -5,13 +5,18 @@ import ProductSlider from '../../Common/ProductSlider/productslier';
 import { UserContext } from '../../Common/UseContext/usecontext';
 import { LuDot } from 'react-icons/lu';
 import { GetProductAPI } from '../../Common/APIs/api';
+import Product1 from "../../Assets/images/products/s11.jpg";
 const ProductDetails = () => {
   const { CurrentProductDetails } = useContext(UserContext);
    const [productDetails, setProductDetails] = useState([]);
+   const defaultImg = productDetails[1]?.product_image ? JSON?.parse(productDetails[1]?.product_image) : [Product1, Product1]
+  //  console.log('defaultImg: ', defaultImg);
+   const CurrentImg =CurrentProductDetails?.product_image ? JSON?.parse(CurrentProductDetails?.product_image) : [Product1, Product1]
+  //  console.log('CurrentImg: ', JSON?.parse(CurrentProductDetails?.product_image));
 
   const fetchProducts = async () => {
     const response = await GetProductAPI();
-    setProductDetails(response?.products);
+    setProductDetails((response?.products)?.reverse());
   };
   
   useEffect(() => {
@@ -48,7 +53,7 @@ const ProductDetails = () => {
                 <div class="card-body pb-8">
                   <div class="row gap-3 p-4">
                     <div class="col-lg-6">
-                      <ProductSlider prdImg={CurrentProductDetails?.product_image?? []} />
+                      <ProductSlider prdImg={CurrentImg || defaultImg  } />
                     </div>
                     <div class="col-lg-5">
                       <div class="shop-content">
