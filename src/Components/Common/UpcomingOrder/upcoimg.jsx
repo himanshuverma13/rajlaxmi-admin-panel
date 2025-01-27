@@ -85,6 +85,82 @@ const UpcoingOrder = () => {
       date: "2025-01-19T18:30:00.000Z",
       time: "14:30:00",
     },
+    {
+      user_id: 106,
+      user_name: "Razik",
+      user_email: "razik98@gmail.com",
+      user_state: "Madhya Pradesh",
+      user_city: "Indore",
+      user_country: "India",
+      user_house_number: "12",
+      user_landmark: "landmark",
+      user_pincode: 452002,
+      user_mobile_num: 2147483647,
+      user_total_amount: 1440,
+      status: "",
+      paymentDetails: "",
+      isPaymentPaid: "",
+      id: 0,
+      date: "2025-01-19T18:30:00.000Z",
+      time: "14:30:00",
+    },
+    {
+      user_id: 106,
+      user_name: "Razik",
+      user_email: "razik98@gmail.com",
+      user_state: "Madhya Pradesh",
+      user_city: "Indore",
+      user_country: "India",
+      user_house_number: "12",
+      user_landmark: "landmark",
+      user_pincode: 452002,
+      user_mobile_num: 2147483647,
+      user_total_amount: 1440,
+      status: "",
+      paymentDetails: "",
+      isPaymentPaid: "",
+      id: 0,
+      date: "2025-01-19T18:30:00.000Z",
+      time: "14:30:00",
+    },
+    {
+      user_id: 106,
+      user_name: "Razik",
+      user_email: "razik98@gmail.com",
+      user_state: "Madhya Pradesh",
+      user_city: "Indore",
+      user_country: "India",
+      user_house_number: "12",
+      user_landmark: "landmark",
+      user_pincode: 452002,
+      user_mobile_num: 2147483647,
+      user_total_amount: 1440,
+      status: "",
+      paymentDetails: "",
+      isPaymentPaid: "",
+      id: 0,
+      date: "2025-01-19T18:30:00.000Z",
+      time: "14:30:00",
+    },
+    {
+      user_id: 106,
+      user_name: "Razik",
+      user_email: "razik98@gmail.com",
+      user_state: "Madhya Pradesh",
+      user_city: "Indore",
+      user_country: "India",
+      user_house_number: "12",
+      user_landmark: "landmark",
+      user_pincode: 452002,
+      user_mobile_num: 2147483647,
+      user_total_amount: 1440,
+      status: "",
+      paymentDetails: "",
+      isPaymentPaid: "",
+      id: 0,
+      date: "2025-01-19T18:30:00.000Z",
+      time: "14:30:00",
+    },
   ];
 
   const [TopPRD, setTopPRD] = useState();
@@ -111,41 +187,14 @@ const UpcoingOrder = () => {
   return (
     <>
       <div className="row">
-        {/* <div className="col-lg-4 d-flex align-items-stretch">
-          <div className="card w-100">
-            <div class="d-flex m-4 justify-content-between align-items-center">
-              <h5 class="mb-0 fw-bold">Top Paying Clients</h5>
-            </div>
-            <hr />
-            <div className="row mt-4 mx-4">
-              <div className="col-lg-4">
-                <img className="w-100 rounded-4 shadow" src={TopPrd} alt="" />
-              </div>
-              <div className="col-lg-8">
-                <h6 class="user-name mt-3">Complete Product Name</h6>
-                <span class="user-work fs-3">Web Developer</span>
-                <h4 className="fw-bold">₹ 100/-</h4>
-              </div>
-            </div>
-            <div className="row mt-4 mx-4">
-              <div className="col-lg-4">
-                <img className="w-100 rounded-4 shadow" src={TopPrd} alt="" />
-              </div>
-              <div className="col-lg-8">
-                <h6 class="user-name mt-3">Complete Product Name</h6>
-                <span class="user-work fs-3">Web Developer</span>
-                <h4 className="fw-bold">₹ 100/-</h4>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        
         <div className="col-lg-4 d-flex align-items-stretch">
           <div className="card w-100">
             <div className="d-flex mx-4 mt-3 mb-2 justify-content-between align-items-center">
               <h5 className="mb-0 fw-bold">Top Products</h5>
             </div>
             <hr />
-            {product?.map((client) => (
+            {product?.slice(0, 3)?.map((client) => (
               <div className="row mt-2 mb-4 mx-4" key={client?.product_id}>
                 <div className="col-lg-4">
                   <img
@@ -205,56 +254,66 @@ const UpcoingOrder = () => {
                 </div>
               </div>
               <div className="table-responsive" data-simplebar="">
-
                 <table className="w-100 table align-middle text-nowrap table-hover">
                   <thead className="">
                     <tr>
                       <th class="text-dark font-weight-bold">Id</th>
                       <th class="text-dark font-weight-bold">User Name</th>
                       <th class="text-dark font-weight-bold">Mobile Number</th>
-                      <th class="text-dark font-weight-bold text-right">City</th>
+                      <th class="text-dark font-weight-bold text-right">
+                        City
+                      </th>
                       <th class="text-dark font-weight-bold">Total Amount</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {customer?.map((item, index) => {
-                      return (<>
-                        <tr class="">
-                          <td>
-                            <span class="font-weight-bold">{item.user_id}</span>
-                          </td>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={Profile}
-                                alt="avatar"
-                                className="rounded-circle"
-                                width={35}
-                              />
-                              <div className="ms-3">
-                                <div className="user-meta-info">
-                                  <h6 className="user-name mb-0">
-                                    {item?.user_name}
-                                  </h6>
-                                  <span className="user-work text-secondary">
-                                    {item?.user_email}
-                                  </span>
+                    {customer?.slice(0, 5)?.map((item, index) => {
+                      return (
+                        <>
+                          <tr class="">
+                            <td>
+                              <span class="font-weight-bold">
+                                {item.user_id}
+                              </span>
+                            </td>
+                            <td>
+                              <div className="d-flex align-items-center">
+                                <img
+                                  src={Profile}
+                                  alt="avatar"
+                                  className="rounded-circle"
+                                  width={35}
+                                />
+                                <div className="ms-3">
+                                  <div className="user-meta-info">
+                                    <h6 className="user-name mb-0">
+                                      {item?.user_name}
+                                    </h6>
+                                    <span className="user-work text-secondary">
+                                      {item?.user_email}
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </td>
-                          <td>
-                            
-                              <span class="v-chip__content text-dark">{item.user_mobile_num}</span>
-                          </td>
-                          <td>
-                            <h6 class="text-h6 text-right">{item.user_city}</h6>
-                          </td>
-                          <td className="text-center">
-                              <span className="text-info bg-light-blue rounded p-2">{item.user_total_amount}</span>
-                          </td>
-                        </tr>
-                      </>)
+                            </td>
+                            <td>
+                              <span class="v-chip__content text-dark">
+                                {item.user_mobile_num}
+                              </span>
+                            </td>
+                            <td>
+                              <h6 class="text-h6 text-right">
+                                {item.user_city}
+                              </h6>
+                            </td>
+                            <td className="text-center">
+                              <span className="text-info bg-light-blue rounded p-2">
+                                {item.user_total_amount}
+                              </span>
+                            </td>
+                          </tr>
+                        </>
+                      );
                     })}
                   </tbody>
                 </table>
