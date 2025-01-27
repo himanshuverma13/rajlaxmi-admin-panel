@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import orderimg from "../../Assets/images/profile/user1.jpg";
 import { LuDot } from "react-icons/lu";
+import {GetAllOrderDetailsAPI} from "../APIs/api"
 const data = [
   {
     user_id: 1,
@@ -70,29 +71,58 @@ const OrderList = () => {
   const [endDate, setEndDate] = useState('');
   const [searchId, setSearchId] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [Orders , setOrders] = useState()
   const rowsPerPage = 5;
   const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
+  const getTabColor = (tab) => {
+    switch (tab) {
+      case "Pending":
+        return "bg-yellow text-warning"; // Yellow
+      case "Cancelled":
+        return "bg-red text-danger"; // Red
+      case "Completed":
+        return "bg-green text-success"; // Green
+      case "Refunded":
+        return "bg-gray text-secondary"; // Gray
+      default:
+        return "bg-light text-dark"; // Default color
+    }
+  };
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
     setCurrentPage(1);
   };
 
-  const filteredData = data.filter(
-    (row) => activeTab === "All" || row.status === activeTab
-  );
+  
+    const FetchOrder = async () => {
+      try {
+        const response = await GetAllOrderDetailsAPI();
+        console.log("response: order", response);
+        setOrders(response);
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+  
+    useEffect(() => {
+      FetchOrder();
+    }, []);
+  // const filteredData = data.filter(
+  //   (row) => activeTab === "All" || row.status === activeTab
+  // );
+  const filteredData = Orders?.filter((row) => {
+    const isWithinDateRange = (!startDate || new Date(row.user_date) >= new Date(startDate)) &&
+      (!endDate || new Date(row.user_date) <= new Date(endDate));
+    const isMatchingId = searchId ? row.user_id.toString().includes(searchId) : true;
+    const isMatchingStatus = activeTab === "All" || row.status === activeTab;
+
+    return isWithinDateRange && isMatchingId && isMatchingStatus;
+  });
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentItems = filteredData.slice(indexOfFirstRow, indexOfLastRow);
-  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const currentItems = filteredData?.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(filteredData?.length / rowsPerPage);
 
-  // const currentItems = data.filter((row) => {
-  //   const isWithinDateRange = (!startDate || new Date(row.date) >= new Date(startDate)) &&
-  //     (!endDate || new Date(row.date) <= new Date(endDate));
-  //   const isMatchingId = searchId ? row.id.toString().includes(searchId) : true;
-  //   const isMatchingStatus = activeTab === "All" || row.status === activeTab;
-
-  //   return isWithinDateRange && isMatchingId && isMatchingStatus;
-  // });
 
 
   // // Array of tab names
@@ -128,9 +158,9 @@ const OrderList = () => {
                     {tab}
                   </span>
                   <span
-                    className={`mx-1 px-1 rounded ${activeTab === tab
-                      ? "fs-3 text-primary bg-primary text-white"
-                      : "bg-light"
+                     className={`mx-1 px-1 rounded ${activeTab === tab
+                      ? "fs-3 text-primary  fw-bold bg-primary text-white"
+                      : getTabColor(tab)
                       }`}
                   >
                     07
@@ -238,7 +268,7 @@ const OrderList = () => {
                       </td>
 
                       <td>
-                        <p className="mb-0">{new Date(row?.date)?.toLocaleString()}</p>
+                        <p className="mb-0">{new Date(row?.date)?.toLocaleDateString()}</p>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -319,16 +349,16 @@ const OrderList = () => {
                                 />
                                 <div className="ms-3">
                                   <h6 className="mb-0 fs-2">
-                                    Curology Face wash
+                                   Pincode
                                   </h6>
-                                  <p className="mb-0">books</p>
+                                  <p className="mb-0">{row?.user_pincode}</p>
                                 </div>
                               </div>
                               <div>
                                 <div className="d-flex">
-                                  <p className="mx-3 mb-0 ms-2">x 1</p>
+                                  <p className="mx-3 mb-0 ms-2">{row?.user_state}</p>
 
-                                  <h6 className="mx-3 mb-0 fs-4">$275</h6>
+                                  <h6 className="mx-3 mb-0 fs-4">{row?.user_country}</h6>
                                 </div>
                               </div>
                             </div>
