@@ -36,7 +36,7 @@ const Sidebar = () => {
               alt="Logo"
             />
           </NavLink>
-          <h4 className="ms-3 fw-bold">RajLaxmi</h4>
+          <h4 className="ms-3 fw-bold text-uppercase text-success">RajLaxmi</h4>
         </div>
 
         <div
