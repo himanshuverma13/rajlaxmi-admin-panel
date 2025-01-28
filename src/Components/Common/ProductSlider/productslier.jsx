@@ -28,7 +28,7 @@ const ProductSlider = ({prdImg}) => {
     // Slider settings
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -61,15 +61,7 @@ const ProductSlider = ({prdImg}) => {
                     <img  className='rounded-3 w-100' src={item} alt="Product image" />
                 </div>)
                 })}
-                {/* <div className='product-img'>
-                    <img  className='rounded-3 w-100' src={productsImages[1]} alt="Product 2" />
-                </div>
-                <div className='product-img'>
-                    <img  className='rounded-3 w-100' src={productsImages[2]} alt="Product 3" />
-                </div>
-                <div className='product-img'>
-                    <img  className='rounded-3 w-100' src={productsImages[3]} alt="Product 4" />
-                </div> */}
+   
             </Slider>
         </div>
     );

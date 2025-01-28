@@ -74,9 +74,11 @@ const ProductEdit = () => {
     console.log("productData: ", productData);
     setLoading(true);
     try {
-      if (!images) {
+      if (images?.length == 0) {
         setimageError("product image required");
+        setLoading(false);
       } else {
+    setLoading(true);
         setimageError("");
         const productData = { ...data, product_image: images };
         console.log('productData: ', productData);
