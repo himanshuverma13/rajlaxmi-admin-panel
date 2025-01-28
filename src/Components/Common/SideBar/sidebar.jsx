@@ -89,6 +89,7 @@ const Sidebar = () => {
                 <div className=" border-0">
                   <a
                     className={`sidebar-link sidebar-link primary-hover-bg ${
+                      params?.pathname == "/product" ||
                       params?.pathname == "/productdetails" ||
                       params?.pathname == "/productedit" ||
                       params?.pathname == "/productcreate"
@@ -99,6 +100,7 @@ const Sidebar = () => {
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseProduct"
                     aria-expanded={
+                      params?.pathname == "/product" ||
                       params?.pathname == "/productdetails" ||
                       params?.pathname == "/productedit" ||
                       params?.pathname == "/productcreate"
