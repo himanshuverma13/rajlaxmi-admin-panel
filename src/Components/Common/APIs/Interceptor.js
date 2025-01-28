@@ -81,7 +81,6 @@ const AxiosInterceptors = (TokenContext) => {
     async (config) => {
       const LocalToken = JSON.parse(localStorage.getItem("userDetails"))?.data?.accessToken;
       const token = TokenContext || LocalToken;
-      console.log('token:-------------------------- ', token);
 
       if (token) {
         config.headers["Authorization"] = `${token}`;

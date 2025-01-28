@@ -94,77 +94,219 @@
 
 
 
-import React, { useState } from "react";
-import ApexCharts from "react-apexcharts";
+// import React, { useState } from "react";
+// import ApexCharts from "react-apexcharts";
 
-const DonutChart = ({ DonutChartData }) => {
-  const weeklyData = DonutChartData?.week?.data || [];
+// const DonutChart = ({ DonutChartData }) => {
+//   const weeklyData = DonutChartData?.week?.data || [];
 
-  // Extract data for the donut chart
-  const weekValue = weeklyData?.map((item) =>
-    parseInt(item?.daily_total_sales, 10)
-  );
+//   // Extract data for the donut chart
+//   const weekValue = weeklyData?.map((item) =>
+//     parseInt(item?.daily_total_sales, 10)
+//   );
 
-  const [series, setSeries] = useState([...weekValue, 440, 550, 130, 33,27]);
-  const labels = [" A", " B", " C", " D", " E", " F", " G"];
-  const colors = ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0", "#546E7A", "#26a69a"];
+//   const [series, setSeries] = useState([...weekValue, 440, 550, 130, 33,27]);
+//   const labels = [" A", " B", " C", " D", " E", " F", " G"];
+//   const colors = ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0", "#546E7A", "#26a69a"];
 
-  const options = {
-    chart: {
-      width: 380,
-      type: "donut",
-    },
-    labels,
-    colors,
-    dataLabels: {
-      enabled: false,
-    },
-    responsive: [
-      {
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 150,
-          },
-          legend: {
-            show: false,
-          },
+//   const options = {
+//     chart: {
+//       width: 380,
+//       type: "donut",
+//     },
+//     labels,
+//     colors,
+//     plotOptions: {
+//       pie: {
+//         expandOnClick: true,
+//         customScale: 1,
+//         offsetX: 0,
+//         offsetY: 0,
+//         startAngle: 0,
+//         endAngle: 360,
+//         donut: {
+//           size: "65%",
+//           borderRadius: "5%",
+//           columnWidth: "4%",
+//           labels: {
+//             show: true,
+//             name: {
+//               show: true,
+//               fontSize: "16px",
+//               fontWeight: "bold",
+//             },
+//             value: {
+//               show: true,
+//               fontSize: "14px",
+//             },
+//           },
+//         },
+//       },
+//     },
+//     dataLabels: {
+//       enabled: false,
+//     },
+//     responsive: [
+//       {
+//         breakpoint: 480,
+//         options: {
+//           chart: {
+//             width: 150,
+//           },
+//           legend: {
+//             show: false,
+//           },
+//         },
+//       },
+//     ],
+//     legend: {
+//       position: "right",
+//       offsetY: 0,
+//       height: 230,
+//     },
+//   };
+
+//   return (
+//     <>
+//       <div>
+//         <div id="chart">
+//           <ApexCharts options={options} series={series} type="donut" width={200} />
+//         </div>
+
+//         <div className="d-flex">
+//           {/* <ul className=" justify-content-center list-unstyled"> */}
+//             {series.map((_, index) => (
+//               <div key={index} className="mx-2 d-flex align-items-center">
+//                 <span
+//                   className="round-12 me-2 rounded-circle d-inline-block"
+//                   style={{
+//                     width: "12px",
+//                     height: "12px",
+//                     backgroundColor: colors[index % colors.length],
+//                   }}
+//                 ></span>{" "}
+//                 {labels[index] || `Data ${index + 1}`}
+//               </div >
+//             ))}
+//           {/* </ul> */}
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default DonutChart;
+
+import React, { useEffect, useRef } from 'react';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+
+const DonutChart = () => {
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const chart = Highcharts.chart(chartRef.current, {
+        chart: {
+          type: 'pie',
+          custom: {},
+          events: {
+            render() {
+              const chart = this,
+                    series = chart.series[0];
+              let customLabel = chart.options.chart.custom.label;
+
+              if (!customLabel) {
+                customLabel = chart.options.chart.custom.label =
+                    chart.renderer.label(
+                      'Total<br/>' +
+                      '<strong>2 877 820</strong>'
+                    )
+                      .css({
+                        color: '#000',
+                        textAnchor: 'middle',
+                      })
+                      .add();
+              }
+
+              const x = series.center[0] + chart.plotLeft,
+                    y = series.center[1] + chart.plotTop -
+                    (customLabel.attr('height') / 2);
+
+              customLabel.attr({
+                x,
+                y
+              });
+              // Set font size based on chart diameter
+              customLabel.css({
+                fontSize: `${series.center[2] / 16}px`
+              });
+            }
+          }
         },
-      },
-    ],
-    legend: {
-      position: "right",
-      offsetY: 0,
-      height: 230,
-    },
-  };
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        title: {
+          text: ''
+        },
+        subtitle: {
+          text: ''
+        },
+        tooltip: {
+          pointFormat: ''
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            borderRadius: 100,
+            dataLabels: [{
+              enabled: false,
+              distance: 20,
+              format: '{point.name}'
+            }, {
+              enabled: false,
+              distance: -5,
+              format: '{point.percentage:.0f}%',
+              style: {
+                fontSize: '0.9em'
+              }
+            }],
+            showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Registrations',
+          colorByPoint: true,
+          innerSize: '80%',
+          data: [{
+            name: 'EV',
+            y: 23.9
+          }, {
+            name: 'Hybrids',
+            y: 12.6
+          }, {
+            name: 'Diesel',
+            y: 37.0
+          }, {
+            name: 'Petrol',
+            y: 26.4
+          }]
+        }]
+      });
+    }
+  }, []);
 
   return (
-    <>
-      <div>
-        <div id="chart">
-          <ApexCharts options={options} series={series} type="donut" width={200} />
-        </div>
-
-        <div className="d-flex">
-          {/* <ul className=" justify-content-center list-unstyled"> */}
-            {series.map((_, index) => (
-              <div key={index} className="mx-2 d-flex align-items-center">
-                <span
-                  className="round-12 me-2 rounded-circle d-inline-block"
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: colors[index % colors.length],
-                  }}
-                ></span>{" "}
-                {labels[index] || `Data ${index + 1}`}
-              </div >
-            ))}
-          {/* </ul> */}
-        </div>
-      </div>
-    </>
+    <div className="highcharts-figure">
+      <div ref={chartRef} className='donutChart-style' id="container"></div>
+    </div>
   );
 };
 

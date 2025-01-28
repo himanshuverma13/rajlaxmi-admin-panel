@@ -7,6 +7,7 @@ import RouterRoutes from "./Components/Common/RouterRoutes/routes";
 import { UserProvider } from "./Components/Common/UseContext/usecontext";
 import { ToastContainer } from "react-toastify";
 import FileUpload from "./Components/Common/test/test";
+// import PieChart from "./Components/Common/test/test";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           <RouterRoutes />
         </BrowserRouter>
       </UserProvider>
-      {/* <FileUpload/> */}
+      {/* <PieChart/> */}
 
     </div>
   );

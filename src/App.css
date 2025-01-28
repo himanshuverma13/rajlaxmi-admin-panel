@@ -169,5 +169,12 @@ foreignObject{
 
 
 
+/* =------------------Donut Chart Csss----------- */
+.donutChart-style{
+  height: 15rem;
+  width: 15rem;
+}
 
-
+.highcharts-credits{
+  display:  none !important;
+}

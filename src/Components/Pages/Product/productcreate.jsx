@@ -21,15 +21,16 @@ const ProductCreate = () => {
 
   const [imageError, setimageError] = useState("");
   const [images, setImages] = useState([]); // To store multiple images
+  console.log('images: ', images);
 const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const SetImage = watch("product_image"); // Ensure that this is an array of images now
 
   const onSubmit = async (data) => {
-    setLoading(true);
+    // setLoading(true);
     try {
-      if (!images) {
+      if (images?.length == 0) {
         setimageError("At least one product image is required");
       } else {
         setimageError("");
