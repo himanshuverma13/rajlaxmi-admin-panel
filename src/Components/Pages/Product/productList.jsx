@@ -54,7 +54,7 @@ const Product = () => {
 
   const fetchProducts = async () => {
     const response = await GetProductAPI();
-    console.log('response: ', response);
+    // console.log('response: ', response);
     setProductDetails(response?.products);
   };
 
@@ -80,7 +80,7 @@ const Product = () => {
   const handleProductDelete = async (item) => {
     try {
       const response = await DeleteProductAPI(item?.product_id);
-      console.log('response: ', response);
+      // console.log('response: ', response);
       toast?.success(response?.message);
       fetchProducts();
     } catch (error) {
@@ -178,7 +178,7 @@ const Product = () => {
                   </a> */}
                 </div>
 
-                <div className="table-responsive border rounded">
+                <div className="table-responsive border rounded h-100">
                   <table className="table align-middle table-hover text-nowrap mb-0" >
                     <thead className="table-light">
                       <tr>
@@ -196,6 +196,7 @@ const Product = () => {
                       {currentUsersPage?.reverse()?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
+                            {++index}
                             {/* {indexOfFirstProduct + index + 1} */}
                           </td>
                           <td>
@@ -245,7 +246,7 @@ const Product = () => {
                                 <i className="ti ti-dots-vertical fs-7 d-block" />
                               </button>
                               <ul
-                                className="dropdown-menu dropdown-menu-end bg-gradient"
+                                className="dropdown-menu dropdown-menu-end bg-gradientcz-3"
                                 aria-labelledby="dropdownMenuButton1"
                               >
                                 <NavLink to={"/productdetails"}>

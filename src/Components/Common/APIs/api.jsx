@@ -173,9 +173,16 @@ export const GetSaleReportAPI = async () => {
 // ---------------- CSV Excel Download API --------------------------------
 export const DownloadCSVExcelAPI = async () => {
   try {
-    const response = await axiosInstance.get(`/admin/getAllSales`);
-    return response;
+    const response = await axios.get(`${URL}/admin/getAllSales`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+        "Content-Type": "text/csv; charset=UTF-8",
+        "Authorization": `${Token?.data?.accessToken}` 
+      },
+      responseType: "blob",
+    });
+    return response
   } catch (error) {
-    throw error;
+    throw error
   }
 };
