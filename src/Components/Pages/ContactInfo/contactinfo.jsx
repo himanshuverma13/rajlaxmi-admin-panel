@@ -46,6 +46,8 @@ const ContactInfo = () => {
   ]
 
 
+
+  
   const [Contact, setContact] = useState();
 
   const FetchContact = async () => {
