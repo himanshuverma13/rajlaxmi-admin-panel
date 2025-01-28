@@ -267,7 +267,7 @@ const OrderList = () => {
                   <th scope="col">Price</th>
                   <th scope="col">Status</th>
                   <th scope="col"></th>
-                  <th scope="col"></th>
+                  {/* <th scope="col"></th> */}
                 </tr>
               </thead>
               <tbody>
@@ -330,7 +330,7 @@ const OrderList = () => {
                         ></i>
                       </td>
 
-                      <td>
+                      {/* <td>
                         <div className="dropdown">
                           <button
                             id="dropdownMenuButton1"
@@ -340,7 +340,7 @@ const OrderList = () => {
                           >
                             <i className="ti ti-dots-vertical fs-7 d-block" />
                           </button>
-                          {/* <ul
+                          <ul
                             className="dropdown-menu dropdown-menu-end"
                             aria-labelledby="dropdownMenuButton1"
                             style={{
@@ -366,9 +366,9 @@ const OrderList = () => {
                                 Something else here
                               </a>
                             </li>
-                          </ul> */}
+                          </ul>
                         </div>
-                      </td>
+                      </td> */}
                     </tr>
                     <tr>
                       <td colSpan="10" className="py-0 border-0 bg-light px-1">

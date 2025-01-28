@@ -38,9 +38,9 @@ const BarChart = ({BarChartData}) => {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '20%',
-        borderRadius: 1,
-        borderRadiusApplication: 'end',
+        columnWidth: '45%',
+        borderRadius: 7,
+        // borderRadiusApplication: 'end',
       },
     },
     dataLabels: {
@@ -48,7 +48,7 @@ const BarChart = ({BarChartData}) => {
     },
     stroke: {
       show: true,
-      width: 1,
+      width: 7,
       colors: ['transparent'],
     },
     xaxis: {

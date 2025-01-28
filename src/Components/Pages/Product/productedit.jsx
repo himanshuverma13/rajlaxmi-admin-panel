@@ -7,7 +7,7 @@ import { UserContext } from "../../Common/UseContext/usecontext";
 import { useEffect } from "react";
 import { LuDot } from "react-icons/lu";
 import { toast } from "react-toastify";
-import dummyimg from "../../Assets/images/products/dummy.jpg";
+import dummyimg from "../../Assets/images/products/img-icon.png";
 import { useNavigate } from "react-router-dom";
 import LoaderButton from "../../Common/LoaderButton/loaderButton";
 const ProductEdit = () => {

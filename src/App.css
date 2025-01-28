@@ -76,11 +76,46 @@ foreignObject{
   box-shadow: 0px 2px 6px rgba(37, 83, 185, 0.1);
   border-radius: 1.125rem;
 }
-
-
-
 .left-sidebar.open {
   left: 0; /* Show sidebar */
+}
+
+
+/* Sidebar tree Structure*/
+.tree-menu {
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+}
+
+.tree-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.tree-menu li {
+  position: relative;
+  padding: 5px 0 5px 25px;
+}
+
+.tree-menu li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: #e0e0e0;
+}
+
+.tree-menu  .active { 
+  background-color: rgba(125, 128, 134, 0.1);
+  border-radius: 7px;
 }
 
 @media (max-width: 768px) {
@@ -108,7 +143,6 @@ foreignObject{
 }
 
 .form-Side-Img img{
-  height: 500px;
   width: 100%;
 }
 .bg-light-gradient{
@@ -129,3 +163,11 @@ foreignObject{
 .bg-light-blue{
   background-color: rgba(100, 184, 240, 0.1);
 }
+
+
+
+
+
+
+
+

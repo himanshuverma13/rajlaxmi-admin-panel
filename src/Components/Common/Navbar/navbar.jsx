@@ -40,12 +40,12 @@ const Navbar = () => {
                 <i className="ti ti-menu-2" />
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link nav-icon-hover">
                 <i className="ti ti-bell-ringing" />
                 <div className="notification bg-primary rounded-circle" />
               </a>
-            </li>
+            </li> */}
           </ul>
           <div
             className="navbar-collapse justify-content-end px-0"
