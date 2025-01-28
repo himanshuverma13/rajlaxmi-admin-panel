@@ -14,7 +14,19 @@ const ContactInfo = () => {
       user_message: "fdsdhkjfdsklfkhgh",
     },
     {
-      user_name: "Demo",
+      user_name: "Demfdfo",
+      user_email: "demo121@gmail.com",
+      user_mobile: 1237988,
+      user_message: "fdsdhkjfdsklfkhgh",
+    },
+    {
+      user_name: "Demoxcvdv",
+      user_email: "demo121@gmail.com",
+      user_mobile: 1237988,
+      user_message: "fdsdhkjfdsklfkhgh",
+    },
+    {
+      user_name: "Demodfdf",
       user_email: "demo121@gmail.com",
       user_mobile: 1237988,
       user_message: "fdsdhkjfdsklfkhgh",
@@ -26,19 +38,7 @@ const ContactInfo = () => {
       user_message: "fdsdhkjfdsklfkhgh",
     },
     {
-      user_name: "Demo",
-      user_email: "demo121@gmail.com",
-      user_mobile: 1237988,
-      user_message: "fdsdhkjfdsklfkhgh",
-    },
-    {
-      user_name: "Demo",
-      user_email: "demo121@gmail.com",
-      user_mobile: 1237988,
-      user_message: "fdsdhkjfdsklfkhgh",
-    },
-    {
-      user_name: "Demo",
+      user_name: "Demoaff",
       user_email: "demo121@gmail.com",
       user_mobile: 1237988,
       user_message: "fdsdhkjfdsklfkhgh",
@@ -46,6 +46,8 @@ const ContactInfo = () => {
   ]
 
 
+
+  
   const [Contact, setContact] = useState();
 
   const FetchContact = async () => {
@@ -60,6 +62,24 @@ const ContactInfo = () => {
   useEffect(() => {
     FetchContact();
   }, []);
+
+  //  pagination
+      const [currentPage, setCurrentPage] = useState(1);
+      const usersPerPage = 4; // Set number of users per page
+      // Calculate pagination
+      const indexOfLastUser = currentPage * usersPerPage;
+      const indexOfFirstUser = indexOfLastUser - usersPerPage;
+      const currentUsersPage = (Contact || ContactJson)?.slice(indexOfFirstUser, indexOfLastUser); // Get current users
+  
+      // Total pages
+      const totalPages = Math.ceil((Contact || ContactJson)?.length / usersPerPage);
+  
+      // Change page function
+      const paginate = (pageNumber) => {
+          if (pageNumber >= 1 && pageNumber <= totalPages) {
+              setCurrentPage(pageNumber);
+          }
+      };
 
 
   return (
@@ -101,7 +121,7 @@ const ContactInfo = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {(Contact || ContactJson)?.map((item, index) => (
+                    {currentUsersPage?.map((item, index) => (
                       <tr key={item.id} className="search-items">
                         <td>
                          {++index}
@@ -148,6 +168,26 @@ const ContactInfo = () => {
                   </tbody>
                 </table>
               </div>
+              {/* Pagination */}
+              <div className="d-flex align-items-center justify-content-end py-2">
+                <div
+                    className="fs-5 me-2"
+                    onClick={() => paginate(currentPage - 1)}
+                    style={{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer', opacity: currentPage === 1 ? 0.5 : 1 }}
+                >
+                    <i className="ti ti-chevron-left fs-5" />
+                </div>
+                <span className="fs-5">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <div
+                    className="fs-5 ms-2 me-5"
+                    onClick={() => paginate(currentPage + 1)}
+                    style={{ cursor: currentPage === totalPages ? 'not-allowed' : 'pointer', opacity: currentPage === totalPages ? 0.5 : 1 }}
+                >
+                    <i className="ti ti-chevron-right fs-5" />
+                </div>
+            </div>
             </div>
           </div>
         </div>

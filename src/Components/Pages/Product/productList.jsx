@@ -97,24 +97,24 @@ const Product = () => {
     setCurrentProductDetails(item);
   };
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6); // You can adjust the number of products per page
+  //  pagination
+      const [currentPage, setCurrentPage] = useState(1);
+      const usersPerPage = 4; // Set number of users per page
+      // Calculate pagination
+      const indexOfLastUser = currentPage * usersPerPage;
+      const indexOfFirstUser = indexOfLastUser - usersPerPage;
+      const currentUsersPage = filteredProducts?.slice(indexOfFirstUser, indexOfLastUser); // Get current users
+  
+      // Total pages
+      const totalPages = Math.ceil(filteredProducts?.length / usersPerPage);
+  
+      // Change page function
+      const paginate = (pageNumber) => {
+          if (pageNumber >= 1 && pageNumber <= totalPages) {
+              setCurrentPage(pageNumber);
+          }
+      };
 
-  // Calculate the index of the last and first product on the current page
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = filteredProducts?.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
-  // Calculate the total number of pages
-  const totalPages = Math?.ceil(filteredProducts?.length / productsPerPage);
-
-  // Handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <div
@@ -193,10 +193,10 @@ const Product = () => {
                       </tr>
                     </thead>
                     <tbody height={350}>
-                      {currentProducts?.reverse()?.map((product, index) => (
+                      {currentUsersPage?.reverse()?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
-                            {indexOfFirstProduct + index + 1}
+                            {/* {indexOfFirstProduct + index + 1} */}
                           </td>
                           <td>
                             <div className="d-flex align-items-center">
@@ -285,26 +285,26 @@ const Product = () => {
                   </table>
                 </div>
               </div>
-              {/* Pagination Controls */}
-              <div className="d-flex align-items-center justify-content-end pb-3">
+              {/* Pagination */}
+              <div className="d-flex align-items-center justify-content-end py-2">
                 <div
-                  className="fs-5 me-2"
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage(currentPage - 1)}
+                    className="fs-5 me-2"
+                    onClick={() => paginate(currentPage - 1)}
+                    style={{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer', opacity: currentPage === 1 ? 0.5 : 1 }}
                 >
-                  <i className="ti ti-chevron-left fs-5" />
+                    <i className="ti ti-chevron-left fs-5" />
                 </div>
                 <span className="fs-5">
-                  Page {currentPage} of {totalPages}
+                    Page {currentPage} of {totalPages}
                 </span>
                 <div
-                  className="fs-5 ms-2 me-5"
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage(currentPage + 1)}
+                    className="fs-5 ms-2 me-5"
+                    onClick={() => paginate(currentPage + 1)}
+                    style={{ cursor: currentPage === totalPages ? 'not-allowed' : 'pointer', opacity: currentPage === totalPages ? 0.5 : 1 }}
                 >
-                  <i className="ti ti-chevron-right fs-5" />
+                    <i className="ti ti-chevron-right fs-5" />
                 </div>
-              </div>
+            </div>
             </div>
           </div>
         </div>
