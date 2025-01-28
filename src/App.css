@@ -164,7 +164,9 @@ foreignObject{
   background-color: rgba(100, 184, 240, 0.1);
 }
 
-
+.card-height{
+  height: 500px;
+}
 
 
 

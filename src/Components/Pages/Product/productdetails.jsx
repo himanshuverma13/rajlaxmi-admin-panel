@@ -54,7 +54,7 @@ const CurrentImg = CurrentProductDetails?.product_image
             {/* Main Content */}
             <div class="shop-detail">
               <div class="card shadow-none border">
-                <div className='mt-2 mx-5  '>
+                <div className='mt-2 mx-5'>
                   <h2 className='fw-bolder'>Product Details</h2>
                   <p className='text-dark'>Dashboard <LuDot /> Product <LuDot /> <span className='text-muted'>Product Details</span>
                   </p>

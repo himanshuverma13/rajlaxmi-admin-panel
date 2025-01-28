@@ -99,7 +99,7 @@ const Product = () => {
 
   //  pagination
       const [currentPage, setCurrentPage] = useState(1);
-      const usersPerPage = 4; // Set number of users per page
+      const usersPerPage = 5; // Set number of users per page
       // Calculate pagination
       const indexOfLastUser = currentPage * usersPerPage;
       const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -140,7 +140,7 @@ const Product = () => {
                   <span className="text-muted">Product List</span>
                 </p>
               </div>
-              <div className="card-body p-3">
+              <div className="card-body p-3 card-height">
                 <div className="mb-3">
                   <form className="row gap-2">
                     <div className="col-md-4">
@@ -179,7 +179,7 @@ const Product = () => {
                 </div>
 
                 <div className="table-responsive border rounded">
-                  <table className="table align-middle table-hover text-nowrap mb-0">
+                  <table className="table align-middle table-hover text-nowrap mb-0" >
                     <thead className="table-light">
                       <tr>
                         <th scope="col">S No.</th>
@@ -192,7 +192,7 @@ const Product = () => {
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
-                    <tbody height={350}>
+                    <tbody>
                       {currentUsersPage?.reverse()?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
@@ -286,7 +286,7 @@ const Product = () => {
                 </div>
               </div>
               {/* Pagination */}
-              <div className="d-flex align-items-center justify-content-end py-2">
+              <div className="d-flex align-items-center justify-content-end py-3">
                 <div
                     className="fs-5 me-2"
                     onClick={() => paginate(currentPage - 1)}
