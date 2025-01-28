@@ -13,17 +13,19 @@ import Registration from "../auth/Registration/registration";
 import Feedback from "../../Pages/Feedback/feedback";
 import { UserContext } from "../UseContext/usecontext";
 import Forgot from "../auth/Forgot/forgot";
+import { AxiosInterceptors } from "../APIs/Interceptor";
 
 const RouterRoutes = () => {
-  const { setUserLogin, UserLogins } = useContext(UserContext);
+  const { TokenContext,setUserLogin, UserLogins } = useContext(UserContext);
   useEffect(() => {
     let getvalue = JSON.parse(localStorage.getItem("userDetails") ?? "[]");
     setUserLogin(getvalue?.data?.message);
+    AxiosInterceptors(TokenContext)
   }, []);
 
   return (
     <Routes>
-      {UserLogins ? (
+      {!UserLogins ? (
         <>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
