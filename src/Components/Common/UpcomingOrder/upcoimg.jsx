@@ -219,9 +219,9 @@ const UpcoingOrder = () => {
 
         <div className="col-lg-8 d-flex align-items-stretch">
           <div className="card w-100">
-            <div className="card-body p-4">
-              <div className="d-flex mb-4 justify-content-between align-items-center">
-                <h5 className="mb-0 fw-bold">Top Users</h5>
+            <div className="card-body px-4 py-3">
+              <div className="d-flex mb-2 justify-content-between align-items-center">
+                <h4 className="mb-0 fw-bold text">Top Users</h4>
                 <div className="dropdown">
                   <button
                     id="dropdownMenuButton1"
