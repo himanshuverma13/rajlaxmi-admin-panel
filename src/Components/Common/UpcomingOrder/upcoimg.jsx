@@ -220,38 +220,9 @@ const UpcoingOrder = () => {
         <div className="col-lg-8 d-flex align-items-stretch">
           <div className="card w-100">
             <div className="card-body px-4 py-3">
-              <div className="d-flex mb-2 justify-content-between align-items-center">
-                <h4 className="mb-0 fw-bold text">Top Users</h4>
-                <div className="dropdown">
-                  <button
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    className="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none"
-                  >
-                    <i className="ti ti-dots-vertical fs-7 d-block" />
-                  </button>
-                  <ul
-                    className="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div className="mb-2">
+                <h4 className="mb-0 fw-bold">Top Users</h4>
+                
               </div>
               <div className="table-responsive" data-simplebar="">
                 <table className="w-100 table align-middle text-nowrap table-hover">
