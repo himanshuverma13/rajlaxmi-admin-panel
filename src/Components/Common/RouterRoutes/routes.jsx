@@ -23,7 +23,7 @@ const RouterRoutes = () => {
 
   return (
     <Routes>
-      {!UserLogins ? (
+      {UserLogins ? (
         <>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
