@@ -87,10 +87,10 @@ const UserInfo = () => {
     const FetchUsers = async () => {
         try {
             const response = await GetAllUser(); // Adjust this to your fetch method
-            console.log("response: user", response);
+            // console.log("response: user", response);
             setUsers(response); // Store the users
         } catch (error) {
-            console.log("error: ", error);
+            // console.log("error: ", error);
         }
     };
 
@@ -153,7 +153,6 @@ const UserInfo = () => {
                                                 <th>State</th>
                                                 <th>City</th>
                                                 <th>Pincode</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,16 +210,7 @@ const UserInfo = () => {
                                                             {items?.user_pincode}
                                                         </span>
                                                     </td>
-                                                    <td>
-                                                        <div className="action-btn">
-                                                            <a href="#" className="text-primary edit">
-                                                                <i className="ti ti-eye fs-5" />
-                                                            </a>
-                                                            <a href="#" className="text-dark delete ms-2">
-                                                                <i className="ti ti-trash fs-5" />
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    
                                                 </tr>
                                             ))}
                                         </tbody>

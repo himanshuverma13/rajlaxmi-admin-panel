@@ -6,7 +6,8 @@ import dashimg4 from '../../Assets/images/svgs/total.svg'
 import BarChart from '../Charts/bargraph'
 import DonutChart from '../Charts/DonutChart'
 import SalesCard from "../SalesCard/salescard";
-import { GetSaleReportAPI } from "../APIs/api";
+import DownloadCSVExcelAPI from "../../Common/DownloadCsv/csvButton";
+import {  GetSaleReportAPI } from "../APIs/api";
 
 const DashboardGraph = () => {
 
@@ -40,7 +41,10 @@ const DashboardGraph = () => {
                       Monthly Data
                     </h5>
                 </div>
-                <div className="dropdown">
+                <div>
+                  <DownloadCSVExcelAPI/>
+                </div>
+                {/* <div className="dropdown">
                   <button
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
@@ -69,7 +73,7 @@ const DashboardGraph = () => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div id="profit" />
               <BarChart BarChartData={ChartData}/>

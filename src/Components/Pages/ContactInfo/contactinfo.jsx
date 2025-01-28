@@ -55,7 +55,7 @@ const ContactInfo = () => {
       const response = await GetAllContactAPI();
       setContact(response);
     } catch (error) {
-      console.log("error: ", error);
+      // console.log("error: ", error);
     }
   };
 
@@ -116,9 +116,9 @@ const ContactInfo = () => {
                         </th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Subject</th>
                         <th>Phone No.</th>
                         <th>Message</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -149,20 +149,13 @@ const ContactInfo = () => {
                             <span className="usr-email-addr">{item.user_email}</span>
                           </td>
                           <td>
+                            <span>{item.user_subject}</span>
+                          </td>
+                          <td>
                             <span className="usr-ph-no">{item.user_mobile}</span>
                           </td>
                           <td>
-                            <span className="usr-location">{item.user_message}</span>
-                          </td>
-                          <td>
-                            <div className="action-btn">
-                              <a href="#" className="text-primary edit">
-                                <i className="ti ti-eye fs-5" />
-                              </a>
-                              <a href="#" className="text-dark delete ms-2">
-                                <i className="ti ti-trash fs-5" />
-                              </a>
-                            </div>
+                            <span className="usr-location text-center">{item.user_message}</span>
                           </td>
                         </tr>
                       ))}

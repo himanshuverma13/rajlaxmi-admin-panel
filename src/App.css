@@ -93,7 +93,7 @@ foreignObject{
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
+  bottom: 22px;
   width: 2px;
   background-color: #e0e0e0;
 }

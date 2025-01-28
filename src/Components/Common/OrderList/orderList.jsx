@@ -112,7 +112,7 @@ const OrderList = () => {
         const response = await GetAllOrderDetailsAPI();
         setOrderDetails(response);
       } catch (error) {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       }
     };
   
@@ -138,7 +138,7 @@ const OrderList = () => {
 
     return isWithinDateRange && isMatchingId && isMatchingStatus;
   });
-  console.log('CurrentSearchFilter: ', CurrentSearchFilter);
+  // console.log('CurrentSearchFilter: ', CurrentSearchFilter);
 
   useEffect(() => {
     setCurrentPage(1);
