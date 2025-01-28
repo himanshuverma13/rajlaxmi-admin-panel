@@ -131,7 +131,7 @@ const ProductEdit = () => {
               <div className="card p-4">
                 <div className="row">
                   <div className="col-lg-6 mb-2">
-                    <label for="productName" className="form-label">
+                    <label for="productName" className="form-label fw-bold text-dark">
                       Product Name
                     </label>
                     <input
@@ -151,7 +151,7 @@ const ProductEdit = () => {
                   </div>
 
                   <div className="col-lg-6 form-group mb-2">
-                    <label for="product_price" className="form-label">Price</label>
+                    <label for="product_price" className="form-label fw-bold text-dark">Price</label>
                     <input
                       type="number"
                       className="form-control"
@@ -173,7 +173,7 @@ const ProductEdit = () => {
                   </div>
 
                   <div className="col-lg-6 form-group mb-2">
-                    <label for="product_stock" className="form-label">Stock</label>
+                    <label for="product_stock" className="form-label fw-bold text-dark">Stock</label>
                     <input
                       type="number"
                       className="form-control"
@@ -194,7 +194,7 @@ const ProductEdit = () => {
                     )}
                   </div>
                   <div className="col-lg-6 form-group mb-2">
-                    <label for="product_category" className="form-label">Category</label>
+                    <label for="product_category" className="form-label fw-bold text-dark">Category</label>
                     <input
                       type="text"
                       className="form-control"
@@ -211,7 +211,7 @@ const ProductEdit = () => {
                     )}
                   </div>
                   <div className="col-lg-6 form-group mb-2">
-                    <label for="product_quantity" className="form-label">Quantity</label>
+                    <label for="product_quantity" className="form-label fw-bold text-dark">Quantity</label>
                     <input
                       type="number"
                       className="form-control"
@@ -232,7 +232,7 @@ const ProductEdit = () => {
                     )}
                   </div>
                   <div className="col-lg-6 form-group mb-2">
-                    <label className="form-label">Select Website</label>
+                    <label className="form-label fw-bold text-dark">Select Website</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
@@ -263,7 +263,7 @@ const ProductEdit = () => {
                          </div> */}
                       <div className="card-body">
                         <div className="mb-3">
-                          <label for="product_description" className="form-label">
+                          <label for="product_description" className="form-label fw-bold text-dark">
                             Product Description
                           </label>
                           <textarea
@@ -315,7 +315,7 @@ const ProductEdit = () => {
                                     alt="Upload Icon"
                                     className="w-25"
                                   />
-                                  <p className="text-muted">
+                                  <p className="text-primary">
                                     Click to browse
                                   </p>
                                 </>

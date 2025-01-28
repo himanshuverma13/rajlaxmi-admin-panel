@@ -96,7 +96,7 @@ const [loading, setLoading] = useState(false);
               <div className="card p-4">
                 <div className="row">
                   <div className="col-lg-6 mb-3">
-                    <label for="productName" className="form-label">
+                    <label for="productName" className="form-label fw-bold text-dark">
                       Product Name
                     </label>
                     <input
@@ -116,7 +116,7 @@ const [loading, setLoading] = useState(false);
                   </div>
 
                   <div className="col-lg-6 mb-3 ">
-                    <label for="product_price" className="form-label">
+                    <label for="product_price" className="form-label  fw-bold text-dark">
                       Price
                     </label>
                     <input
@@ -139,7 +139,7 @@ const [loading, setLoading] = useState(false);
                     )}
                   </div>
                   <div className="col-lg-6 mb-3">
-                    <label for="product_stock" className="form-label">
+                    <label for="product_stock" className="form-label  fw-bold text-dark">
                       Stock
                     </label>
                     <input
@@ -163,7 +163,7 @@ const [loading, setLoading] = useState(false);
                   </div>
 
                   <div className="col-lg-6 mb-3">
-                    <label for="product_category" className="form-label">
+                    <label for="product_category" className="form-label  fw-bold text-dark">
                       Category
                     </label>
                     <input
@@ -183,7 +183,7 @@ const [loading, setLoading] = useState(false);
                   </div>
 
                   <div className="col-lg-6 mb-3">
-                    <label for="product_quantity" className="form-label">
+                    <label for="product_quantity" className="form-label  fw-bold text-dark">
                       Quantity
                     </label>
                     <input
@@ -206,7 +206,7 @@ const [loading, setLoading] = useState(false);
                     )}
                   </div>
                   <div className="col-lg-6 mb-3">
-                    <label className="form-label">Select Website</label>
+                    <label className="form-label  fw-bold text-dark">Select Website</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
@@ -236,7 +236,7 @@ const [loading, setLoading] = useState(false);
                         <div className="mb-3">
                           <label
                             for="product_description"
-                            className="form-label"
+                            className="form-label  fw-bold text-dark"
                           >
                             Product Description
                           </label>
@@ -293,7 +293,7 @@ const [loading, setLoading] = useState(false);
                                         alt="Upload Icon"
                                         className="w-25"
                                       />
-                                      <p className="text-muted">
+                                      <p className=" text-primary">
                                         Click to browse
                                       </p>
                                     </>

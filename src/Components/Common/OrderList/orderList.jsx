@@ -149,7 +149,7 @@ const OrderList = () => {
 
 // .---------- paginations
         const [currentPage, setCurrentPage] = useState(1);
-        const usersPerPage = 4; // Set number of users per page
+        const usersPerPage = 5; // Set number of users per page
         // Calculate pagination
         const indexOfLastUser = currentPage * usersPerPage;
         const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -175,7 +175,7 @@ const OrderList = () => {
           <p className='text-dark'>Dashboard <LuDot /> Order <LuDot /> <span className='text-muted'>List</span>
           </p>
         </div>
-        <div className="card-body p-3">
+        <div className="card-body p-3 card-height">
           <div>
             <ul className="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
               {tabs?.map((tab) => (
@@ -406,8 +406,10 @@ const OrderList = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
             {/* Pagination */}
-            <div className="d-flex align-items-center justify-content-end py-2">
+            <div className="d-flex align-items-center justify-content-end py-3">
                 <div
                     className="fs-5 me-2"
                     onClick={() => paginate(currentPage - 1)}
@@ -426,8 +428,6 @@ const OrderList = () => {
                     <i className="ti ti-chevron-right fs-5" />
                 </div>
             </div>
-          </div>
-        </div>
       </div>
     </div>
   );
