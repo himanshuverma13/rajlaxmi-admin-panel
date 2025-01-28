@@ -6,13 +6,22 @@ import { UserContext } from '../../Common/UseContext/usecontext';
 import { LuDot } from 'react-icons/lu';
 import { GetProductAPI } from '../../Common/APIs/api';
 import Product1 from "../../Assets/images/products/s11.jpg";
+import dummy from "../../Assets/images/products/dummy.jpg";
 const ProductDetails = () => {
   const { CurrentProductDetails } = useContext(UserContext);
    const [productDetails, setProductDetails] = useState([]);
-   const defaultImg = productDetails[1]?.product_image ? JSON?.parse(productDetails[1]?.product_image) : [Product1, Product1]
-  //  console.log('defaultImg: ', defaultImg);
-   const CurrentImg =CurrentProductDetails?.product_image ? JSON?.parse(CurrentProductDetails?.product_image) : [Product1, Product1]
-  //  console.log('CurrentImg: ', JSON?.parse(CurrentProductDetails?.product_image));
+  //  const defaultImg = productDetails[1]?.product_image ? JSON?.parse(productDetails[1]?.product_image) : [Product1, Product1]
+  //  const CurrentImg = CurrentProductDetails?.product_image ? JSON?.parse(CurrentProductDetails?.product_image) : [Product1, Product1]
+
+  // Ensure there's an item at index 1 before accessing it
+const defaultImg = productDetails?.length > 1 && productDetails[1]?.product_image 
+? JSON.parse(productDetails[1]?.product_image) 
+: [Product1, Product1];
+
+// Check if CurrentProductDetails and its image exist
+const CurrentImg = CurrentProductDetails?.product_image 
+? JSON.parse(CurrentProductDetails?.product_image) 
+: [Product1, Product1]
 
   const fetchProducts = async () => {
     const response = await GetProductAPI();
@@ -61,10 +70,10 @@ const ProductDetails = () => {
                           <span class="badge text-bg-success fs-2 fw-semibold">In Stock</span>
                         </div> */}
                     
-                        <h4>{CurrentProductDetails?.product_name || productDetails[0]?.product_name}</h4>
-                        <p class="mb-3">{CurrentProductDetails?.product_description || productDetails[0]?.product_description}</p>
+                        <h4>{CurrentProductDetails?.product_name || productDetails[0]?.product_name || ""}</h4>
+                        <p class="mb-3">{CurrentProductDetails?.product_description || productDetails[0]?.product_description || ''}</p>
                         <h4 class="mb-3">
-                       ₹ {CurrentProductDetails?.product_price || productDetails[0]?.product_price}
+                       ₹ {CurrentProductDetails?.product_price || productDetails[0]?.product_price || ''}
                         </h4>
                         {/* <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                           <ul class="list-unstyled d-flex align-items-center mb-0">
@@ -98,19 +107,19 @@ const ProductDetails = () => {
                         </div> */}
                         <div class="d-flex align-items-center justify-content-between gap-8 py-7">
                           <h6 class="mb-0 fs-4">Category:</h6>
-                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_category || productDetails[0]?.product_category}</div>
+                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_category || productDetails[0]?.product_category || ""}</div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between gap-8 pb-7">
                           <h6 class="mb-0 fs-4">Stock:</h6>
-                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_stock || productDetails[0]?.product_stock}</div>
+                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_stock || productDetails[0]?.product_stock || ""}</div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between gap-7 pb-7  border-bottom">
                           <h6 class="mb-0 fs-4">QTY:</h6>
-                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_quantity || productDetails[0]?.product_quantity}</div>
+                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_quantity || productDetails[0]?.product_quantity || ""}</div>
                         </div>
                         <div class="d-flex align-items-center justify-content-between gap-7 pb-7 mb-7 border-bottom">
                           <h6 class="mb-0 fs-4">Website Name:</h6>
-                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_website_name || productDetails[0]?.product_website_name}</div>
+                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_website_name || productDetails[0]?.product_website_name || ""}</div>
                         </div>
                        
                        

@@ -20,7 +20,7 @@ const Login = () => {
 
 
     const { navigate } = useNavigate();
-    const { setUserLogin } = useContext(UserContext);
+    const { setUserLogin,setTokenContext } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data) => {
@@ -37,6 +37,7 @@ const Login = () => {
             reset();
             if (response?.data?.success) {
                 setUserLogin(response?.data?.message);
+                setTokenContext(response?.data?.accessToken)
                 localStorage.setItem("userDetails", JSON.stringify(response));
                 toast.success(response?.data?.message);
                 setLoading(false);

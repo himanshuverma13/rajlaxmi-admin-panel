@@ -4,6 +4,9 @@ import Navbar from '../../Common/Navbar/navbar'
 import OrderList from '../../Common/OrderList/orderList'
 
 const Order = () => {
+
+  
+
   return (
     <div
       className="page-wrapper"
