@@ -201,7 +201,16 @@ import React, { useEffect, useRef } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const DonutChart = () => {
+const DonutChart = ({ DonutChartData }) => {
+  // console.log('DonutChartData: ', DonutChartData);
+
+//   const weeklyData = DonutChartData?.week?.data || [];
+
+//   // Extract data for Monthly and Weekly datasets
+//   const weekValue = weeklyData?.map((item) =>
+//     parseInt(item?.daily_total_sales, 10)
+//   );
+
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -219,8 +228,8 @@ const DonutChart = () => {
               if (!customLabel) {
                 customLabel = chart.options.chart.custom.label =
                     chart.renderer.label(
-                      'Total<br/>' +
-                      '<strong>2 877 820</strong>'
+                      'Weekly<br/>' +
+                      '<strong>80%</strong>'
                     )
                       .css({
                         color: '#000',
@@ -239,7 +248,7 @@ const DonutChart = () => {
               });
               // Set font size based on chart diameter
               customLabel.css({
-                fontSize: `${series.center[2] / 16}px`
+                fontSize: `${series.center[2] / 10}px`
               });
             }
           }
@@ -286,16 +295,16 @@ const DonutChart = () => {
           colorByPoint: true,
           innerSize: '80%',
           data: [{
-            name: 'EV',
+            name: 'Day 1',
             y: 23.9
           }, {
-            name: 'Hybrids',
+            name: 'Day 2',
             y: 12.6
           }, {
-            name: 'Diesel',
+            name: 'Day 3',
             y: 37.0
           }, {
-            name: 'Petrol',
+            name: 'Day 4',
             y: 26.4
           }]
         }]
