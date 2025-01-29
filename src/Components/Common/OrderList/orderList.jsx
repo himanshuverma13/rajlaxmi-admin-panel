@@ -248,9 +248,9 @@ const OrderList = () => {
             </div>
 
           </div>
-          <div className="table-responsive border rounded">
+          <div className="table-responsive rounded h-75 overflow-auto">
             <table className="table align-middle text-nowrap table-hover mb-0">
-              <thead className="table-light">
+              <thead className="table-light position-sticky top-0">
                 <tr className="border-bottom border-dark">
                   <th scope="col">
                     S No.
@@ -266,8 +266,8 @@ const OrderList = () => {
                   {/* <th scope="col"></th> */}
                 </tr>
               </thead>
-              <tbody>
-                {currentUsersPage?.map((row, index) => (
+              <tbody className="h-100 overflow-scroll">
+                {CurrentSearchFilter?.map((row, index) => (
                   <>
                     <tr key={row?.user_id}>
                       <td>
