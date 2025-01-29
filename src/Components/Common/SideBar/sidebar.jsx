@@ -77,7 +77,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             {/* ============================= */}
-            {/* UI Componenst */}
+            {/* Pages*/}
             {/* ============================= */}
             <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
@@ -172,32 +172,13 @@ const Sidebar = () => {
                       : ""
                   }`}
                   href="#"
-                  // aria-expanded="false"
-                  // onClick={toggleCollapse} // Handle toggle click
-                  // aria-expanded={isOpen ? "true" : "false"}
+                 
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-alert-circle fs-7" />
                   </span>
                   <span className="hide-menu ps-1">Orders</span>
                 </a>
-                {/* <Collapse in={isOpen}>
-                  <ul className="collapse first-level">
-                    <li className="sidebar-item">
-                      <a href="../main/eco-shop.html" className="sidebar-link">
-                        <span className="sidebar-icon mx-3">1</span>
-
-                        <span className="hide-menu">Shop One</span>
-                      </a>
-                    </li>
-                    <li className="sidebar-item">
-                      <a href="../main/eco-shop2.html" className="sidebar-link">
-                        <span className="sidebar-icon mx-3">2</span>
-                        <span className="hide-menu">Shop Two</span>
-                      </a>
-                    </li>
-                  </ul>
-                </Collapse> */}
               </li>
             </NavLink>
 
@@ -257,38 +238,7 @@ const Sidebar = () => {
             </NavLink>
 
             {/* ============================= */}
-            {/* Auth */}
-            {/* <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-5" />
-              <span className="hide-menu">Auth</span>
-            </li>
-            <li className="sidebar-item">
-              <a
-                className="sidebar-link sidebar-link primary-hover-bg"
-                href="authentication-login.html"
-                aria-expanded="false"
-              >
-                <span className="aside-icon p-2 bg-light-primary rounded-1">
-                  <i className="ti ti-login fs-7" />
-                </span>
-                <span className="hide-menu ps-1">Login</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a
-                className="sidebar-link sidebar-link primary-hover-bg"
-                href="authentication-register.html"
-                aria-expanded="false"
-              >
-                <span className="aside-icon p-2 bg-light-primary rounded-1">
-                  <i className="ti ti-user-plus fs-7" />
-                </span>
-                <span className="hide-menu ps-1">Register</span>
-              </a>
-            </li>
-
-            {/* ============================= */}
-            {/* Upgrade to Pro */}
+            {/* Logout Button*/}
             {/* ============================= */}
             <li className="sidebar-item my-4">
               <span
