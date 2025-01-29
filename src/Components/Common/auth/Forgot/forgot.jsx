@@ -117,7 +117,7 @@ const Forgot = () => {
                                     )}>
                                     {step === 1 && (
                                         <div className="form-group mb-4">
-                                            <label>Email / Mobile Number</label>
+                                            <label>Email</label>
 
                                             <input
                                                 type="text"

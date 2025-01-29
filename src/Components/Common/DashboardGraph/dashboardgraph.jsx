@@ -35,45 +35,17 @@ const DashboardGraph = () => {
         <div className="col-lg-8 d-flex align-items-strech">
           <div className="card w-100">
             <div className="card-body">
-              <div className="d-flex align-items-center justify-content-between mb-10">
-                <div className="">
-                    <h5 className="card-title fw-semibold">
+              <div className="row mb-10">
+                <div className="col-md-6">
+                    <p className="fs-6 mt-1 text-dark fw-bold">
                       Monthly Data
-                    </h5>
+                    </p>
                 </div>
-                <div>
-                  <DownloadCSVExcelAPI/>
+                <div className="col-md-6 csv-btn-position">
+                 <div>
+                 <DownloadCSVExcelAPI/>
+                 </div>
                 </div>
-                {/* <div className="dropdown">
-                  <button
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    className="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none"
-                  >
-                    <i className="ti ti-dots-vertical fs-7 d-block" />
-                  </button>
-                  <ul
-                    className="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </div> */}
               </div>
               <div id="profit" />
               <BarChart BarChartData={ChartData}/>

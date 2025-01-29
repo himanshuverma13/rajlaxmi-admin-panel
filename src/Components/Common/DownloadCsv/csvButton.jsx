@@ -18,11 +18,11 @@ const DownloadCsvButton = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center mt-2">
+    <div className="">
       <button
         onClick={downloadCsv}
         type="button"
-        className="btn btn-primary px-5 py-2 d-block"
+        className="btn btn-primary d-block csv-btn"
       >
         Download Excel
       </button>
