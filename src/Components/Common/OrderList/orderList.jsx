@@ -64,6 +64,18 @@ const data = [
     user_total_amount: "12345",
     status: "Completed",
   },
+  {
+    user_id: 6,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    date: '08/04/25',
+    user_city: "New York",
+    user_state: "dasdkf",
+    user_country: "USA",
+    user_pincode: 232345,
+    user_total_amount: "12345",
+    status: "Completed",
+  },
  
 ];
 const OrderList = () => {
@@ -72,7 +84,6 @@ const OrderList = () => {
   const [endDate, setEndDate] = useState('');
   const [searchId, setSearchId] = useState('');
   const [Orders, setOrders] = useState()
-  const rowsPerPage = 5;
   const tabs = ["All", "Pending", "Completed", "Cancelled", "Refunded"];
   const getTabColor = (tab) => {
     switch (tab) {
@@ -110,12 +121,12 @@ const OrderList = () => {
     }, []);
   
 
-  const filteredData = data?.filter(
+  const filteredData = (OrderDetails||data)?.filter(
     (row) => activeTab === "All" || row.status === activeTab
   );
 
 
-  const CurrentSearchFilter = data?.filter((row) => {
+  const CurrentSearchFilter = (OrderDetails||data)?.filter((row) => {
     const isWithinDateRange =
     (!startDate || new Date(row?.date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
     (!endDate || new Date(row?.date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
@@ -124,7 +135,6 @@ const OrderList = () => {
 
     return isWithinDateRange && isMatchingId && isMatchingStatus;
   });
-  // console.log('CurrentSearchFilter: ', CurrentSearchFilter);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -135,14 +145,14 @@ const OrderList = () => {
 
 // .---------- paginations
         const [currentPage, setCurrentPage] = useState(1);
-        const usersPerPage = 5; // Set number of users per page
+        const usersPerPage = 3; // Set number of users per page
         // Calculate pagination
         const indexOfLastUser = currentPage * usersPerPage;
         const indexOfFirstUser = indexOfLastUser - usersPerPage;
-        const currentUsersPage = filteredData?.slice(indexOfFirstUser, indexOfLastUser); // Get current users
+        const currentUsersPage = (CurrentSearchFilter||filteredData)?.slice(indexOfFirstUser, indexOfLastUser); // Get current users
     
         // Total pages
-        const totalPages = Math.ceil(filteredData?.length / usersPerPage);
+        const totalPages = Math.ceil((CurrentSearchFilter||filteredData)?.length / usersPerPage);
     
         // Change page function
         const paginate = (pageNumber) => {

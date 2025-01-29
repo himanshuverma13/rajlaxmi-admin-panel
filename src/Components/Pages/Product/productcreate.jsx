@@ -36,13 +36,12 @@ const [loading, setLoading] = useState(false);
         setimageError("");
         const productData = { ...data, product_image: images}; // Attach multiple images to the product data
         const response = await AddProductAPI(productData);
-        console.log('response: ', response);
         toast?.success(response?.data?.message);
         reset();
         navigate('/product');
       }
     } catch (error) {
-      toast?.success(error?.response?.data?.message);
+      toast?.error(error?.response?.data?.message);
       setLoading(false);
 
     }
