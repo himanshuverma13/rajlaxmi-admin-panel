@@ -267,7 +267,7 @@ const OrderList = () => {
                 </tr>
               </thead>
               <tbody className="h-100 overflow-scroll">
-                {CurrentSearchFilter?.map((row, index) => (
+                {currentUsersPage?.map((row, index) => (
                   <>
                     <tr key={row?.user_id}>
                       <td>
