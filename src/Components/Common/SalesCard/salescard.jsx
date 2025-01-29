@@ -36,7 +36,7 @@ const SalesCard = ({SaleData}) => {
     ]
     return (
         <>
-            <div className="row g-4">
+            <div className="row">
                 {SalesCardData?.map((item, index) => (
                     <div key={index} className="col-md-3">
                         <div className="card border-0 shadow-sm rounded-4 p-4">

@@ -137,6 +137,13 @@ foreignObject{
   .card-height{
     height: 100% !important;
   }
+  .csv-btn{
+    padding: 2px 8px !important;
+  }
+  .csv-btn-position{
+    display: flex !important;
+    justify-content: start !important;
+  }  
 }
 
 /* Login & Registration */
@@ -168,7 +175,7 @@ foreignObject{
 }
 
 .card-height{
-  height: 500px;
+  height: 550px;
 }
 
 
@@ -182,4 +189,9 @@ foreignObject{
 
 .highcharts-credits{
   display:  none !important;
+}
+.csv-btn-position{
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
