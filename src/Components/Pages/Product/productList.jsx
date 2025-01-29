@@ -55,7 +55,7 @@ const Product = () => {
   const fetchProducts = async () => {
     const response = await GetProductAPI();
     // console.log('response: ', response);
-    setProductDetails(response?.products);
+    setProductDetails((response?.products)?.reverse());
   };
 
   useEffect(() => {
@@ -193,7 +193,7 @@ const Product = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {currentUsersPage?.reverse()?.map((product, index) => (
+                      {currentUsersPage?.map((product, index) => (
                         <tr key={product.id}>
                           <td className="fw-bold">
                             {++index}
@@ -287,7 +287,7 @@ const Product = () => {
                 </div>
               </div>
               {/* Pagination */}
-              <div className="d-flex align-items-center justify-content-end py-3">
+              <div className="d-flex align-items-center justify-content-end pt-5 pb-3">
                 <div
                     className="fs-5 me-2"
                     onClick={() => paginate(currentPage - 1)}
