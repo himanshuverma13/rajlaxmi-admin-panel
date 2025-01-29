@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Navbar from "../../Common/Navbar/navbar";
 import Sidebar from "../../Common/SideBar/sidebar";
 import { useForm } from "react-hook-form";
-import { UpdateProductAPI } from "../../Common/APIs/api";
+import { GetProductAPI, UpdateProductAPI } from "../../Common/APIs/api";
 import { UserContext } from "../../Common/UseContext/usecontext";
 import { useEffect } from "react";
 import { LuDot } from "react-icons/lu";
@@ -20,21 +20,23 @@ const ProductEdit = () => {
     formState: { errors },
   } = useForm();
 
-  const { CurrentProductDetails } = useContext(UserContext);
+  const { FirstPrdEdit,CurrentProductDetails } = useContext(UserContext);
+  
+
 
 
   useEffect(() => {
-    setValue("product_name", CurrentProductDetails?.product_name);
-    setValue("product_description", CurrentProductDetails?.product_description);
-    setValue("product_price", CurrentProductDetails?.product_price);
-    setValue("product_quantity", CurrentProductDetails?.product_quantity);
-    setValue("product_stock", CurrentProductDetails?.product_stock);
-    setValue("product_category", CurrentProductDetails?.product_category);
+    setValue("product_name", CurrentProductDetails?.product_name || FirstPrdEdit?.product_name);
+    setValue("product_description", CurrentProductDetails?.product_description || FirstPrdEdit?.product_description);
+    setValue("product_price", CurrentProductDetails?.product_price || FirstPrdEdit?.product_price);
+    setValue("product_quantity", CurrentProductDetails?.product_quantity || FirstPrdEdit?.product_quantity);
+    setValue("product_stock", CurrentProductDetails?.product_stock || FirstPrdEdit?.product_stock);
+    setValue("product_category", CurrentProductDetails?.product_category || FirstPrdEdit?.product_category);
     setValue(
       "product_website_name",
-      CurrentProductDetails?.product_website_name
+      CurrentProductDetails?.product_website_name || FirstPrdEdit?.product_website_name
     );
-    const currentImg = JSON?.parse(CurrentProductDetails?.product_image ?? '[]')
+    const currentImg = JSON?.parse(CurrentProductDetails?.product_image ?? FirstPrdEdit?.product_image ?? '[]')
     
     setImages(currentImg)
   }, []);

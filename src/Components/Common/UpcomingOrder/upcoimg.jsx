@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TopPrd from "../../Assets/images/profile/user2.jpg";
 import { GetAllOrderDetailsAPI, GetProductAPI } from "../APIs/api";
 
 // Images
 import Profile from "../../Assets/images/profile/user1.jpg";
+import { UserContext } from "../UseContext/usecontext";
 
 const UpcoingOrder = () => {
   const product = [
@@ -162,21 +163,22 @@ const UpcoingOrder = () => {
       time: "14:30:00",
     },
   ];
-
+  const { setFirstPrdEdit } = useContext(UserContext);
   const [TopPRD, setTopPRD] = useState();
   const [TopCustomer, setTopCustomer] = useState();
 
   const fetchTopDetails = async () => {
     const TopProduct = await GetProductAPI();
     const TopCustomer = await GetAllOrderDetailsAPI();
+    setFirstPrdEdit((TopProduct?.products)?.reverse()?.[0] ?? '[]')
     setTopCustomer(TopCustomer);
     setTopPRD(TopProduct?.products);
   };
 
-  const FilterTopCutomers = TopCustomer?.sort(
+  const FilterTopCutomers = (TopCustomer || product)?.sort(
     (a, b) => b?.user_total_amount - a?.user_total_amount
   );
-  const FilterTopProduct = TopPRD?.sort(
+  const FilterTopProduct = (TopPRD || customer)?.sort(
     (a, b) => b?.product_price - a?.product_price
   );
 
@@ -194,7 +196,7 @@ const UpcoingOrder = () => {
               <h5 className="mb-0 fw-bold">Top Products</h5>
             </div>
             <hr />
-            {product?.slice(0, 3)?.map((client) => (
+            {FilterTopProduct?.slice(0, 3)?.map((client) => (
               <div className="row mt-2 mb-4 mx-4" key={client?.product_id}>
                 <div className="col-lg-4">
                   <img
@@ -238,7 +240,7 @@ const UpcoingOrder = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {customer?.slice(0, 5)?.map((item, index) => {
+                    {FilterTopCutomers?.slice(0, 5)?.map((item, index) => {
                       return (
                         <>
                           <tr class="">
