@@ -64,7 +64,18 @@ const data = [
     user_total_amount: "12345",
     status: "Completed",
   },
- 
+  {
+    user_id: 6,
+    user_name: "John Doe",
+    user_mobile_num: 2813245678,
+    date: '07/04/25',
+    user_city: "New York",
+    user_state: "dasdkf",
+    user_country: "USA",
+    user_pincode: 232345,
+    user_total_amount: "12345",
+    status: "Completed",
+  },
 ];
 const OrderList = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -241,9 +252,9 @@ const OrderList = () => {
             </div>
 
           </div>
-          <div className="table-responsive border rounded">
+          <div className="table-responsive rounded h-75 overflow-auto">
             <table className="table align-middle text-nowrap table-hover mb-0">
-              <thead className="table-light">
+              <thead className="table-light position-sticky top-0">
                 <tr className="border-bottom border-dark">
                   <th scope="col">
                     S No.
@@ -259,7 +270,7 @@ const OrderList = () => {
                   {/* <th scope="col"></th> */}
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="h-100 overflow-scroll">
                 {CurrentSearchFilter?.map((row, index) => (
                   <>
                     <tr key={row?.user_id}>
