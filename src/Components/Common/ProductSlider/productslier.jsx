@@ -12,7 +12,7 @@ import { UserContext } from '../UseContext/usecontext';
 import { GetProductAPI } from '../APIs/api';
 
 const ProductSlider = ({prdImg}) => {
-      const { CurrentProductDetails } = useContext(UserContext);
+    const { CurrentProductDetails, FirstPrdEdit} = useContext(UserContext);
       
          const [productDetails, setProductDetails] = useState([]);
       

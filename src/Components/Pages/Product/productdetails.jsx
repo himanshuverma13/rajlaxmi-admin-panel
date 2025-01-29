@@ -8,7 +8,8 @@ import { GetProductAPI } from '../../Common/APIs/api';
 import Product1 from "../../Assets/images/products/s11.jpg";
 import dummy from "../../Assets/images/products/dummy.jpg";
 const ProductDetails = () => {
-  const { CurrentProductDetails } = useContext(UserContext);
+  const { CurrentProductDetails,FirstPrdEdit } = useContext(UserContext);
+  console.log('FirstPrdEdit: ', FirstPrdEdit);
    const [productDetails, setProductDetails] = useState([]);
   //  const defaultImg = productDetails[1]?.product_image ? JSON?.parse(productDetails[1]?.product_image) : [Product1, Product1]
   //  const CurrentImg = CurrentProductDetails?.product_image ? JSON?.parse(CurrentProductDetails?.product_image) : [Product1, Product1]
@@ -16,12 +17,12 @@ const ProductDetails = () => {
   // Ensure there's an item at index 1 before accessing it
 const defaultImg = productDetails?.length > 1 && productDetails[1]?.product_image 
 ? JSON.parse(productDetails[1]?.product_image) 
-: [Product1, Product1];
+: JSON.parse(FirstPrdEdit?.product_image) || [Product1, Product1];
 
 // Check if CurrentProductDetails and its image exist
 const CurrentImg = CurrentProductDetails?.product_image 
 ? JSON.parse(CurrentProductDetails?.product_image) 
-: [Product1, Product1]
+: JSON.parse(FirstPrdEdit?.product_image) || [Product1, Product1]
 
   const fetchProducts = async () => {
     const response = await GetProductAPI();
