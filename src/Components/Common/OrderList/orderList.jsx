@@ -121,15 +121,12 @@ const OrderList = () => {
     }, []);
   
 
-  const filteredData = (OrderDetails || data)?.filter(
+  const filteredData = data?.filter(
     (row) => activeTab === "All" || row.status === activeTab
   );
-  // const indexOfLastRow = currentPage * rowsPerPage;
-  // const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  // const currentItems = filteredData?.slice(indexOfFirstRow, indexOfLastRow);
-  // const totalPages = Math.ceil(filteredData?.length / rowsPerPage);
 
-  const CurrentSearchFilter = (OrderDetails||data)?.filter((row) => {
+
+  const CurrentSearchFilter = data?.filter((row) => {
     const isWithinDateRange =
     (!startDate || new Date(row?.date)?.toLocaleDateString('en-GB') >= new Date(startDate)?.toLocaleDateString('en-GB')) &&
     (!endDate || new Date(row?.date)?.toLocaleDateString('en-GB') <= new Date(endDate)?.toLocaleDateString('en-GB'));
@@ -271,7 +268,7 @@ const OrderList = () => {
                 </tr>
               </thead>
               <tbody>
-                {CurrentSearchFilter?.map((row, index) => (
+                {currentUsersPage?.map((row, index) => (
                   <>
                     <tr key={row?.user_id}>
                       <td>

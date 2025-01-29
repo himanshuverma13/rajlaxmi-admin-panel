@@ -12,10 +12,11 @@ const Sidebar = () => {
   const params = useLocation();
   const navigation = useNavigate();
 
-  const { toggleSidebar, isSidebarOpen } = useContext(UserContext);
+  const { toggleSidebar, isSidebarOpen, setIsSidebarOpen } = useContext(UserContext);
 
   const toggleCollapse = () => {
-    setIsOpen(!isOpen); // Toggle the collapse state
+    // setIsSidebarOpen()
+    // setIsSidebarOpen(!isSidebarOpen); // Toggle the collapse state
   };
 
   const handleLogout = () => {
@@ -24,12 +25,17 @@ const Sidebar = () => {
     setUserLogin('')
     navigation("/login");
   };
+  const handleNavClick = () => {
+    if (window.innerWidth < 992) {
+      toggleSidebar() // Close sidebar on small screens
+    }
+  };
 
   return (
     <aside className={`left-sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="brand-logo d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-end justify-content-center logo-img ms-0 ms-md-1">
-          <NavLink to={"/"}>
+          <NavLink to={"/"} onClick={handleNavClick}>
             <img
               src={Logo}
               // width={180}
@@ -58,7 +64,7 @@ const Sidebar = () => {
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
               <span className="hide-menu">Home</span>
             </li>
-            <NavLink to={"/"}>
+            <NavLink to={"/"} onClick={handleNavClick}>
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link sidebar-link primary-hover-bg ${
@@ -129,14 +135,14 @@ const Sidebar = () => {
                   >
                     <div className="accordion-body p-0 ">
                       <ul className="list-unstyled tree-menu ms-2">
-                        <NavLink to={"/product"} className="sidebar-link">
+                        <NavLink to={"/product"} onClick={handleNavClick} className="sidebar-link">
                           <li className="sidebar-item">
                             {/* <span className="sidebar-icon mx-3">1</span> */}
                             <span className="hide-menu">List</span>
                           </li>
                         </NavLink>
                         <NavLink
-                          to={"/productdetails"}
+                          to={"/productdetails"} onClick={handleNavClick}
                           className="sidebar-link"
                         >
                           <li className="sidebar-item">
@@ -144,13 +150,13 @@ const Sidebar = () => {
                             <span className="hide-menu">Details</span>
                           </li>
                         </NavLink>
-                        <NavLink to={"/productedit"} className="sidebar-link">
+                        <NavLink onClick={handleNavClick} to={"/productedit"} className="sidebar-link">
                           <li className="sidebar-item">
                             {/* <span className="sidebar-icon mx-3">3</span> */}
                             <span className="hide-menu">Edit</span>
                           </li>
                         </NavLink>
-                        <NavLink to={"/productcreate"} className="sidebar-link">
+                        <NavLink onClick={handleNavClick} to={"/productcreate"} className="sidebar-link">
                           <li className="sidebar-item">
                             {/* <span className="sidebar-icon mx-3">4</span> */}
                             <span className="hide-menu">Create</span>
@@ -163,14 +169,14 @@ const Sidebar = () => {
               </div>
             </li>
 
-            <NavLink to={"/order"}>
+            <NavLink to={"/order"} onClick={handleNavClick}>
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link sidebar-link primary-hover-bg ${
                     params?.pathname == "/order"
-                      ? "primary-hover-bg-sidebar-active"
+                      ? "primary-hover-bg-sidebar-active" 
                       : ""
-                  }`}
+                  }`} 
                   href="#"
                   // aria-expanded="false"
                   // onClick={toggleCollapse} // Handle toggle click
@@ -181,27 +187,11 @@ const Sidebar = () => {
                   </span>
                   <span className="hide-menu ps-1">Orders</span>
                 </a>
-                {/* <Collapse in={isOpen}>
-                  <ul className="collapse first-level">
-                    <li className="sidebar-item">
-                      <a href="../main/eco-shop.html" className="sidebar-link">
-                        <span className="sidebar-icon mx-3">1</span>
 
-                        <span className="hide-menu">Shop One</span>
-                      </a>
-                    </li>
-                    <li className="sidebar-item">
-                      <a href="../main/eco-shop2.html" className="sidebar-link">
-                        <span className="sidebar-icon mx-3">2</span>
-                        <span className="hide-menu">Shop Two</span>
-                      </a>
-                    </li>
-                  </ul>
-                </Collapse> */}
               </li>
             </NavLink>
 
-            <NavLink to={"/userinfo"}>
+            <NavLink onClick={handleNavClick} to={"/userinfo"}>
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link sidebar-link primary-hover-bg ${
@@ -219,7 +209,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
 
-            <NavLink to={"/feedback"}>
+            <NavLink onClick={handleNavClick} to={"/feedback"}>
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link sidebar-link primary-hover-bg ${
@@ -237,7 +227,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
 
-            <NavLink to={"/contactinfo"}>
+            <NavLink onClick={handleNavClick} to={"/contactinfo"}>
               <li className="sidebar-item">
                 <a
                   className={`sidebar-link sidebar-link primary-hover-bg ${
@@ -256,40 +246,6 @@ const Sidebar = () => {
               </li>
             </NavLink>
 
-            {/* ============================= */}
-            {/* Auth */}
-            {/* <li className="nav-small-cap">
-              <i className="ti ti-dots nav-small-cap-icon fs-5" />
-              <span className="hide-menu">Auth</span>
-            </li>
-            <li className="sidebar-item">
-              <a
-                className="sidebar-link sidebar-link primary-hover-bg"
-                href="authentication-login.html"
-                aria-expanded="false"
-              >
-                <span className="aside-icon p-2 bg-light-primary rounded-1">
-                  <i className="ti ti-login fs-7" />
-                </span>
-                <span className="hide-menu ps-1">Login</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a
-                className="sidebar-link sidebar-link primary-hover-bg"
-                href="authentication-register.html"
-                aria-expanded="false"
-              >
-                <span className="aside-icon p-2 bg-light-primary rounded-1">
-                  <i className="ti ti-user-plus fs-7" />
-                </span>
-                <span className="hide-menu ps-1">Register</span>
-              </a>
-            </li>
-
-            {/* ============================= */}
-            {/* Upgrade to Pro */}
-            {/* ============================= */}
             <li className="sidebar-item my-4">
               <span
                 onClick={()=>handleLogout()}
