@@ -83,7 +83,7 @@ const Login = () => {
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className=" mb-3">
-                                        <label>Email / Mobile Number</label>
+                                        <label>Email</label>
 
                                         <input
                                             type="text"

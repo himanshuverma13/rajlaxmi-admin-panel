@@ -56,26 +56,15 @@ const data = [
     user_id: 5,
     user_name: "John Doe",
     user_mobile_num: 2813245678,
-    date: '07/05/25',
+    date: '07/04/25',
     user_city: "New York",
     user_state: "dasdkf",
     user_country: "USA",
     user_pincode: 232345,
     user_total_amount: "12345",
-    status: "Pending",
+    status: "Completed",
   },
-  {
-    user_id: 6,
-    user_name: "John Doe",
-    user_mobile_num: 2813245678,
-    date: '07/06/25',
-    user_city: "New York",
-    user_state: "dasdkf",
-    user_country: "USA",
-    user_pincode: 232345,
-    user_total_amount: "12345",
-    status: "Cancelled",
-  },
+ 
 ];
 const OrderList = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -172,7 +161,7 @@ const OrderList = () => {
           <p className='text-dark'>Dashboard <LuDot /> Order <LuDot /> <span className='text-muted'>List</span>
           </p>
         </div>
-        <div className="card-body p-3 card-height">
+        <div className="card-body card-height">
           <div>
             <ul className="nav nav-pills p-3 mb-3 rounded align-items-center card flex-row">
               {tabs?.map((tab) => (
@@ -326,46 +315,6 @@ const OrderList = () => {
                           aria-controls={`collapse-${row?.user_id}`}
                         ></i>
                       </td>
-
-                      {/* <td>
-                        <div className="dropdown">
-                          <button
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="true"
-                            className="rounded-circle btn-transparent btn-sm px-1 btn shadow-none"
-                          >
-                            <i className="ti ti-dots-vertical fs-7 d-block" />
-                          </button>
-                          <ul
-                            className="dropdown-menu dropdown-menu-end"
-                            aria-labelledby="dropdownMenuButton1"
-                            style={{
-                              position: "absolute",
-                              inset: "0px 0px auto auto",
-                              margin: 0,
-                              transform: "translate3d(0px, 36px, 0px)",
-                            }}
-                            data-popper-placement="bottom-end"
-                          >
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Another action
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="#">
-                                Something else here
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </td> */}
                     </tr>
                     <tr>
                       <td colSpan="10" className="py-0 border-0 bg-light px-1">
@@ -406,7 +355,7 @@ const OrderList = () => {
           </div>
         </div>
             {/* Pagination */}
-            <div className="d-flex align-items-center justify-content-end py-3">
+            <div className="d-flex align-items-center justify-content-end pt-5 pb-3">
                 <div
                     className="fs-5 me-2"
                     onClick={() => paginate(currentPage - 1)}

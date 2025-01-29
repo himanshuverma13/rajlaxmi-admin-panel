@@ -83,7 +83,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
             {/* ============================= */}
-            {/* UI Componenst */}
+            {/* Pages*/}
             {/* ============================= */}
             <li className="nav-small-cap">
               <i className="ti ti-dots nav-small-cap-icon fs-5" />
@@ -178,9 +178,7 @@ const Sidebar = () => {
                       : ""
                   }`} 
                   href="#"
-                  // aria-expanded="false"
-                  // onClick={toggleCollapse} // Handle toggle click
-                  // aria-expanded={isOpen ? "true" : "false"}
+                 
                 >
                   <span className="aside-icon p-2 bg-light-primary rounded-1">
                     <i className="ti ti-alert-circle fs-7" />
