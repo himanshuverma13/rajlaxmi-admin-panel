@@ -227,7 +227,7 @@ const UserInfo = () => {
                                 >
                                     <i className="ti ti-chevron-left fs-5" />
                                 </div>
-                                <span className="fs-5">
+                                <span className="fs-3">
                                     Page {currentPage} of {totalPages}
                                 </span>
                                 <div

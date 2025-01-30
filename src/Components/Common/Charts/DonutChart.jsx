@@ -315,6 +315,7 @@ const DonutChart = ({ DonutChartData }) => {
   return (
     <div className="highcharts-figure">
       <div ref={chartRef} className='donutChart-style' id="container"></div>
+      <div className='text-dark text-center fw-bold fs-5'>Total Sale</div>
     </div>
   );
 };

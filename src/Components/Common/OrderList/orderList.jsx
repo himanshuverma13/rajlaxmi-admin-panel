@@ -181,19 +181,19 @@ const OrderList = () => {
               {tabs?.map((tab) => (
                 <li
                   key={tab}
-                  className={`nav-item mx-2 order-filter my-1 d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-bottom-primary pb-1 border-2" : ""
+                  className={`nav-item mx-3 order-filter my-1 d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-primary pb-1 border-2" : ""
                     }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   <span
-                    className={` d-md-block fs-3 fw-medium ${activeTab === tab ? "fs-2 text-primary " : ""
+                    className={` d-md-block fs-3 fw-bold ${activeTab === tab ? "fs-3 text-dark " : ""
                       }`}
                   >
                     {tab}
                   </span>
                   <span
-                    className={`mx-1 px-1 rounded ${activeTab === tab
-                      ? "fs-3 text-primary  fw-bold bg-primary text-white"
+                    className={`mx-2 px-1 fs-3 fw-bold rounded ${activeTab === tab
+                      ? " text-primary bg-primary text-white"
                       : getTabColor(tab)
                       }`}
                   >
@@ -377,7 +377,7 @@ const OrderList = () => {
                 >
                     <i className="ti ti-chevron-left fs-5" />
                 </div>
-                <span className="fs-5">
+                <span className="fs-3">
                     Page {currentPage} of {totalPages}
                 </span>
                 <div
