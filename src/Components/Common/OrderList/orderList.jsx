@@ -145,7 +145,7 @@ const OrderList = () => {
 
 // .---------- paginations
         const [currentPage, setCurrentPage] = useState(1);
-        const usersPerPage = 3; // Set number of users per page
+        const usersPerPage = 5; // Set number of users per page
         // Calculate pagination
         const indexOfLastUser = currentPage * usersPerPage;
         const indexOfFirstUser = indexOfLastUser - usersPerPage;
