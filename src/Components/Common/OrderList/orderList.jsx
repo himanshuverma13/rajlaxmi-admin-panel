@@ -177,7 +177,7 @@ const OrderList = () => {
               {tabs?.map((tab) => (
                 <li
                   key={tab}
-                  className={`nav-item mx-3 order-filter my-1 d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-primary pb-1 border-2" : ""
+                  className={`nav-item mx-3 order-filter my-1  d-flex justify-content-between align-items-center ${activeTab === tab ? "active border-bottom border-primary pb-1 border-2" : "pb-1"
                     }`}
                   onClick={() => handleTabClick(tab)}
                 >
