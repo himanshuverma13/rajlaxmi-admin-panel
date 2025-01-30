@@ -3,13 +3,19 @@ import { axiosInstance } from "./Interceptor";
 
 const URL = process.env.REACT_APP_API;
 const WTHRURL = process.env.REACT_APP_API_WEATHER;
+const FeebackURL = process.env.REACT_APP_API_FEEDBACK;
 const Token = JSON?.parse(localStorage?.getItem("userDetails") ?? "[]");
 
 // ---------------- Feedback API --------------------------------
 
 export const FeedbackAPI = async () => {
   try {
-    const response = await axiosInstance.get(`/admin/allfeedback`);
+    const response = await axios.get(`${FeebackURL}/users/allfeedback`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+        "Content-Type": "application/json",
+      },
+    });
     return response?.data?.reviews;
   } catch (error) {
     console.error("Error fetching feedback:", error);
@@ -63,7 +69,7 @@ export const AddProductAPI = async (payload) => {
     const response = await axiosInstance.post(`/admin/createproduct`, payload);
     return response;
   } catch (error) {
-    console.log('error: ', error);
+    console.log("error: ", error);
     throw error;
   }
 };
@@ -178,12 +184,12 @@ export const DownloadCSVExcelAPI = async () => {
       headers: {
         "ngrok-skip-browser-warning": "69420",
         "Content-Type": "text/csv; charset=UTF-8",
-        "Authorization": `${Token?.data?.accessToken}` 
+        Authorization: `${Token?.data?.accessToken}`,
       },
       responseType: "blob",
     });
-    return response
+    return response;
   } catch (error) {
-    throw error
+    throw error;
   }
 };

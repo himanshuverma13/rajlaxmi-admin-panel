@@ -36,7 +36,6 @@ const Registration = () => {
                 role: "admin"
             };
             const response = await RegisterAPI(payload);
-            console.log('response: ', response);
             if (response?.message) {
                 toast.success(response?.data?.message)
                 setLoading(false)

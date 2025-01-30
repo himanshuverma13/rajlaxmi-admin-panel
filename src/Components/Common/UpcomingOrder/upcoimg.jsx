@@ -197,17 +197,16 @@ const UpcoingOrder = () => {
             <hr />
             {FilterTopProduct?.slice(0, 3)?.map((client) => {
               const CurrentImg = JSON?.parse(client?.product_image ?? "[]");
-              console.log('CurrentImg: ', CurrentImg);
               return (
                 <div className="row mt-2 mb-4 mx-4" key={client?.product_id}>
-                  <div className="col-lg-4">
+                  <div className="col-lg-4  col-sm-4 top-product">
                     <img
-                      className="w-100 rounded-4 shadow"
+                      className="top-product shadow"
                       src={CurrentImg[0] || TopPRD}
                       alt={client?.product_name}
                     />
                   </div>
-                  <div className="col-lg-8">
+                  <div className="col-lg-8 col-sm-4 top-product">
                     <h6 className="user-name mt-3 mb-0 text-uppercase">
                       {client?.product_name}
                     </h6>
