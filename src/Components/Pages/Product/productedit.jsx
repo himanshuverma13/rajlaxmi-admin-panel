@@ -21,6 +21,7 @@ const ProductEdit = () => {
   } = useForm();
 
   const { FirstPrdEdit,CurrentProductDetails } = useContext(UserContext);
+  console.log('FirstPrdEdit: ', FirstPrdEdit);
   
 
 
@@ -73,7 +74,6 @@ const ProductEdit = () => {
   const SetImage = watch("product_image");
   const onSubmit = async (data) => {
     const productData = { ...data, product_image: images };
-    console.log("productData: ", productData);
     setLoading(true);
     try {
       if (images?.length == 0) {
@@ -86,7 +86,7 @@ const ProductEdit = () => {
         console.log('productData: ', productData);
         setProductDetails(productData);
         const response = await UpdateProductAPI(
-          CurrentProductDetails?.product_id,
+          CurrentProductDetails?.product_id || FirstPrdEdit?.product_id,
           productData
         );
         toast?.success(response?.message);
