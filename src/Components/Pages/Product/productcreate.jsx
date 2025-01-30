@@ -161,7 +161,7 @@ const [loading, setLoading] = useState(false);
                     )}
                   </div>
 
-                  <div className="col-lg-6 mb-3">
+                  {/* <div className="col-lg-6 mb-3">
                     <label for="product_category" className="form-label  fw-bold text-dark">
                       Category
                     </label>
@@ -179,11 +179,11 @@ const [loading, setLoading] = useState(false);
                         {errors.product_category.message}
                       </span>
                     )}
-                  </div>
+                  </div> */}
 
                   <div className="col-lg-6 mb-3">
                     <label for="product_quantity" className="form-label  fw-bold text-dark">
-                      Quantity
+                     Size
                     </label>
                     <input
                       type="number"
@@ -205,7 +205,7 @@ const [loading, setLoading] = useState(false);
                     )}
                   </div>
                   <div className="col-lg-6 mb-3">
-                    <label className="form-label  fw-bold text-dark">Select Website</label>
+                    <label className="form-label  fw-bold text-dark">Category</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
@@ -219,7 +219,7 @@ const [loading, setLoading] = useState(false);
                     </select>
                     {errors.product_website_name && (
                       <span className="text-danger">
-                        {errors.product_website_name.message}
+                        {errors.product_category.message}
                       </span>
                     )}
                   </div>

@@ -188,7 +188,7 @@ const Product = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Category</th>
                         <th scope="col">Stock</th>
-                        <th scope="col">Quantity</th>
+                        <th scope="col">Size</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -295,7 +295,7 @@ const Product = () => {
                 >
                     <i className="ti ti-chevron-left fs-5" />
                 </div>
-                <span className="fs-5">
+                <span className="fs-3">
                     Page {currentPage} of {totalPages}
                 </span>
                 <div

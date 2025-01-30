@@ -154,8 +154,8 @@ const ContactInfo = () => {
                           <td>
                             <span className="usr-ph-no">{item.user_mobile}</span>
                           </td>
-                          <td>
-                            <span className="usr-location text-center" data-toggle="tooltip" data-placement="bottom" title={`${item?.user_message}`}>{item?.user_message}</span>
+                          <td className=''>
+                            <p className="usr-location text-center w-50 text-truncate" data-toggle="tooltip" data-placement="bottom" title={`${item?.user_message}`}>{item?.user_message}</p>
                           </td>
                         </tr>
                       ))}
@@ -172,7 +172,7 @@ const ContactInfo = () => {
                 >
                   <i className="ti ti-chevron-left fs-5" />
                 </div>
-                <span className="fs-5">
+                <span className="fs-3">
                   Page {currentPage} of {totalPages}
                 </span>
                 <div

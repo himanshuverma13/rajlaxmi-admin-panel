@@ -50,9 +50,9 @@ foreignObject{
   height: calc(100% - 70px);
 }
 
-.scroll-sidebar::-webkit-scrollbar {
+/* .scroll-sidebar::-webkit-scrollbar {
   display: none;
-}
+} */
 
 
 
@@ -196,18 +196,25 @@ foreignObject{
   align-items: center;
 }
 
-/* -----------Show Text on Hover CSS ------------ */
-.main-text-on-hover:hover + .extra-text-on-hover {
-  display: block;
+/* --------------ScrollBar Css ------------ */
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.extra-text-on-hover {
-  background-color: #FFFFFF;
-  margin-top: 10px;
-  width: 100%;
-  border: 2px solid #000000;
-  padding: 10px;
-  font-size: 16px;
-  display: none;
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #bccff2;
 }
-/* -----------------END -------------------------------- */
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5091e6; 
+  border-radius: 10px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d7d9e3; 
+}

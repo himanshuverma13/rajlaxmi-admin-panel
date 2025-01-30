@@ -32,7 +32,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={`left-sidebar ${isSidebarOpen ? "open" : "closed"}`}>
+    <aside className={`left-sidebar vh-100  position-fixed ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="brand-logo d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-end justify-content-center logo-img ms-0 ms-md-1">
           <NavLink to={"/"} onClick={handleNavClick}>
@@ -53,7 +53,7 @@ const Sidebar = () => {
         </div>
       </div>
       {/* Sidebar scroll*/}
-      <div className="scroll-sidebar" data-simplebar="">
+      <div className="scroll-sidebar overflow-scroll" data-simplebar="">
         {/* Sidebar navigation*/}
         <nav className="sidebar-nav">
           <ul id="sidebarnav" className="mb-0">
