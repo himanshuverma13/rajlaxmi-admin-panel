@@ -244,7 +244,7 @@ const Sidebar = () => {
               </li>
             </NavLink>
 
-            <li className="sidebar-item my-4">
+            <li className="sidebar-item mt-4 mb-5">
               <span
                 onClick={()=>handleLogout()}
                 className="btn btn-primary d-block"
