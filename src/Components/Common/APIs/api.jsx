@@ -63,6 +63,7 @@ export const AddProductAPI = async (payload) => {
     const response = await axiosInstance.post(`/admin/createproduct`, payload);
     return response;
   } catch (error) {
+    console.log('error: ', error);
     throw error;
   }
 };

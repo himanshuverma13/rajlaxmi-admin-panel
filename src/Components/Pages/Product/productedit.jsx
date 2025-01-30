@@ -21,7 +21,7 @@ const ProductEdit = () => {
   } = useForm();
 
   const { FirstPrdEdit,CurrentProductDetails } = useContext(UserContext);
-  console.log('FirstPrdEdit: ', FirstPrdEdit);
+  console.log('FirstPrdEdit: ', FirstPrdEdit,CurrentProductDetails);
   
 
 
@@ -195,23 +195,36 @@ const ProductEdit = () => {
                       </span>
                     )}
                   </div>
-                  {/* <div className="col-lg-6 form-group mb-2">
-                    <label for="product_category" className="form-label fw-bold text-dark">Category</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="product_category"
-                      placeholder="Enter Category"
+                  <div className="col-lg-6 mb-3">
+                    <label
+                      for="product_category"
+                      className="form-label  fw-bold text-dark"
+                    >
+                      Category list-
+                    </label>
+                    <select
+                      className="form-select py-2"
                       {...register("product_category", {
-                        required: "Category is required",
+                        required: "Please select an option",
                       })}
-                    />
+                    >
+                      <option value="">Select</option>
+                      <option value="Pulses">Pulses</option>
+                      <option value="Millet">Millet</option>
+                      <option value="Rice & Wheat">Rice & Wheat</option>
+                      <option value="Garam Masala">Garam Masala</option>
+                      <option value="Chaat Masala">Chaat Masala</option>
+                      <option value="Sweets Items">Sweets Items</option>
+                      <option value="Seeds">Seeds</option>
+                      <option value="Other Items">Other Items</option>
+                      <option value="Oils & Ghee">Oils & Ghee</option>
+                    </select>
                     {errors.product_category && (
                       <span className="text-danger">
                         {errors.product_category.message}
                       </span>
                     )}
-                  </div> */}
+                  </div>
                   <div className="col-lg-6 form-group mb-2">
                     <label for="product_quantity" className="form-label fw-bold text-dark">Size</label>
                     <input
@@ -234,7 +247,7 @@ const ProductEdit = () => {
                     )}
                   </div>
                   <div className="col-lg-6 form-group mb-2">
-                    <label className="form-label fw-bold text-dark">Category</label>
+                    <label className="form-label fw-bold text-dark">Website Name</label>
                     <select
                       className="form-select py-2"
                       {...register("product_website_name", {
