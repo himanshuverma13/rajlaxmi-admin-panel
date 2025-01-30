@@ -155,7 +155,7 @@ const ContactInfo = () => {
                             <span className="usr-ph-no">{item.user_mobile}</span>
                           </td>
                           <td>
-                            <span className="usr-location text-center">{item.user_message}</span>
+                            <span className="usr-location text-center" data-toggle="tooltip" data-placement="bottom" title={`${item?.user_message}`}>{item?.user_message}</span>
                           </td>
                         </tr>
                       ))}

@@ -195,3 +195,19 @@ foreignObject{
   justify-content: end;
   align-items: center;
 }
+
+/* -----------Show Text on Hover CSS ------------ */
+.main-text-on-hover:hover + .extra-text-on-hover {
+  display: block;
+}
+
+.extra-text-on-hover {
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  width: 100%;
+  border: 2px solid #000000;
+  padding: 10px;
+  font-size: 16px;
+  display: none;
+}
+/* -----------------END -------------------------------- */
