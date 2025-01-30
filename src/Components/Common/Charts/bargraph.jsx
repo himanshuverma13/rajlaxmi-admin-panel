@@ -70,6 +70,24 @@ const BarChart = ({BarChartData}) => {
       // },
     },
     colors: ['#0085db', '#fb977d'],
+    responsive: [
+      {
+        breakpoint: 768, // Mobile devices
+        options: {
+          plotOptions: {
+            bar: {
+              columnWidth: '65%',
+              borderRadius: 4,
+            },
+          },
+          stroke: {
+            show: true,
+            width: 3,
+            colors: ['transparent'],
+          },
+        },
+      },
+    ],
   };
 
   return (

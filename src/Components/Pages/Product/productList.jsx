@@ -142,7 +142,7 @@ const Product = () => {
               </div>
               <div className="card-body p-3 card-height">
                 <div className="mb-3">
-                  <form className="row gap-2">
+                  <div className="row gap-2">
                     <div className="col-md-4">
                       <select
                         className="form-select"
@@ -166,7 +166,7 @@ const Product = () => {
                       />
                       <i className="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
-                  </form>
+                  </div>
                   {/* <a
                     className="fs-6 text-muted"
                     href="#!"
