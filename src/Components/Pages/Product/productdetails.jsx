@@ -121,7 +121,7 @@ const CurrentImg = CurrentProductDetails?.product_image
                         </div>
                         <div class="d-flex align-items-center justify-content-between gap-7 pb-7 mb-7 border-bottom">
                           <h6 class="mb-0 fs-4">Category :</h6>
-                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_category || productDetails[0]?.product_website_name || ""}</div>
+                          <div class="fw-bold d-block text-primary p-3">{CurrentProductDetails?.product_website_name || productDetails[0]?.product_website_name || ""}</div>
                         </div>
                        
                       </div>
