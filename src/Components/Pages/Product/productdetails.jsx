@@ -85,12 +85,12 @@ const ProductDetails = () => {
                         </div>
                         <div class="col-lg-5 pt-3">
                           <div class="shop-content">
-                            <h4>
+                            <h4 className="text-uppercase fw-bold">
                               {CurrentProductDetails?.product_name ||
                                 productDetails[0]?.product_name ||
                                 ""}
                             </h4>
-                            <p class="mb-3">
+                            <p class="mb-3 w-100 text-truncate">
                               {CurrentProductDetails?.product_description ||
                                 productDetails[0]?.product_description ||
                                 ""}
@@ -119,7 +119,7 @@ const ProductDetails = () => {
                               </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between gap-7 pb-7  border-bottom">
-                              <h6 class="mb-0 fs-4">QTY :</h6>
+                              <h6 class="mb-0 fs-4">Qty :</h6>
                               <div class="fw-bold d-block text-primary p-3">
                                 {CurrentProductDetails?.product_quantity ||
                                   productDetails[0]?.product_quantity ||
@@ -136,11 +136,25 @@ const ProductDetails = () => {
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </>
                   )}
                 </div>
               </div>
+             <div className="row">
+             <div className="col-md-12">
+                <div className="card">
+                  <div className="card-body">
+                  <h3 className="text-uppercase fw-bold">Product Description</h3>
+                  <hr />
+                    <p>{CurrentProductDetails?.product_description ||
+                      productDetails[0]?.product_description ||
+                      ""}</p>
+                  </div>
+                </div>
+              </div>
+             </div>
             </div>
           </div>
         </div>

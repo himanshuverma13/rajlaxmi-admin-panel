@@ -208,12 +208,12 @@ foreignObject{
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
-  background: #bccff2;
+  background: #f0f2f5;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #5091e6; 
+  background: #808285; 
   border-radius: 10px; 
 }
 
