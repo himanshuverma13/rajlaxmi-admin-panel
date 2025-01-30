@@ -50,9 +50,9 @@ foreignObject{
   height: calc(100% - 70px);
 }
 
-.scroll-sidebar::-webkit-scrollbar {
+/* .scroll-sidebar::-webkit-scrollbar {
   display: none;
-}
+} */
 
 
 
@@ -194,4 +194,27 @@ foreignObject{
   display: flex;
   justify-content: end;
   align-items: center;
+}
+
+/* --------------ScrollBar Css ------------ */
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #bccff2;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5091e6; 
+  border-radius: 10px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d7d9e3; 
 }
