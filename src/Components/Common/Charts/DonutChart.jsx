@@ -228,7 +228,7 @@ const DonutChart = ({ DonutChartData }) => {
               if (!customLabel) {
                 customLabel = chart.options.chart.custom.label =
                     chart.renderer.label(
-                      'Weekly<br/>' +
+                      'Total Sale<br/>' +
                       '<strong>80%</strong>'
                     )
                       .css({
@@ -315,7 +315,7 @@ const DonutChart = ({ DonutChartData }) => {
   return (
     <div className="highcharts-figure">
       <div ref={chartRef} className='donutChart-style' id="container"></div>
-      <div className='text-dark text-center fw-bold fs-5'>Total Sale</div>
+      {/* <div className='text-dark text-center fw-bold fs-5'>Total Sale</div> */}
     </div>
   );
 };

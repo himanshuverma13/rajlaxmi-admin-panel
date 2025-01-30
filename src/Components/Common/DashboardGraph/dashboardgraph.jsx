@@ -59,7 +59,7 @@ const DashboardGraph = () => {
               <div className="card overflow-hidden">
                 <div className="card-body p-4">
                   <h5 className="card-title mb-10 fw-semibold">
-                  Analytics
+                  Weekly Data
                   </h5>
                   <div className="row align-items-center">
           

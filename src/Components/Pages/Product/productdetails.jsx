@@ -11,9 +11,6 @@ const ProductDetails = () => {
   const { CurrentProductDetails, FirstPrdEdit } = useContext(UserContext);
   const [productDetails, setProductDetails] = useState([]);
   const [ImgCorrect, setImgCorrect] = useState();
-  console.log("CurrentProductDetails: ", CurrentProductDetails?.product_id);
-  console.log("FirstPrdEditzldjfldkfjdlkfjdlj: ", FirstPrdEdit?.length);
-  console.log("productDetails: ", productDetails);
   //  const defaultImg = productDetails[1]?.product_image ? JSON?.parse(productDetails[1]?.product_image) : [Product1, Product1]
   //  const CurrentImg = CurrentProductDetails?.product_image ? JSON?.parse(CurrentProductDetails?.product_image) : [Product1, Product1]
 

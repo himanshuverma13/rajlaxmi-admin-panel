@@ -59,7 +59,6 @@ const Forgot = () => {
                 newPassword: data?.password,
             };
             const response = await ResetAPI(payload);
-            console.log('response?.message: ', response?.message?.message);
             if (response?.message?.message == "Password reset sucessfully") {
                 toast?.success(response?.message?.message)
                 setLoading(false);

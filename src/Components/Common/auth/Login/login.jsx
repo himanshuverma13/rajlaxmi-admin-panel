@@ -24,7 +24,6 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data) => {
-        console.log('data: ', data);
         try {
             const payload = {
                 email: data?.username,

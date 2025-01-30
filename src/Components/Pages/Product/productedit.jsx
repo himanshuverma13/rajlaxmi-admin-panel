@@ -21,7 +21,6 @@ const ProductEdit = () => {
   } = useForm();
 
   const { FirstPrdEdit,CurrentProductDetails } = useContext(UserContext);
-  console.log('FirstPrdEdit: ', FirstPrdEdit,CurrentProductDetails);
   
 
 
@@ -83,7 +82,6 @@ const ProductEdit = () => {
     setLoading(true);
         setimageError("");
         const productData = { ...data, product_image: images };
-        console.log('productData: ', productData);
         setProductDetails(productData);
         const response = await UpdateProductAPI(
           CurrentProductDetails?.product_id || FirstPrdEdit?.product_id,

@@ -170,7 +170,7 @@ const UpcoingOrder = () => {
   const fetchTopDetails = async () => {
     const TopProduct = await GetProductAPI();
     const TopCustomer = await GetAllOrderDetailsAPI();
-    setFirstPrdEdit((TopProduct?.products)?.reverse()?.[0] ?? '[]')
+    setFirstPrdEdit(TopProduct?.products?.reverse()?.[0] ?? "[]");
     setTopCustomer(TopCustomer);
     setTopPRD(TopProduct?.products);
   };
@@ -189,33 +189,35 @@ const UpcoingOrder = () => {
   return (
     <>
       <div className="row">
-        
         <div className="col-lg-4 d-flex align-items-stretch">
           <div className="card w-100">
             <div className="d-flex mx-4 mt-3 mb-2 justify-content-between align-items-center">
               <h5 className="mb-0 fw-bold">Top Products</h5>
             </div>
             <hr />
-            {FilterTopProduct?.slice(0, 3)?.map((client) => (
-              <div className="row mt-2 mb-4 mx-4" key={client?.product_id}>
-                <div className="col-lg-4">
-                  <img
-                    className="w-100 rounded-4 shadow"
-                    src={TopPrd}
-                    alt={client?.product_name}
-                  />
+            {FilterTopProduct?.slice(0, 3)?.map((client) => {
+              const CurrentImg = JSON?.parse(client?.product_image ?? "[]");
+              return (
+                <div className="row mt-2 mb-4 mx-4" key={client?.product_id}>
+                  <div className="col-lg-4  col-sm-4 top-product">
+                    <img
+                      className="top-product shadow"
+                      src={CurrentImg[0] || TopPRD}
+                      alt={client?.product_name}
+                    />
+                  </div>
+                  <div className="col-lg-8 col-sm-4 top-product">
+                    <h6 className="user-name mt-3 mb-0 text-uppercase">
+                      {client?.product_name}
+                    </h6>
+                    <span className="user-work fs-3">
+                      {client?.product_website_name}
+                    </span>
+                    <h4 className="fw-bold">₹ {client?.product_price} /-</h4>
+                  </div>
                 </div>
-                <div className="col-lg-8">
-                  <h6 className="user-name mt-3 mb-0 text-uppercase">
-                    {client?.product_name}
-                  </h6>
-                  <span className="user-work fs-3">
-                    {client?.product_website_name}
-                  </span>
-                  <h4 className="fw-bold">₹ {client?.product_price} /-</h4>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -224,7 +226,6 @@ const UpcoingOrder = () => {
             <div className="card-body px-4 py-3">
               <div className="mb-2">
                 <h4 className="mb-0 fw-bold">Top Users</h4>
-                
               </div>
               <div className="table-responsive" data-simplebar="">
                 <table className="w-100 table align-middle text-nowrap table-hover">
@@ -246,7 +247,7 @@ const UpcoingOrder = () => {
                           <tr class="">
                             <td>
                               <span class="font-weight-bold">
-                                {item.user_id}
+                                {item?.user_id}
                               </span>
                             </td>
                             <td>
@@ -271,17 +272,17 @@ const UpcoingOrder = () => {
                             </td>
                             <td>
                               <span class="v-chip__content text-dark">
-                                {item.user_mobile_num}
+                                {item?.user_mobile_num}
                               </span>
                             </td>
                             <td>
                               <h6 class="text-h6 text-right">
-                                {item.user_city}
+                                {item?.user_city}
                               </h6>
                             </td>
                             <td className="text-center">
                               <span className="text-info bg-light-blue rounded p-2">
-                                {item.user_total_amount}
+                                {item?.user_total_amount}
                               </span>
                             </td>
                           </tr>
