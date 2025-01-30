@@ -102,16 +102,16 @@ const ProductDetails = () => {
                                 ""}
                             </h4>
 
-                            <div class="d-flex align-items-center justify-content-between gap-8 py-7">
+                            {/* <div class="d-flex align-items-center justify-content-between gap-8 py-7">
                               <h6 class="mb-0 fs-4">Category:</h6>
                               <div class="fw-bold d-block text-primary p-3">
                                 {CurrentProductDetails?.product_category ||
                                   productDetails[0]?.product_category ||
                                   ""}
                               </div>
-                            </div>
+                            </div> */}
                             <div class="d-flex align-items-center justify-content-between gap-8 pb-7">
-                              <h6 class="mb-0 fs-4">Stock:</h6>
+                              <h6 class="mb-0 fs-4">Stock :</h6>
                               <div class="fw-bold d-block text-primary p-3">
                                 {CurrentProductDetails?.product_stock ||
                                   productDetails[0]?.product_stock ||
@@ -119,7 +119,7 @@ const ProductDetails = () => {
                               </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between gap-7 pb-7  border-bottom">
-                              <h6 class="mb-0 fs-4">QTY:</h6>
+                              <h6 class="mb-0 fs-4">QTY :</h6>
                               <div class="fw-bold d-block text-primary p-3">
                                 {CurrentProductDetails?.product_quantity ||
                                   productDetails[0]?.product_quantity ||
@@ -127,7 +127,7 @@ const ProductDetails = () => {
                               </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between gap-7 pb-7 mb-7 border-bottom">
-                              <h6 class="mb-0 fs-4">Website Name:</h6>
+                              <h6 class="mb-0 fs-4">Category :</h6>
                               <div class="fw-bold d-block text-primary p-3">
                                 {CurrentProductDetails?.product_website_name ||
                                   productDetails[0]?.product_website_name ||
