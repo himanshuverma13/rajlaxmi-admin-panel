@@ -219,7 +219,7 @@ const [loading, setLoading] = useState(false);
                     </select>
                     {errors.product_website_name && (
                       <span className="text-danger">
-                        {errors.product_category.message}
+                        {errors.product_website_name.message}
                       </span>
                     )}
                   </div>

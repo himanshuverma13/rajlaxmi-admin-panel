@@ -186,7 +186,7 @@ const Product = () => {
                         <th scope="col">Products</th>
                         <th scope="col">Date</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Category</th>
+                        {/* <th scope="col">Category</th> */}
                         <th scope="col">Stock</th>
                         <th scope="col">Size</th>
                         <th scope="col">Actions</th>
@@ -227,7 +227,7 @@ const Product = () => {
                             <p className="mb-0">{product?.product_price}</p>
                           </td>
                           <td>
-                            <p className="mb-0">{product?.product_quantity}</p>
+                            {/* <p className="mb-0">{product?.product_quantity}</p> */}
                           </td>
                           <td>
                             <p className="mb-0">{product?.product_stock}</p>
