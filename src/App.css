@@ -50,9 +50,12 @@ foreignObject{
   height: calc(100% - 70px);
 }
 
-/* .scroll-sidebar::-webkit-scrollbar {
+.scroll-sidebar::-webkit-scrollbar {
   display: none;
-} */
+}
+.scroll-sidebar::-webkit-scrollbar:hover {
+  display: block;
+}
 
 
 
@@ -118,6 +121,8 @@ foreignObject{
   border-radius: 7px;
 }
 
+/* ---------------Media Query------------------- */
+
 @media (max-width: 768px) {
   .left-sidebar.closed {
     left: -270px; /* Hidden sidebar */
@@ -173,7 +178,6 @@ foreignObject{
 .bg-light-blue{
   background-color: rgba(100, 184, 240, 0.1);
 }
-
 .card-height{
   height: 550px;
 }
@@ -186,7 +190,6 @@ foreignObject{
   height: 15rem;
   width: 15rem;
 }
-
 .highcharts-credits{
   display:  none !important;
 }
